@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data   xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>data_object_update</name>
+      <group>data_object</group>
+      <description>大盘,个股，行业数据更新</description>
+      <job-type>StockMan.Jobs.DataUpdateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>data_object_update</name>
+        <description>大盘，个股，行业日周月线，每天周一到周五收盘后执行</description>
+        <job-name>data_object_update</job-name>
+        <job-group>data_object</job-group>
+        <cron-expression>0 5 15 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>state_object_update</name>
+      <group>state_object</group>
+      <description>大盘,个股，行业状态更新</description>
+      <job-type>StockMan.Jobs.Tech.TechMainJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>state_object_update</name>
+        <description>大盘日周月状态更新，每天下午3点以后执行</description>
+        <job-name>state_object_update</job-name>
+        <job-group>state_object</job-group>
+        <job-data-map>
+          <entry>
+            <key>MaxTaskNum</key>
+            <value>16</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 30 15 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>stock_recomend</name>
+      <group>stock_reco</group>
+      <description>行业个股筛选</description>
+      <job-type>StockMan.Jobs.Recommend.CategoryRecoJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>stock_recomend</name>
+        <description>每天18：00执行</description>
+        <job-name>stock_recomend</job-name>
+        <job-group>stock_reco</job-group>
+        <cron-expression>0 0 18 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>stock_rank</name>
+      <group>stock_reco</group>
+      <description>个股排名</description>
+      <job-type>StockMan.Jobs.Recommend.RankRecoJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>stock_rank</name>
+        <description>每天18：20执行</description>
+        <job-name>stock_rank</job-name>
+        <job-group>stock_reco</job-group>
+        <cron-expression>0 20 18 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>stock_personal_reco</name>
+      <group>stock_reco</group>
+      <description>用户个股筛选</description>
+      <job-type>StockMan.Jobs.Recommend.PersonalRecoJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>stock_personal_reco</name>
+        <description>每天18：30执行</description>
+        <job-name>stock_personal_reco</job-name>
+        <job-group>stock_reco</job-group>
+        <cron-expression>0 30 18 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>stock_personal_notifi</name>
+      <group>stock_reco</group>
+      <description>用户个股推荐和状态通知，邮件通知。</description>
+      <job-type>StockMan.Jobs.Recommend.SendNotificationJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>stock_personal_notifi</name>
+        <description>每天六点执行</description>
+        <job-name>stock_personal_notifi</job-name>
+        <job-group>stock_reco</job-group>
+        <cron-expression>0 0 19 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>data_cache_last_update</name>
+      <group>cache_update</group>
+      <description>大盘，行业，个股缓存数据更新</description>
+      <job-type>StockMan.Jobs.Cache.LastDataUpdateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>data_cache_last_update</name>
+        <description>每天收盘执行</description>
+        <job-name>data_cache_last_update</job-name>
+        <job-group>cache_update</job-group>
+        <cron-expression>0 0 16 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>data_cache_current_update</name>
+      <group>cache_update</group>
+      <description>大盘，行业，个股当前数据更新</description>
+      <job-type>StockMan.Jobs.Cache.CurrentDataUpdateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>data_cache_current_update</name>
+        <description>每天盘中执行</description>
+        <job-name>data_cache_current_update</job-name>
+        <job-group>cache_update</job-group>
+        <cron-expression>0 31/15 9-12,13-15 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <!--<schedule>
+    <job>
+      <name>jobtest</name>
+      <group>test</group>
+      <description>任务启动测试</description>
+      <job-type>StockMan.Jobs.JobTest,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>cotome</name>
+        <description>自定义</description>
+        <job-name>jobtest</job-name>
+        <job-group>test</job-group>
+        <cron-expression>30 49 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>-->
+</job-scheduling-data>

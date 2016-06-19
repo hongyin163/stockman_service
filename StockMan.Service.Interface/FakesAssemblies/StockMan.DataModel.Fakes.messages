@@ -1,0 +1,10 @@
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.DataModel.DataVersionCode: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.DataModel.ObjectType: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.DataModel.TechCycle: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.DataModel.IndexState: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.DataModel.IndexEnableState: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.DataModel.DataVersionCode: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.DataModel.ObjectType: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.DataModel.TechCycle: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.DataModel.IndexState: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan_copy\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.DataModel.IndexEnableState: type is an enum.

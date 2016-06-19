@@ -1,0 +1,8 @@
+ 2014-12-17 09:53:12,696-已取消一个任务。
+ 2014-12-17 15:43:16,477-<log4net.Error>Exception during StringFormat: 输入字符串的格式不正确。 <format>Error converting value {null} to type 'System.Decimal'. Path 'turnover', line 1, position 193.</format><args>{}</args></log4net.Error>
+ 2014-12-17 15:45:57,646-<log4net.Error>Exception during StringFormat: 输入字符串的格式不正确。 <format>Error converting value {null} to type 'System.Decimal'. Path 'turnover', line 1, position 193.</format><args>{}</args></log4net.Error>
+ 2014-12-17 15:46:23,107-<log4net.Error>Exception during StringFormat: 输入字符串的格式不正确。 <format>Error converting value {null} to type 'System.Decimal'. Path 'turnover', line 1, position 193.</format><args>{}</args></log4net.Error>
+ 2014-12-17 15:52:35,401-值不能为 null。
+参数名: value
+ 2014-12-17 15:54:19,587-值不能为 null。
+参数名: value

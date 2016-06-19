@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="messageModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mq_message">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="task_code" Type="varchar" MaxLength="45" />
+          <Property Name="status" Type="int" />
+          <Property Name="values" Type="text" />
+          <Property Name="createtime" Type="datetime" Precision="6" />
+          <Property Name="updatetime" Type="datetime" Precision="6" />
+        </EntityType>
+        <EntityType Name="mq_task">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="assembly" Type="varchar" MaxLength="45" />
+          <Property Name="type" Type="varchar" MaxLength="45" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityContainer Name="messageModelStoreContainer">
+          <EntitySet Name="mq_message" EntityType="Self.mq_message" Schema="message" store:Type="Tables" />
+          <EntitySet Name="mq_task" EntityType="Self.mq_task" Schema="message" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="messageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="messageEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mq_message" EntityType="messageModel.mq_message" />
+          <EntitySet Name="mq_task" EntityType="messageModel.mq_task" />
+        </EntityContainer>
+        <EntityType Name="mq_message">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="task_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="values" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="updatetime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="mq_task">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="assembly" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="messageModelStoreContainer" CdmEntityContainer="messageEntities">
+          <EntitySetMapping Name="mq_message">
+            <EntityTypeMapping TypeName="messageModel.mq_message">
+              <MappingFragment StoreEntitySet="mq_message">
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="values" ColumnName="values" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="task_code" ColumnName="task_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mq_task">
+            <EntityTypeMapping TypeName="messageModel.mq_task">
+              <MappingFragment StoreEntitySet="mq_task">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="assembly" ColumnName="assembly" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

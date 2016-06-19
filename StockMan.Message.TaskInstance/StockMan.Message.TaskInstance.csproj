@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9B495AE-AF4D-4A7E-8BBD-4D24671C5E9A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StockMan.Message.TaskInstance</RootNamespace>
+    <AssemblyName>StockMan.Message.TaskInstance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="this.Log">
+      <HintPath>..\packages\this.Log.0.0.3.0\lib\net40\this.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="this.Log-log4net">
+      <HintPath>..\packages\this.Log-log4net.0.0.3.0\lib\net40\this.Log-log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LogExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TechTask.cs" />
+    <Compile Include="FirstTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockMan.EntityModel\StockMan.EntityModel.csproj">
+      <Project>{15d9f7ef-2537-42b2-8da6-2e02355b2ee5}</Project>
+      <Name>StockMan.EntityModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.Jobs.Model\StockMan.Jobs.Biz.csproj">
+      <Project>{9b7a434a-4666-4994-8d05-248801c80284}</Project>
+      <Name>StockMan.Jobs.Biz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.Jobs\StockMan.Jobs.csproj">
+      <Project>{8ad6a268-06dc-4e14-9124-75c596fbd6bd}</Project>
+      <Name>StockMan.Jobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.Message.Model\StockMan.Message.Model.csproj">
+      <Project>{b2b82712-61dc-4979-8548-f3bbb2668aa6}</Project>
+      <Name>StockMan.Message.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.Message.Task\StockMan.Message.Task.csproj">
+      <Project>{761b69df-b437-48fe-b306-45b353ef765d}</Project>
+      <Name>StockMan.Message.Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.Service.Interface\StockMan.Service.Interface.csproj">
+      <Project>{83b4749b-360f-4984-b9a9-161b65b98d33}</Project>
+      <Name>StockMan.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.Service.Rds\StockMan.Service.Rds.csproj">
+      <Project>{ae99974c-1f53-432a-9615-a5fbe60663de}</Project>
+      <Name>StockMan.Service.Rds</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\FourTask  /y
+xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\SecondTask /y
+xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\ThreeTask /y
+xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\OneTask /y
+
+
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

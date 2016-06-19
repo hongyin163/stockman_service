@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StockManDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="StockManDBModelStoreContainer">
+          <EntitySet Name="Stock" EntityType="StockManDBModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stock_Category_Group" EntityType="StockManDBModel.Store.Stock_Category_Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stock_Category_Map" EntityType="StockManDBModel.Store.Stock_Category_Map" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stock_User_Map" EntityType="StockManDBModel.Store.Stock_User_Map" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StockCategory" EntityType="StockManDBModel.Store.StockCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="StockManDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Stock_User_Map_Stock1" Association="StockManDBModel.Store.FK_Stock_User_Map_Stock1">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="Stock_User_Map" EntitySet="Stock_User_Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_User_Map_Users" Association="StockManDBModel.Store.FK_Stock_User_Map_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Stock_User_Map" EntitySet="Stock_User_Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockCategory_Stock_Category_Group" Association="StockManDBModel.Store.FK_StockCategory_Stock_Category_Group">
+            <End Role="Stock_Category_Group" EntitySet="Stock_Category_Group" />
+            <End Role="StockCategory" EntitySet="StockCategory" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="symbol" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="numeric" Scale="2" />
+          <Property Name="yestclose" Type="numeric" Scale="2" />
+          <Property Name="cate_code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stock_Category_Group">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stock_Category_Map">
+          <Key>
+            <PropertyRef Name="category_code" />
+            <PropertyRef Name="stock_code" />
+          </Key>
+          <Property Name="category_code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="stock_code" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stock_User_Map">
+          <Key>
+            <PropertyRef Name="stock_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="stock_code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="user_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="group_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StockCategory">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="group_code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="email" Type="nvarchar" MaxLength="512" />
+          <Property Name="phone" Type="nvarchar" MaxLength="512" />
+          <Property Name="password" Type="varchar" MaxLength="512" />
+          <Property Name="exp" Type="numeric" Scale="2" />
+          <Property Name="points" Type="numeric" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Stock_User_Map_Stock1">
+          <End Role="Stock" Type="StockManDBModel.Store.Stock" Multiplicity="1" />
+          <End Role="Stock_User_Map" Type="StockManDBModel.Store.Stock_User_Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Stock_User_Map">
+              <PropertyRef Name="stock_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_User_Map_Users">
+          <End Role="Users" Type="StockManDBModel.Store.Users" Multiplicity="1" />
+          <End Role="Stock_User_Map" Type="StockManDBModel.Store.Stock_User_Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stock_User_Map">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockCategory_Stock_Category_Group">
+          <End Role="Stock_Category_Group" Type="StockManDBModel.Store.Stock_Category_Group" Multiplicity="0..1" />
+          <End Role="StockCategory" Type="StockManDBModel.Store.StockCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock_Category_Group">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="StockCategory">
+              <PropertyRef Name="group_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StockManDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StockManDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Stock" EntityType="StockManDBModel.Stock" />
+          <EntitySet Name="StockCategory" EntityType="StockManDBModel.StockCategory" />
+          <EntitySet Name="Users" EntityType="StockManDBModel.Users" />
+          <AssociationSet Name="FK_stock_StockCategory" Association="StockManDBModel.FK_stock_StockCategory">
+            <End Role="StockCategory" EntitySet="StockCategory" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <EntitySet Name="Stock_User_Map" EntityType="StockManDBModel.Stock_User_Map" />
+          <AssociationSet Name="FK_Stock_User_Map_stock" Association="StockManDBModel.FK_Stock_User_Map_stock">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="Stock_User_Map" EntitySet="Stock_User_Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_User_Map_Users" Association="StockManDBModel.FK_Stock_User_Map_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Stock_User_Map" EntitySet="Stock_User_Map" />
+          </AssociationSet>
+          <EntitySet Name="Stock_Category_Group" EntityType="StockManDBModel.Stock_Category_Group" />
+          <EntitySet Name="Stock_Category_Map" EntityType="StockManDBModel.Stock_Category_Map" />
+          <AssociationSet Name="FK_StockCategory_Stock_Category_Group" Association="StockManDBModel.FK_StockCategory_Stock_Category_Group">
+            <End Role="Stock_Category_Group" EntitySet="Stock_Category_Group" />
+            <End Role="StockCategory" EntitySet="StockCategory" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Type="String" Name="code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="symbol" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="yestclose" Precision="18" Scale="2" />
+          <Property Type="String" Name="cate_code" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StockCategory">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Type="String" Name="code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="group_code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stock_Category_Group" Relationship="StockManDBModel.FK_StockCategory_Stock_Category_Group" FromRole="StockCategory" ToRole="Stock_Category_Group" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="phone" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="password" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="exp" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="points" Precision="18" Scale="2" />
+          <NavigationProperty Name="Stock_User_Map" Relationship="StockManDBModel.FK_Stock_User_Map_Users" FromRole="Users" ToRole="Stock_User_Map" />
+        </EntityType>
+        <Association Name="FK_stock_StockCategory">
+          <End Type="StockManDBModel.StockCategory" Role="StockCategory" Multiplicity="0..1" />
+          <End Type="StockManDBModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockCategory">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="cate_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Stock_User_Map">
+          <Key>
+            <PropertyRef Name="stock_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Type="String" Name="stock_code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="user_id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="group_name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Stock" Relationship="StockManDBModel.FK_Stock_User_Map_stock" FromRole="Stock_User_Map" ToRole="Stock" />
+          <NavigationProperty Name="Users" Relationship="StockManDBModel.FK_Stock_User_Map_Users" FromRole="Stock_User_Map" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Stock_User_Map_stock">
+          <End Type="StockManDBModel.Stock" Role="Stock" Multiplicity="1" />
+          <End Type="StockManDBModel.Stock_User_Map" Role="Stock_User_Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="Stock_User_Map">
+              <PropertyRef Name="stock_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_User_Map_Users">
+          <End Type="StockManDBModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="StockManDBModel.Stock_User_Map" Role="Stock_User_Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stock_User_Map">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Stock_Category_Group">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Type="String" Name="code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Stock_Category_Map">
+          <Key>
+            <PropertyRef Name="category_code" />
+            <PropertyRef Name="stock_code" />
+          </Key>
+          <Property Type="String" Name="category_code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="stock_code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_StockCategory_Stock_Category_Group">
+          <End Type="StockManDBModel.Stock_Category_Group" Role="Stock_Category_Group" Multiplicity="0..1" />
+          <End Type="StockManDBModel.StockCategory" Role="StockCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock_Category_Group">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="StockCategory">
+              <PropertyRef Name="group_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StockManDBModelStoreContainer" CdmEntityContainer="StockManDBEntities">
+          <EntitySetMapping Name="Stock">
+            <EntityTypeMapping TypeName="StockManDBModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="symbol" ColumnName="symbol" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockCategory">
+            <EntityTypeMapping TypeName="StockManDBModel.StockCategory">
+              <MappingFragment StoreEntitySet="StockCategory">
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="StockManDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock_User_Map">
+            <EntityTypeMapping TypeName="StockManDBModel.Stock_User_Map">
+              <MappingFragment StoreEntitySet="Stock_User_Map">
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock_Category_Group">
+            <EntityTypeMapping TypeName="StockManDBModel.Stock_Category_Group">
+              <MappingFragment StoreEntitySet="Stock_Category_Group">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock_Category_Map">
+            <EntityTypeMapping TypeName="StockManDBModel.Stock_Category_Map">
+              <MappingFragment StoreEntitySet="Stock_Category_Map">
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="category_code" ColumnName="category_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

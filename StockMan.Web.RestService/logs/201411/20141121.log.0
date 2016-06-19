@@ -1,0 +1,5 @@
+ 2014-11-21 18:57:39,190-You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and `cate_code` in ('010400') and `index_code` in ('T0003','T0004')' at line 14
+ 2014-11-21 19:49:50,119-You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and `cate_code` in ('010300','010400') and `index_code` in ('T0003','T0004') and' at line 14
+ 2014-11-21 19:53:29,533-已取消一个任务。
+ 2014-11-21 19:55:07,337-You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and `cate_code` in ('010300','010400') and `index_code` in ('T0003','T0004') and' at line 14
+ 2014-11-21 19:56:04,601-You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and `cate_code` in ('010300','010400') and `index_code` in ('T0003','T0004') and' at line 14

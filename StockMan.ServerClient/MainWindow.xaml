@@ -1,0 +1,10 @@
+﻿<Window x:Class="StockMan.ServerClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="42,32,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="42,77,0,0" VerticalAlignment="Top" Height="146" Width="299"/>
+
+    </Grid>
+</Window>

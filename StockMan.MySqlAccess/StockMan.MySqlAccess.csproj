@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9082B1E-6A59-4533-99FE-58D6C909D095}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StockMan.MySqlAccess</RootNamespace>
+    <AssemblyName>StockMan.MySqlAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\StockMan.Reference\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sys_comments.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="object_tag_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="tag.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="user_message.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="customobject_category_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="customobject_user_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_category_day_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_category_month_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_category_week_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_object_day_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_object_month_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_object_week_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_stock_day_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_stock_month_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="data_stock_week_latest.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="indexdefinegroup.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="indexdefinition.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="index_user_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="objectcategory.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="objectstate.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="objectstate_history.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="object_user_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="pricesynclog.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="customobject.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="rule.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="rulecondition.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="stock.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="stockcategory.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="stockcategory_user_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="reco_stock_category_index.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="related_object_data.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="related_object_define.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="related_object_fields.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="reco_user_stock.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="reco_category_count.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="reco_stock_category_rank.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="reco_stock_category_tag.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="reco_stock_category_state.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Compile Include="StockManDBEntities.cs" />
+    <Compile Include="StockManModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockManModel.Context.tt</DependentUpon>
+    </Compile>
+    <Content Include="stock_category_group.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="stock_category_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="stock_new.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="stock_user_map.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="sys_goodidea.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="sys_investdata.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="sys_userconfig.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="tech_context.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="userdataversion.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="users.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="user_investintention.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="StockManModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Compile Include="StockManModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockManModel.edmx</DependentUpon>
+    </Compile>
+    <Content Include="uncopy.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="StockManModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StockManModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="StockManModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StockManModel.edmx</DependentUpon>
+      <LastGenOutput>StockManModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="StockManModel.edmx.diagram">
+      <DependentUpon>StockManModel.edmx</DependentUpon>
+    </None>
+    <None Include="StockManModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StockManModel.edmx</DependentUpon>
+      <LastGenOutput>StockManModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockMan.EntityModel\StockMan.EntityModel.csproj">
+      <Project>{15d9f7ef-2537-42b2-8da6-2e02355b2ee5}</Project>
+      <Name>StockMan.EntityModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy $(ProjectDir)*.cs $(SolutionDir)StockMan.EntityModel\Entity /exclude:$(ProjectDir)uncopy.txt /y
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

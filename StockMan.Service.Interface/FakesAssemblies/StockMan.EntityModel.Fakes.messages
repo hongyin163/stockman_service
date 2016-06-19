@@ -1,0 +1,10 @@
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.EntityModel.DataVersionCode: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.EntityModel.IndexState: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.EntityModel.IndexEnableState: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.EntityModel.ObjectType: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate stub for StockMan.EntityModel.TechCycle: type is a value type.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.EntityModel.DataVersionCode: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.EntityModel.IndexState: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.EntityModel.IndexEnableState: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.EntityModel.ObjectType: type is an enum.
+D:\WorkFolder\MyProject\Code\StockMan\StockMan.Service.Interface\Fakes\StockMan.DataModel.fakes : warning : Cannot generate shim for StockMan.EntityModel.TechCycle: type is an enum.

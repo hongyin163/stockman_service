@@ -1,0 +1,2646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StockManDBModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customobject">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="int" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="customobject_category_map">
+          <Key>
+            <PropertyRef Name="cate_code" />
+            <PropertyRef Name="object_code" />
+          </Key>
+          <Property Name="cate_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customobject_user_map">
+          <Key>
+            <PropertyRef Name="object_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="object_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="data_category_day_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_category_month_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_category_week_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_object_day_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_object_month_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_object_week_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_stock_day_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_stock_month_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="data_stock_week_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="surgedprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="declineprice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="index_user_map">
+          <Key>
+            <PropertyRef Name="index_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="index_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sort" Type="int" />
+          <Property Name="paramaters" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="indexdefinegroup">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="group_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="indexdefinition">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="text" />
+          <Property Name="parameter" Type="varchar" MaxLength="500" />
+          <Property Name="fields" Type="varchar" MaxLength="500" />
+          <Property Name="table_name" Type="varchar" MaxLength="50" />
+          <Property Name="algorithm_script" Type="longtext" />
+          <Property Name="chart_config" Type="mediumtext" />
+          <Property Name="state" Type="int" />
+          <Property Name="version" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="group_code" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="object_tag_map">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="category_code" Type="varchar" MaxLength="45" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="index_code" Type="varchar" MaxLength="45" />
+          <Property Name="tag_code" Type="varchar" MaxLength="45" />
+          <Property Name="tag_name" Type="varchar" MaxLength="45" />
+          <Property Name="createdate" Type="date" />
+          <Property Name="cycle" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="object_user_map">
+          <Key>
+            <PropertyRef Name="object_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="object_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="object_type" Type="varchar" MaxLength="50" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="objectcategory">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="objectstate">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="category_code" Type="varchar" MaxLength="50" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="index_code" Type="varchar" MaxLength="50" />
+          <Property Name="day" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="date" Type="datetime" Precision="0" />
+          <Property Name="last_day" Type="int" />
+          <Property Name="last_week" Type="int" />
+          <Property Name="last_month" Type="int" />
+        </EntityType>
+        <EntityType Name="objectstate_history">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="category_code" Type="varchar" MaxLength="50" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="index_code" Type="varchar" MaxLength="50" />
+          <Property Name="day" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="date" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="pricesynclog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="batch" Type="varchar" MaxLength="36" />
+          <Property Name="stock_code" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="5000" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="creatime" Type="datetime" Precision="0" />
+          <Property Name="state" Type="int" />
+        </EntityType>
+        <EntityType Name="reco_category_count">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cate_code" Type="varchar" MaxLength="50" />
+          <Property Name="cate_type" Type="varchar" MaxLength="50" />
+          <Property Name="index_code" Type="varchar" MaxLength="45" />
+          <Property Name="count" Type="int" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_index">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cate_code" Type="varchar" MaxLength="45" />
+          <Property Name="index_code" Type="varchar" MaxLength="45" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="day" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="last_day" Type="int" />
+          <Property Name="last_week" Type="int" />
+          <Property Name="last_month" Type="int" />
+          <Property Name="cate_name" Type="varchar" MaxLength="45" />
+          <Property Name="index_name" Type="varchar" MaxLength="45" />
+          <Property Name="object_name" Type="varchar" MaxLength="45" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_rank">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cate_code" Type="varchar" MaxLength="45" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="cate_name" Type="varchar" MaxLength="45" />
+          <Property Name="object_name" Type="varchar" MaxLength="45" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rank" Type="int" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_state">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cate_code" Type="varchar" MaxLength="45" />
+          <Property Name="tag_code" Type="varchar" MaxLength="45" />
+          <Property Name="index_code" Type="varchar" MaxLength="45" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="day" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="last_day" Type="int" />
+          <Property Name="last_week" Type="int" />
+          <Property Name="last_month" Type="int" />
+          <Property Name="cate_name" Type="varchar" MaxLength="45" />
+          <Property Name="tag_name" Type="varchar" MaxLength="45" />
+          <Property Name="index_name" Type="varchar" MaxLength="45" />
+          <Property Name="object_name" Type="varchar" MaxLength="45" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cycle" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_tag">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cate_code" Type="varchar" MaxLength="45" />
+          <Property Name="tag_code" Type="varchar" MaxLength="45" />
+          <Property Name="index_code" Type="varchar" MaxLength="45" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="day" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="last_day" Type="int" />
+          <Property Name="last_week" Type="int" />
+          <Property Name="last_month" Type="int" />
+          <Property Name="cate_name" Type="varchar" MaxLength="45" />
+          <Property Name="tag_name" Type="varchar" MaxLength="45" />
+          <Property Name="index_name" Type="varchar" MaxLength="45" />
+          <Property Name="object_name" Type="varchar" MaxLength="45" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cycle" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="reco_user_stock">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="cate_code" Type="varchar" MaxLength="45" />
+          <Property Name="index_code" Type="varchar" MaxLength="45" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="day" Type="int" />
+          <Property Name="week" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="last_day" Type="int" />
+          <Property Name="last_week" Type="int" />
+          <Property Name="last_month" Type="int" />
+          <Property Name="cate_name" Type="varchar" MaxLength="45" />
+          <Property Name="index_name" Type="varchar" MaxLength="45" />
+          <Property Name="object_name" Type="varchar" MaxLength="45" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="related_object_data">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="pro0" Type="double" />
+          <Property Name="pro1" Type="double" />
+          <Property Name="pro2" Type="double" />
+          <Property Name="pro3" Type="double" />
+          <Property Name="pro4" Type="double" />
+          <Property Name="pro5" Type="double" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="related_object_define">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="value" Type="double" />
+          <Property Name="last_value" Type="double" />
+        </EntityType>
+        <EntityType Name="related_object_fields">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="map" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="define_code" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="rule">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="rulecondition">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="category_code" Type="varchar" MaxLength="50" />
+          <Property Name="category_name" Type="varchar" MaxLength="50" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="object_name" Type="varchar" MaxLength="50" />
+          <Property Name="index_code" Type="varchar" MaxLength="50" />
+          <Property Name="index_name" Type="varchar" MaxLength="50" />
+          <Property Name="rule_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sort" Type="int" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="symbol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="spell" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="date" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="stock_category_group">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="stock_category_map">
+          <Key>
+            <PropertyRef Name="cate_code" />
+            <PropertyRef Name="stock_code" />
+          </Key>
+          <Property Name="cate_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="stock_new">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="10" />
+          <Property Name="description" Type="char" MaxLength="10" />
+          <Property Name="request_date" Type="datetime" Precision="0" />
+          <Property Name="online_date" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="stock_user_map">
+          <Key>
+            <PropertyRef Name="stock_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="stock_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="group_name" Type="varchar" MaxLength="50" />
+          <Property Name="inhand" Type="bit" />
+          <Property Name="sort" Type="int" />
+        </EntityType>
+        <EntityType Name="stockcategory">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="group_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="yestclose" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="volume" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnover" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="high" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="updown" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="low" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="turnoverrate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pe" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="percent" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="date" Type="datetime" Precision="0" />
+          <Property Name="open" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="stockcategory_user_map">
+          <Key>
+            <PropertyRef Name="cate_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="cate_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="group_code" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_comments">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="parent_code" Type="int" />
+          <Property Name="index" Type="int" />
+          <Property Name="object_code" Type="varchar" MaxLength="45" />
+          <Property Name="content" Type="varchar" MaxLength="45" />
+          <Property Name="up" Type="int" />
+          <Property Name="down" Type="int" />
+          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sys_goodidea">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="up" Type="int" />
+          <Property Name="down" Type="int" />
+          <Property Name="type" Type="int" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+          <Property Name="state" Type="int" />
+          <Property Name="createuser" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_investdata">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="value" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_userconfig">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="config" Type="varchar" MaxLength="5000" />
+        </EntityType>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tech_context">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="category_code" Type="varchar" MaxLength="50" />
+          <Property Name="object_code" Type="varchar" MaxLength="50" />
+          <Property Name="index_code" Type="varchar" MaxLength="50" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+          <Property Name="context" Type="longtext" />
+        </EntityType>
+        <EntityType Name="user_investintention">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" />
+          <Property Name="trade" Type="varchar" MaxLength="300" />
+          <Property Name="tech" Type="varchar" MaxLength="300" />
+          <Property Name="market" Type="varchar" MaxLength="300" />
+          <Property Name="investamount" Type="varchar" MaxLength="300" />
+          <Property Name="job" Type="varchar" MaxLength="300" />
+          <Property Name="investmethod" Type="varchar" MaxLength="300" />
+          <Property Name="learnmethod" Type="varchar" MaxLength="300" />
+          <Property Name="apps" Type="varchar" MaxLength="300" />
+          <Property Name="infosource" Type="varchar" MaxLength="300" />
+          <Property Name="book" Type="varchar" MaxLength="300" />
+          <Property Name="econ" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="user_message">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="content" Type="text" />
+          <Property Name="createtime" Type="datetime" Precision="0" />
+          <Property Name="hint" Type="text" />
+          <Property Name="title" Type="varchar" MaxLength="45" />
+          <Property Name="state" Type="int" />
+          <Property Name="type" Type="int" />
+          <Property Name="notice_state" Type="int" />
+        </EntityType>
+        <EntityType Name="userdataversion">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="version" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="update_time" Type="datetime" Precision="0" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="512" />
+          <Property Name="phone" Type="varchar" MaxLength="512" />
+          <Property Name="password" Type="varchar" MaxLength="512" />
+          <Property Name="exp" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="points" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createtime" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+          <Property Name="sso" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityContainer Name="StockManDBModelStoreContainer">
+          <EntitySet Name="customobject" EntityType="Self.customobject" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="customobject_category_map" EntityType="Self.customobject_category_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="customobject_user_map" EntityType="Self.customobject_user_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_category_day_latest" EntityType="Self.data_category_day_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_category_month_latest" EntityType="Self.data_category_month_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_category_week_latest" EntityType="Self.data_category_week_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_object_day_latest" EntityType="Self.data_object_day_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_object_month_latest" EntityType="Self.data_object_month_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_object_week_latest" EntityType="Self.data_object_week_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_stock_day_latest" EntityType="Self.data_stock_day_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_stock_month_latest" EntityType="Self.data_stock_month_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="data_stock_week_latest" EntityType="Self.data_stock_week_latest" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="index_user_map" EntityType="Self.index_user_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="indexdefinegroup" EntityType="Self.indexdefinegroup" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="indexdefinition" EntityType="Self.indexdefinition" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="object_tag_map" EntityType="Self.object_tag_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="object_user_map" EntityType="Self.object_user_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="objectcategory" EntityType="Self.objectcategory" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="objectstate" EntityType="Self.objectstate" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="objectstate_history" EntityType="Self.objectstate_history" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="pricesynclog" EntityType="Self.pricesynclog" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="reco_category_count" EntityType="Self.reco_category_count" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="reco_stock_category_index" EntityType="Self.reco_stock_category_index" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="reco_stock_category_rank" EntityType="Self.reco_stock_category_rank" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="reco_stock_category_state" EntityType="Self.reco_stock_category_state" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="reco_stock_category_tag" EntityType="Self.reco_stock_category_tag" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="reco_user_stock" EntityType="Self.reco_user_stock" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="related_object_data" EntityType="Self.related_object_data" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="related_object_define" EntityType="Self.related_object_define" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="related_object_fields" EntityType="Self.related_object_fields" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="rule" EntityType="Self.rule" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="rulecondition" EntityType="Self.rulecondition" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stock" EntityType="Self.stock" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stock_category_group" EntityType="Self.stock_category_group" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stock_category_map" EntityType="Self.stock_category_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stock_new" EntityType="Self.stock_new" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stock_user_map" EntityType="Self.stock_user_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stockcategory" EntityType="Self.stockcategory" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="stockcategory_user_map" EntityType="Self.stockcategory_user_map" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="sys_comments" EntityType="Self.sys_comments" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="sys_goodidea" EntityType="Self.sys_goodidea" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="sys_investdata" EntityType="Self.sys_investdata" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="sys_userconfig" EntityType="Self.sys_userconfig" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="tag" EntityType="Self.tag" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="tech_context" EntityType="Self.tech_context" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="user_investintention" EntityType="Self.user_investintention" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="user_message" EntityType="Self.user_message" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="userdataversion" EntityType="Self.userdataversion" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="stockmandb" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StockMan.EntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StockManDBEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="customobject" EntityType="StockMan.EntityModel.customobject" />
+          <EntitySet Name="customobject_category_map" EntityType="StockMan.EntityModel.customobject_category_map" />
+          <EntitySet Name="customobject_user_map" EntityType="StockMan.EntityModel.customobject_user_map" />
+          <EntitySet Name="data_category_day_latest" EntityType="StockMan.EntityModel.data_category_day_latest" />
+          <EntitySet Name="data_category_month_latest" EntityType="StockMan.EntityModel.data_category_month_latest" />
+          <EntitySet Name="data_category_week_latest" EntityType="StockMan.EntityModel.data_category_week_latest" />
+          <EntitySet Name="data_object_day_latest" EntityType="StockMan.EntityModel.data_object_day_latest" />
+          <EntitySet Name="data_object_month_latest" EntityType="StockMan.EntityModel.data_object_month_latest" />
+          <EntitySet Name="data_object_week_latest" EntityType="StockMan.EntityModel.data_object_week_latest" />
+          <EntitySet Name="data_stock_day_latest" EntityType="StockMan.EntityModel.data_stock_day_latest" />
+          <EntitySet Name="data_stock_month_latest" EntityType="StockMan.EntityModel.data_stock_month_latest" />
+          <EntitySet Name="data_stock_week_latest" EntityType="StockMan.EntityModel.data_stock_week_latest" />
+          <EntitySet Name="index_user_map" EntityType="StockMan.EntityModel.index_user_map" />
+          <EntitySet Name="indexdefinegroup" EntityType="StockMan.EntityModel.indexdefinegroup" />
+          <EntitySet Name="indexdefinition" EntityType="StockMan.EntityModel.indexdefinition" />
+          <EntitySet Name="object_user_map" EntityType="StockMan.EntityModel.object_user_map" />
+          <EntitySet Name="objectcategory" EntityType="StockMan.EntityModel.objectcategory" />
+          <EntitySet Name="objectstate" EntityType="StockMan.EntityModel.objectstate" />
+          <EntitySet Name="objectstate_history" EntityType="StockMan.EntityModel.objectstate_history" />
+          <EntitySet Name="pricesynclog" EntityType="StockMan.EntityModel.pricesynclog" />
+          <EntitySet Name="rule" EntityType="StockMan.EntityModel.rule" />
+          <EntitySet Name="stock" EntityType="StockMan.EntityModel.stock" />
+          <EntitySet Name="stock_category_group" EntityType="StockMan.EntityModel.stock_category_group" />
+          <EntitySet Name="stock_category_map" EntityType="StockMan.EntityModel.stock_category_map" />
+          <EntitySet Name="stock_new" EntityType="StockMan.EntityModel.stock_new" />
+          <EntitySet Name="stock_user_map" EntityType="StockMan.EntityModel.stock_user_map" />
+          <EntitySet Name="stockcategory" EntityType="StockMan.EntityModel.stockcategory" />
+          <EntitySet Name="stockcategory_user_map" EntityType="StockMan.EntityModel.stockcategory_user_map" />
+          <EntitySet Name="sys_goodidea" EntityType="StockMan.EntityModel.sys_goodidea" />
+          <EntitySet Name="sys_investdata" EntityType="StockMan.EntityModel.sys_investdata" />
+          <EntitySet Name="sys_userconfig" EntityType="StockMan.EntityModel.sys_userconfig" />
+          <EntitySet Name="user_investintention" EntityType="StockMan.EntityModel.user_investintention" />
+          <EntitySet Name="userdataversion" EntityType="StockMan.EntityModel.userdataversion" />
+          <EntitySet Name="users" EntityType="StockMan.EntityModel.users" />
+          <AssociationSet Name="stockstock_category_map" Association="StockMan.EntityModel.stockstock_category_map">
+            <End Role="stock" EntitySet="stock" />
+            <End Role="stock_category_map" EntitySet="stock_category_map" />
+          </AssociationSet>
+          <AssociationSet Name="stockcategorystock_category_map" Association="StockMan.EntityModel.stockcategorystock_category_map">
+            <End Role="stockcategory" EntitySet="stockcategory" />
+            <End Role="stock_category_map" EntitySet="stock_category_map" />
+          </AssociationSet>
+          <AssociationSet Name="stockstock_user_map" Association="StockMan.EntityModel.stockstock_user_map">
+            <End Role="stock" EntitySet="stock" />
+            <End Role="stock_user_map" EntitySet="stock_user_map" />
+          </AssociationSet>
+          <AssociationSet Name="usersstock_user_map" Association="StockMan.EntityModel.usersstock_user_map">
+            <End Role="users" EntitySet="users" />
+            <End Role="stock_user_map" EntitySet="stock_user_map" />
+          </AssociationSet>
+          <AssociationSet Name="usersrule" Association="StockMan.EntityModel.usersrule">
+            <End Role="users" EntitySet="users" />
+            <End Role="rule" EntitySet="rule" />
+          </AssociationSet>
+          <EntitySet Name="rulecondition" EntityType="StockMan.EntityModel.rulecondition" />
+          <AssociationSet Name="rulerulecondition" Association="StockMan.EntityModel.rulerulecondition">
+            <End Role="rule" EntitySet="rule" />
+            <End Role="rulecondition" EntitySet="rulecondition" />
+          </AssociationSet>
+          <AssociationSet Name="indexdefinegroupindexdefinition" Association="StockMan.EntityModel.indexdefinegroupindexdefinition">
+            <End Role="indexdefinegroup" EntitySet="indexdefinegroup" />
+            <End Role="indexdefinition" EntitySet="indexdefinition" />
+          </AssociationSet>
+          <AssociationSet Name="usersindex_user_map" Association="StockMan.EntityModel.usersindex_user_map">
+            <End Role="users" EntitySet="users" />
+            <End Role="index_user_map" EntitySet="index_user_map" />
+          </AssociationSet>
+          <AssociationSet Name="indexdefinitionindex_user_map" Association="StockMan.EntityModel.indexdefinitionindex_user_map">
+            <End Role="indexdefinition" EntitySet="indexdefinition" />
+            <End Role="index_user_map" EntitySet="index_user_map" />
+          </AssociationSet>
+          <EntitySet Name="reco_stock_category_index" EntityType="StockMan.EntityModel.reco_stock_category_index" />
+          <EntitySet Name="user_message" EntityType="StockMan.EntityModel.user_message" />
+          <EntitySet Name="related_object_define" EntityType="StockMan.EntityModel.related_object_define" />
+          <EntitySet Name="related_object_fields" EntityType="StockMan.EntityModel.related_object_fields" />
+          <AssociationSet Name="related_object_definerelated_object_fields" Association="StockMan.EntityModel.related_object_definerelated_object_fields">
+            <End Role="related_object_define" EntitySet="related_object_define" />
+            <End Role="related_object_fields" EntitySet="related_object_fields" />
+          </AssociationSet>
+          <EntitySet Name="tech_context" EntityType="StockMan.EntityModel.tech_context" />
+          <EntitySet Name="reco_user_stock" EntityType="StockMan.EntityModel.reco_user_stock" />
+          <EntitySet Name="related_object_data" EntityType="StockMan.EntityModel.related_object_data" />
+          <AssociationSet Name="usersobject_user_map" Association="StockMan.EntityModel.usersobject_user_map">
+            <End Role="users" EntitySet="users" />
+            <End Role="object_user_map" EntitySet="object_user_map" />
+          </AssociationSet>
+          <EntitySet Name="reco_category_count" EntityType="StockMan.EntityModel.reco_category_count" />
+          <EntitySet Name="reco_stock_category_rank" EntityType="StockMan.EntityModel.reco_stock_category_rank" />
+          <EntitySet Name="object_tag_map" EntityType="StockMan.EntityModel.object_tag_map" />
+          <EntitySet Name="tag" EntityType="StockMan.EntityModel.tag" />
+          <EntitySet Name="reco_stock_category_tag" EntityType="StockMan.EntityModel.reco_stock_category_tag" />
+          <EntitySet Name="sys_comments" EntityType="StockMan.EntityModel.sys_comments" />
+          <EntitySet Name="reco_stock_category_state" EntityType="StockMan.EntityModel.reco_stock_category_state" />
+        </EntityContainer>
+        <EntityType Name="customobject">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="customobject_category_map">
+          <Key>
+            <PropertyRef Name="cate_code" />
+            <PropertyRef Name="object_code" />
+          </Key>
+          <Property Name="cate_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="customobject_user_map">
+          <Key>
+            <PropertyRef Name="object_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="object_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="data_category_day_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_category_month_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_category_week_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_object_day_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_object_month_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_object_week_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_stock_day_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_stock_month_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="data_stock_week_latest">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="open" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="surgedprice" Type="Decimal" />
+          <Property Name="declineprice" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="index_user_map">
+          <Key>
+            <PropertyRef Name="index_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="index_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="paramaters" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="StockMan.EntityModel.usersindex_user_map" FromRole="index_user_map" ToRole="users" />
+          <NavigationProperty Name="indexdefinition" Relationship="StockMan.EntityModel.indexdefinitionindex_user_map" FromRole="index_user_map" ToRole="indexdefinition" />
+        </EntityType>
+        <EntityType Name="indexdefinegroup">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="indexdefinition" Relationship="StockMan.EntityModel.indexdefinegroupindexdefinition" FromRole="indexdefinegroup" ToRole="indexdefinition" />
+        </EntityType>
+        <EntityType Name="indexdefinition">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="parameter" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="fields" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="table_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="version" Type="Decimal" />
+          <Property Name="group_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="indexdefinegroup" Relationship="StockMan.EntityModel.indexdefinegroupindexdefinition" FromRole="indexdefinition" ToRole="indexdefinegroup" />
+          <NavigationProperty Name="index_user_map" Relationship="StockMan.EntityModel.indexdefinitionindex_user_map" FromRole="indexdefinition" ToRole="index_user_map" />
+          <Property Name="algorithm_script" Type="String" Nullable="true" FixedLength="false" />
+          <Property Name="chart_config" Type="String" Nullable="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="object_user_map">
+          <Key>
+            <PropertyRef Name="object_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="object_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="StockMan.EntityModel.usersobject_user_map" FromRole="object_user_map" ToRole="users" />
+        </EntityType>
+        <EntityType Name="objectcategory">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="objectstate">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="last_day" Type="Int32" />
+          <Property Name="last_week" Type="Int32" />
+          <Property Name="last_month" Type="Int32" />
+          <Property Name="category_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="objectstate_history">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="category_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pricesynclog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="batch" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="stock_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creatime" Type="DateTime" />
+          <Property Name="state" Type="Int32" />
+        </EntityType>
+        <EntityType Name="rule">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="StockMan.EntityModel.usersrule" FromRole="rule" ToRole="users" />
+          <NavigationProperty Name="rulecondition" Relationship="StockMan.EntityModel.rulerulecondition" FromRole="rule" ToRole="rulecondition" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="symbol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+          <NavigationProperty Name="stock_category_map" Relationship="StockMan.EntityModel.stockstock_category_map" FromRole="stock" ToRole="stock_category_map" />
+          <NavigationProperty Name="stock_user_map" Relationship="StockMan.EntityModel.stockstock_user_map" FromRole="stock" ToRole="stock_user_map" />
+          <Property Name="date" Type="DateTime" Nullable="true" />
+          <Property Name="open" Type="Decimal" Nullable="true" />
+        </EntityType>
+        <EntityType Name="stock_category_group">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="stock_category_map">
+          <Key>
+            <PropertyRef Name="cate_code" />
+            <PropertyRef Name="stock_code" />
+          </Key>
+          <Property Name="cate_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stock_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="stock" Relationship="StockMan.EntityModel.stockstock_category_map" FromRole="stock_category_map" ToRole="stock" />
+          <NavigationProperty Name="stockcategory" Relationship="StockMan.EntityModel.stockcategorystock_category_map" FromRole="stock_category_map" ToRole="stockcategory" />
+        </EntityType>
+        <EntityType Name="stock_new">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="request_date" Type="DateTime" />
+          <Property Name="online_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="stock_user_map">
+          <Key>
+            <PropertyRef Name="stock_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="stock_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="inhand" Type="Boolean" />
+          <Property Name="sort" Type="Int32" />
+          <NavigationProperty Name="stock" Relationship="StockMan.EntityModel.stockstock_user_map" FromRole="stock_user_map" ToRole="stock" />
+          <NavigationProperty Name="users" Relationship="StockMan.EntityModel.usersstock_user_map" FromRole="stock_user_map" ToRole="users" />
+        </EntityType>
+        <EntityType Name="stockcategory">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="volume" Type="Decimal" />
+          <Property Name="turnover" Type="Decimal" />
+          <Property Name="high" Type="Decimal" />
+          <Property Name="updown" Type="Decimal" />
+          <Property Name="low" Type="Decimal" />
+          <Property Name="turnoverrate" Type="Decimal" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="percent" Type="Decimal" />
+          <NavigationProperty Name="stock_category_map" Relationship="StockMan.EntityModel.stockcategorystock_category_map" FromRole="stockcategory" ToRole="stock_category_map" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="open" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="stockcategory_user_map">
+          <Key>
+            <PropertyRef Name="cate_code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="cate_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="group_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_goodidea">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="up" Type="Int32" />
+          <Property Name="down" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="createuser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_investdata">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_userconfig">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="config" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_investintention">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trade" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="tech" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="market" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="investamount" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="job" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="investmethod" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="learnmethod" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="apps" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="infosource" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="book" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="econ" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="userdataversion">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="version" Type="Decimal" />
+          <Property Name="update_time" Type="DateTime" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="exp" Type="Decimal" />
+          <Property Name="points" Type="Decimal" />
+          <NavigationProperty Name="stock_user_map" Relationship="StockMan.EntityModel.usersstock_user_map" FromRole="users" ToRole="stock_user_map" />
+          <NavigationProperty Name="rule" Relationship="StockMan.EntityModel.usersrule" FromRole="users" ToRole="rule" />
+          <NavigationProperty Name="index_user_map" Relationship="StockMan.EntityModel.usersindex_user_map" FromRole="users" ToRole="index_user_map" />
+          <NavigationProperty Name="object_user_map" Relationship="StockMan.EntityModel.usersobject_user_map" FromRole="users" ToRole="object_user_map" />
+          <Property Name="createtime" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sso" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="stockstock_category_map">
+          <End Type="StockMan.EntityModel.stock" Role="stock" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.stock_category_map" Role="stock_category_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stock">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="stock_category_map">
+              <PropertyRef Name="stock_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stockcategorystock_category_map">
+          <End Type="StockMan.EntityModel.stockcategory" Role="stockcategory" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.stock_category_map" Role="stock_category_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stockcategory">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="stock_category_map">
+              <PropertyRef Name="cate_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stockstock_user_map">
+          <End Type="StockMan.EntityModel.stock" Role="stock" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.stock_user_map" Role="stock_user_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stock">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="stock_user_map">
+              <PropertyRef Name="stock_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usersstock_user_map">
+          <End Type="StockMan.EntityModel.users" Role="users" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.stock_user_map" Role="stock_user_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stock_user_map">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usersrule">
+          <End Type="StockMan.EntityModel.users" Role="users" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.rule" Role="rule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rule">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="rulecondition">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="index_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rule_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sort" Type="Int32" />
+          <NavigationProperty Name="rule" Relationship="StockMan.EntityModel.rulerulecondition" FromRole="rulecondition" ToRole="rule" />
+        </EntityType>
+        <Association Name="rulerulecondition">
+          <End Type="StockMan.EntityModel.rule" Role="rule" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.rulecondition" Role="rulecondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rule">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="rulecondition">
+              <PropertyRef Name="rule_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="indexdefinegroupindexdefinition">
+          <End Type="StockMan.EntityModel.indexdefinegroup" Role="indexdefinegroup" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.indexdefinition" Role="indexdefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indexdefinegroup">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="indexdefinition">
+              <PropertyRef Name="group_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usersindex_user_map">
+          <End Type="StockMan.EntityModel.users" Role="users" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.index_user_map" Role="index_user_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="index_user_map">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="indexdefinitionindex_user_map">
+          <End Type="StockMan.EntityModel.indexdefinition" Role="indexdefinition" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.index_user_map" Role="index_user_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indexdefinition">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="index_user_map">
+              <PropertyRef Name="index_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="reco_stock_category_index">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cate_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="last_day" Type="Int32" />
+          <Property Name="last_week" Type="Int32" />
+          <Property Name="last_month" Type="Int32" />
+          <Property Name="cate_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="user_message">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="hint" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="notice_state" Type="Int32" />
+        </EntityType>
+        <EntityType Name="related_object_define">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="related_object_fields" Relationship="StockMan.EntityModel.related_object_definerelated_object_fields" FromRole="related_object_define" ToRole="related_object_fields" />
+          <Property Name="value" Type="Double" />
+          <Property Name="last_value" Type="Double" />
+        </EntityType>
+        <EntityType Name="related_object_fields">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="define_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="map" Type="Int32" />
+        </EntityType>
+        <Association Name="related_object_definerelated_object_fields">
+          <End Type="StockMan.EntityModel.related_object_define" Role="related_object_define" Multiplicity="0..1" />
+          <End Type="StockMan.EntityModel.related_object_fields" Role="related_object_fields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="related_object_define">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="related_object_fields">
+              <PropertyRef Name="define_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tech_context">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="context" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="reco_user_stock">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cate_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="last_day" Type="Int32" />
+          <Property Name="last_week" Type="Int32" />
+          <Property Name="last_month" Type="Int32" />
+          <Property Name="cate_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="related_object_data">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pro0" Type="Double" />
+          <Property Name="pro1" Type="Double" />
+          <Property Name="pro2" Type="Double" />
+          <Property Name="pro3" Type="Double" />
+          <Property Name="pro4" Type="Double" />
+          <Property Name="pro5" Type="Double" />
+          <Property Name="createtime" Type="DateTime" />
+          <Property Name="date" Type="DateTime" />
+        </EntityType>
+        <Association Name="usersobject_user_map">
+          <End Type="StockMan.EntityModel.users" Role="users" Multiplicity="1" />
+          <End Type="StockMan.EntityModel.object_user_map" Role="object_user_map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="object_user_map">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="reco_category_count">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cate_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cate_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_rank">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cate_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cate_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="rank" Type="Int32" />
+        </EntityType>
+        <EntityType Name="object_tag_map">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="tag_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="tag_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="createdate" Type="DateTime" />
+          <Property Name="category_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cycle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_tag">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cate_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="tag_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="last_day" Type="Int32" />
+          <Property Name="last_week" Type="Int32" />
+          <Property Name="last_month" Type="Int32" />
+          <Property Name="cate_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="tag_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="cycle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_comments">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="parent_code" Type="Int32" />
+          <Property Name="index" Type="Int32" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="up" Type="Int32" />
+          <Property Name="down" Type="Int32" />
+          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="createtime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="reco_stock_category_state">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cate_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="tag_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="Int32" />
+          <Property Name="week" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="last_day" Type="Int32" />
+          <Property Name="last_week" Type="Int32" />
+          <Property Name="last_month" Type="Int32" />
+          <Property Name="cate_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="tag_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="index_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="object_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pe" Type="Decimal" />
+          <Property Name="pb" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+          <Property Name="fv" Type="Decimal" />
+          <Property Name="price" Type="Decimal" />
+          <Property Name="yestclose" Type="Decimal" />
+          <Property Name="cycle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StockManDBModelStoreContainer" CdmEntityContainer="StockManDBEntities">
+          <EntitySetMapping Name="customobject">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.customobject">
+              <MappingFragment StoreEntitySet="customobject">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customobject_category_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.customobject_category_map">
+              <MappingFragment StoreEntitySet="customobject_category_map">
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customobject_user_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.customobject_user_map">
+              <MappingFragment StoreEntitySet="customobject_user_map">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_category_day_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_category_day_latest">
+              <MappingFragment StoreEntitySet="data_category_day_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_category_month_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_category_month_latest">
+              <MappingFragment StoreEntitySet="data_category_month_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_category_week_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_category_week_latest">
+              <MappingFragment StoreEntitySet="data_category_week_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_object_day_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_object_day_latest">
+              <MappingFragment StoreEntitySet="data_object_day_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_object_month_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_object_month_latest">
+              <MappingFragment StoreEntitySet="data_object_month_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_object_week_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_object_week_latest">
+              <MappingFragment StoreEntitySet="data_object_week_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_stock_day_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_stock_day_latest">
+              <MappingFragment StoreEntitySet="data_stock_day_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_stock_month_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_stock_month_latest">
+              <MappingFragment StoreEntitySet="data_stock_month_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data_stock_week_latest">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.data_stock_week_latest">
+              <MappingFragment StoreEntitySet="data_stock_week_latest">
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="declineprice" ColumnName="declineprice" />
+                <ScalarProperty Name="surgedprice" ColumnName="surgedprice" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="index_user_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.index_user_map">
+              <MappingFragment StoreEntitySet="index_user_map">
+                <ScalarProperty Name="paramaters" ColumnName="paramaters" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="indexdefinegroup">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.indexdefinegroup">
+              <MappingFragment StoreEntitySet="indexdefinegroup">
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="indexdefinition">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.indexdefinition">
+              <MappingFragment StoreEntitySet="indexdefinition">
+                <ScalarProperty Name="chart_config" ColumnName="chart_config" />
+                <ScalarProperty Name="algorithm_script" ColumnName="algorithm_script" />
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="table_name" ColumnName="table_name" />
+                <ScalarProperty Name="fields" ColumnName="fields" />
+                <ScalarProperty Name="parameter" ColumnName="parameter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="object_user_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.object_user_map">
+              <MappingFragment StoreEntitySet="object_user_map">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="object_type" ColumnName="object_type" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objectcategory">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.objectcategory">
+              <MappingFragment StoreEntitySet="objectcategory">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objectstate">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.objectstate">
+              <MappingFragment StoreEntitySet="objectstate">
+                <ScalarProperty Name="category_code" ColumnName="category_code" />
+                <ScalarProperty Name="last_month" ColumnName="last_month" />
+                <ScalarProperty Name="last_week" ColumnName="last_week" />
+                <ScalarProperty Name="last_day" ColumnName="last_day" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objectstate_history">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.objectstate_history">
+              <MappingFragment StoreEntitySet="objectstate_history">
+                <ScalarProperty Name="category_code" ColumnName="category_code" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pricesynclog">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.pricesynclog">
+              <MappingFragment StoreEntitySet="pricesynclog">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="creatime" ColumnName="creatime" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rule">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.rule">
+              <MappingFragment StoreEntitySet="rule">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stock">
+              <MappingFragment StoreEntitySet="stock">
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="spell" ColumnName="spell" />
+                <ScalarProperty Name="symbol" ColumnName="symbol" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_category_group">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stock_category_group">
+              <MappingFragment StoreEntitySet="stock_category_group">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_category_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stock_category_map">
+              <MappingFragment StoreEntitySet="stock_category_map">
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_new">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stock_new">
+              <MappingFragment StoreEntitySet="stock_new">
+                <ScalarProperty Name="online_date" ColumnName="online_date" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_user_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stock_user_map">
+              <MappingFragment StoreEntitySet="stock_user_map">
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="inhand" ColumnName="inhand" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stockcategory">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stockcategory">
+              <MappingFragment StoreEntitySet="stockcategory">
+                <ScalarProperty Name="open" ColumnName="open" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="percent" ColumnName="percent" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="turnoverrate" ColumnName="turnoverrate" />
+                <ScalarProperty Name="low" ColumnName="low" />
+                <ScalarProperty Name="updown" ColumnName="updown" />
+                <ScalarProperty Name="high" ColumnName="high" />
+                <ScalarProperty Name="turnover" ColumnName="turnover" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stockcategory_user_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.stockcategory_user_map">
+              <MappingFragment StoreEntitySet="stockcategory_user_map">
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_goodidea">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.sys_goodidea">
+              <MappingFragment StoreEntitySet="sys_goodidea">
+                <ScalarProperty Name="createuser" ColumnName="createuser" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="down" ColumnName="down" />
+                <ScalarProperty Name="up" ColumnName="up" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_investdata">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.sys_investdata">
+              <MappingFragment StoreEntitySet="sys_investdata">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_userconfig">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.sys_userconfig">
+              <MappingFragment StoreEntitySet="sys_userconfig">
+                <ScalarProperty Name="config" ColumnName="config" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_investintention">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_investintention">
+              <MappingFragment StoreEntitySet="user_investintention">
+                <ScalarProperty Name="econ" ColumnName="econ" />
+                <ScalarProperty Name="book" ColumnName="book" />
+                <ScalarProperty Name="infosource" ColumnName="infosource" />
+                <ScalarProperty Name="apps" ColumnName="apps" />
+                <ScalarProperty Name="learnmethod" ColumnName="learnmethod" />
+                <ScalarProperty Name="investmethod" ColumnName="investmethod" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="investamount" ColumnName="investamount" />
+                <ScalarProperty Name="market" ColumnName="market" />
+                <ScalarProperty Name="tech" ColumnName="tech" />
+                <ScalarProperty Name="trade" ColumnName="trade" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userdataversion">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.userdataversion">
+              <MappingFragment StoreEntitySet="userdataversion">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="sso" ColumnName="sso" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rulecondition">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.rulecondition">
+              <MappingFragment StoreEntitySet="rulecondition">
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="rule_code" ColumnName="rule_code" />
+                <ScalarProperty Name="index_name" ColumnName="index_name" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="object_name" ColumnName="object_name" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="category_code" ColumnName="category_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reco_stock_category_index">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.reco_stock_category_index">
+              <MappingFragment StoreEntitySet="reco_stock_category_index">
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="object_name" ColumnName="object_name" />
+                <ScalarProperty Name="index_name" ColumnName="index_name" />
+                <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+                <ScalarProperty Name="last_month" ColumnName="last_month" />
+                <ScalarProperty Name="last_week" ColumnName="last_week" />
+                <ScalarProperty Name="last_day" ColumnName="last_day" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_message">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_message">
+              <MappingFragment StoreEntitySet="user_message">
+                <ScalarProperty Name="notice_state" ColumnName="notice_state" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="hint" ColumnName="hint" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="related_object_define">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.related_object_define">
+              <MappingFragment StoreEntitySet="related_object_define">
+                <ScalarProperty Name="last_value" ColumnName="last_value" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="related_object_fields">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.related_object_fields">
+              <MappingFragment StoreEntitySet="related_object_fields">
+                <ScalarProperty Name="map" ColumnName="map" />
+                <ScalarProperty Name="define_code" ColumnName="define_code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tech_context">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.tech_context">
+              <MappingFragment StoreEntitySet="tech_context">
+                <ScalarProperty Name="context" ColumnName="context" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="category_code" ColumnName="category_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reco_user_stock">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.reco_user_stock">
+              <MappingFragment StoreEntitySet="reco_user_stock">
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="object_name" ColumnName="object_name" />
+                <ScalarProperty Name="index_name" ColumnName="index_name" />
+                <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+                <ScalarProperty Name="last_month" ColumnName="last_month" />
+                <ScalarProperty Name="last_week" ColumnName="last_week" />
+                <ScalarProperty Name="last_day" ColumnName="last_day" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="related_object_data">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.related_object_data">
+              <MappingFragment StoreEntitySet="related_object_data">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="pro5" ColumnName="pro5" />
+                <ScalarProperty Name="pro4" ColumnName="pro4" />
+                <ScalarProperty Name="pro3" ColumnName="pro3" />
+                <ScalarProperty Name="pro2" ColumnName="pro2" />
+                <ScalarProperty Name="pro1" ColumnName="pro1" />
+                <ScalarProperty Name="pro0" ColumnName="pro0" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reco_category_count">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.reco_category_count">
+              <MappingFragment StoreEntitySet="reco_category_count">
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="cate_type" ColumnName="cate_type" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reco_stock_category_rank">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.reco_stock_category_rank">
+              <MappingFragment StoreEntitySet="reco_stock_category_rank">
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="object_name" ColumnName="object_name" />
+                <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="object_tag_map">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.object_tag_map">
+              <MappingFragment StoreEntitySet="object_tag_map">
+                <ScalarProperty Name="cycle" ColumnName="cycle" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="category_code" ColumnName="category_code" />
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="tag_code" ColumnName="tag_code" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tag">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.tag">
+              <MappingFragment StoreEntitySet="tag">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reco_stock_category_tag">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.reco_stock_category_tag">
+              <MappingFragment StoreEntitySet="reco_stock_category_tag">
+                <ScalarProperty Name="index_name" ColumnName="index_name" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="cycle" ColumnName="cycle" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="object_name" ColumnName="object_name" />
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+                <ScalarProperty Name="last_month" ColumnName="last_month" />
+                <ScalarProperty Name="last_week" ColumnName="last_week" />
+                <ScalarProperty Name="last_day" ColumnName="last_day" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="tag_code" ColumnName="tag_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_comments">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.sys_comments">
+              <MappingFragment StoreEntitySet="sys_comments">
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="down" ColumnName="down" />
+                <ScalarProperty Name="up" ColumnName="up" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="index" ColumnName="index" />
+                <ScalarProperty Name="parent_code" ColumnName="parent_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reco_stock_category_state">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.reco_stock_category_state">
+              <MappingFragment StoreEntitySet="reco_stock_category_state">
+                <ScalarProperty Name="cycle" ColumnName="cycle" />
+                <ScalarProperty Name="yestclose" ColumnName="yestclose" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="pb" ColumnName="pb" />
+                <ScalarProperty Name="pe" ColumnName="pe" />
+                <ScalarProperty Name="object_name" ColumnName="object_name" />
+                <ScalarProperty Name="index_name" ColumnName="index_name" />
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+                <ScalarProperty Name="last_month" ColumnName="last_month" />
+                <ScalarProperty Name="last_week" ColumnName="last_week" />
+                <ScalarProperty Name="last_day" ColumnName="last_day" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="object_code" ColumnName="object_code" />
+                <ScalarProperty Name="index_code" ColumnName="index_code" />
+                <ScalarProperty Name="tag_code" ColumnName="tag_code" />
+                <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

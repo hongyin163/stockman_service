@@ -1,0 +1,113 @@
+ 2014-11-18 10:01:01,849-已取消一个任务。
+ 2014-11-18 10:01:01,849-已取消一个任务。
+ 2014-11-18 10:47:26,415-Fatal error encountered during command execution.
+ 2014-11-18 10:47:44,068-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 10:54:49,023-Fatal error encountered during command execution.
+ 2014-11-18 10:55:49,578-数据读取器与指定的“StockMan.EntityModel.customobject”不兼容。某个类型为“state”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 11:00:35,537-数据读取器与指定的“StockMan.EntityModel.customobject”不兼容。某个类型为“date”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 11:03:13,849-“customobject”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 16:24:25,468-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 16:57:54,165-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 16:59:52,065-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:00:02,472-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:04:15,963-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:04:34,123-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:05:07,285-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:07:22,801-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“open”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:09:55,121-数据读取器与指定的“StockMan.EntityModel.stock”不兼容。某个类型为“date”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 17:11:26,212-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:15:55,414-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:25:42,324-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:28:50,506-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:30:33,644-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:30:37,270-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:30:39,842-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:30:40,895-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:30:41,656-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:30:42,404-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:33:54,134-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:33:55,787-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:33:57,675-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:36:26,035-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:55,912-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:56,742-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:57,119-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:57,267-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:57,440-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:57,604-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:57,872-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:58,056-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:58,302-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:58,859-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:59,064-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:59,293-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:59,448-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:59,635-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:44:59,819-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:02,157-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:02,363-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:02,536-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:02,716-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:02,893-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:03,069-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:03,243-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:03,425-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:03,630-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:45:56,155-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:47:08,567-“stock”的“date”属性不能设置为“String”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 17:48:01,697-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:52:38,192-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:52,555-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:54,292-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:55,030-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:55,211-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:55,372-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:55,540-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:55,696-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:55,892-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:57,145-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:58,984-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:53:59,854-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:00,040-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:00,214-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:00,382-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:00,560-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:12,201-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:13,400-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:14,695-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:16,781-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:17,248-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:17,412-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:17,580-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:17,726-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:17,880-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:18,063-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:18,196-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:54:19,516-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:55:51,621-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:57:19,141-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:57:21,043-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:57:24,472-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:39,295-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:45,842-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:48,665-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:49,652-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:49,856-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:50,045-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:50,191-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:50,366-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:50,534-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:50,739-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:50,951-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:51,102-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 17:59:51,280-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 18:00:56,405-“stock”的“open”属性不能设置为“String”值。必须将该属性设置为类型为“Decimal”的非 null 值。
+ 2014-11-18 18:11:50,479-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 18:14:06,342-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 18:19:11,546-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 18:24:03,769-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 18:24:20,019-在 LINQ to Entities 查询中无法构造实体或复杂类型“StockMan.EntityModel.customobject”。
+ 2014-11-18 18:25:40,357-数据读取器与指定的“StockMan.EntityModel.customobject”不兼容。某个类型为“state”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 18:26:06,634-数据读取器与指定的“StockMan.EntityModel.customobject”不兼容。某个类型为“state”的成员在同名的数据读取器中没有对应的列。
+ 2014-11-18 18:27:18,336-“customobject”的“date”属性不能设置为“Int64”值。必须将该属性设置为类型为“DateTime”的非 null 值。
+ 2014-11-18 18:28:37,355-“customobject”的“date”属性不能设置为“Int64”值。必须将该属性设置为类型为“DateTime”的非 null 值。

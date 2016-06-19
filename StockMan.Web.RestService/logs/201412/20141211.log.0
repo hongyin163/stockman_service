@@ -1,0 +1,5 @@
+ 2014-12-11 15:56:30,658-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-11 15:58:36,812-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-11 16:02:58,041-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-11 16:07:58,765-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-11 16:11:16,488-could not connect to redis Instance at localhost:6379

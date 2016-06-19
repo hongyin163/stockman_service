@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StockMan.Model.User">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAgAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.EntityBase" Collapsed="true">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock" Collapsed="true">
+    <Position X="6.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.StockInfo_day" Collapsed="true">
+    <Position X="5.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StockInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.StockInfo_minute" Collapsed="true">
+    <Position X="2.75" Y="10.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StockInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_month" Collapsed="true">
+    <Position X="9.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAHOAYAAAAAAAABIPiCaBsUEAEBAAAIAACAAAAOAEI=</HashCode>
+      <FileName>StockInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.StockInfo_week" Collapsed="true">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAHOAYAAAAAAAABIPiCaBsUEAEBAAAIAACAAAAOAEI=</HashCode>
+      <FileName>StockInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Macd_minute">
+    <Position X="1.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Macd_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_TechBase">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_TechBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Macd_day">
+    <Position X="4" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Macd_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Macd_week">
+    <Position X="6.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Macd_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Macd_month">
+    <Position X="9" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Macd_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Macd">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Stock_Macd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.StockInfo" Collapsed="true">
+    <Position X="6.25" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AMAHOAYAAAAAAAABIPiCaBsUEAEBAAAIAACAAAAOAEI=</HashCode>
+      <FileName>StockInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Kdj">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAEAAAAAAAA=</HashCode>
+      <FileName>Stock_Kdj.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Rsi">
+    <Position X="22.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Rsi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Dma">
+    <Position X="24.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAA=</HashCode>
+      <FileName>Stock_Dma.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Trix">
+    <Position X="27" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Trix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Kdj_minute">
+    <Position X="11.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Kdj_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Kdj_day">
+    <Position X="17" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Kdj_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Kdj_month">
+    <Position X="14.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Kdj_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Stock_Kdj_week">
+    <Position X="19.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stock_Kdj_minute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

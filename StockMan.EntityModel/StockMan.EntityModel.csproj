@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15D9F7EF-2537-42B2-8DA6-2E02355B2EE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StockMan.EntityModel</RootNamespace>
+    <AssemblyName>StockMan.EntityModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="base\EntityBase.cs" />
+    <Compile Include="base\ObjectDataBase.cs" />
+    <Compile Include="dto\MyCycleObject.cs" />
+    <Compile Include="dto\reco_stock_dto.cs" />
+    <Compile Include="dto\UserConfigItem.cs" />
+    <Compile Include="Entity\Data_Category_Day_Latest.cs" />
+    <Compile Include="Entity\Data_Category_Month_Latest.cs" />
+    <Compile Include="Entity\Data_Category_Week_Latest.cs" />
+    <Compile Include="Entity\Data_Object_Day_Latest.cs" />
+    <Compile Include="Entity\Data_Object_Month_Latest.cs" />
+    <Compile Include="Entity\Data_Object_Week_Latest.cs" />
+    <Compile Include="Entity\Data_Stock_Day_Latest.cs" />
+    <Compile Include="Entity\Data_Stock_Month_Latest.cs" />
+    <Compile Include="Entity\Data_Stock_Week_Latest.cs" />
+    <Compile Include="dto\Field.cs" />
+    <Compile Include="dto\IndexData.cs" />
+    <Compile Include="dto\IndexDefinitionInfo.cs" />
+    <Compile Include="dto\PriceInfo.cs" />
+    <Compile Include="dto\StockInfo.cs" />
+    <Compile Include="dto\StockQueryCondition.cs" />
+    <Compile Include="dto\StockQueryResult.cs" />
+    <Compile Include="Entity\customobject.cs" />
+    <Compile Include="Entity\customobject_category_map.cs" />
+    <Compile Include="Entity\customobject_user_map.cs" />
+    <Compile Include="Entity\indexdefinegroup.cs" />
+    <Compile Include="Entity\indexdefinition.cs" />
+    <Compile Include="Entity\index_user_map.cs" />
+    <Compile Include="Entity\objectcategory.cs" />
+    <Compile Include="Entity\objectstate.cs" />
+    <Compile Include="Entity\objectstate_history.cs" />
+    <Compile Include="Entity\object_tag_map.cs" />
+    <Compile Include="Entity\object_user_map.cs" />
+    <Compile Include="Entity\pricesynclog.cs" />
+    <Compile Include="Entity\reco_category_count.cs" />
+    <Compile Include="Entity\reco_stock_category_index.cs" />
+    <Compile Include="Entity\reco_stock_category_rank.cs" />
+    <Compile Include="Entity\reco_stock_category_state.cs" />
+    <Compile Include="Entity\reco_stock_category_tag.cs" />
+    <Compile Include="Entity\reco_user_stock.cs" />
+    <Compile Include="Entity\related_object_data.cs" />
+    <Compile Include="Entity\related_object_define.cs" />
+    <Compile Include="Entity\related_object_fields.cs" />
+    <Compile Include="Entity\rule.cs" />
+    <Compile Include="Entity\rulecondition.cs" />
+    <Compile Include="Entity\stock.cs" />
+    <Compile Include="Entity\stockcategory.cs" />
+    <Compile Include="Entity\stockcategory_user_map.cs" />
+    <Compile Include="Entity\StockManModel.Designer.cs" />
+    <Compile Include="Entity\stock_category_group.cs" />
+    <Compile Include="Entity\stock_category_map.cs" />
+    <Compile Include="Entity\stock_new.cs" />
+    <Compile Include="Entity\stock_user_map.cs" />
+    <Compile Include="Entity\sys_comments.cs" />
+    <Compile Include="Entity\sys_goodidea.cs" />
+    <Compile Include="Entity\sys_investdata.cs" />
+    <Compile Include="Entity\sys_userconfig.cs" />
+    <Compile Include="Entity\tag.cs" />
+    <Compile Include="Entity\tech_context.cs" />
+    <Compile Include="Entity\userdataversion.cs" />
+    <Compile Include="Entity\users.cs" />
+    <Compile Include="Entity\user_investintention.cs" />
+    <Compile Include="Entity\user_message.cs" />
+    <Compile Include="Enum\DataCode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enum\IndexState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enum\ObjectType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enum\TechCycle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

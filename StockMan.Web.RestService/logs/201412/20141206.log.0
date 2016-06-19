@@ -1,0 +1,11 @@
+ 2014-12-06 21:29:07,445-已取消一个任务。
+ 2014-12-06 21:29:07,446-已取消一个任务。
+ 2014-12-06 21:29:15,814-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:35:29,768-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:38:05,331-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:39:06,610-could not connect to redis Instance at 10.10.11.2:6379
+ 2014-12-06 21:51:15,438-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:52:25,237-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:54:07,866-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:57:57,732-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。
+ 2014-12-06 21:59:32,271-数据读取器与指定的“StockMan.EntityModel.user_message”不兼容。某个类型为“notice_state”的成员在同名的数据读取器中没有对应的列。

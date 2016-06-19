@@ -1,0 +1,14 @@
+StockManDBEntities.cs
+StockManModel.cs
+StockManModel.Context.cs
+data_category_day_latest.cs
+data_category_week_latest.cs
+data_category_month_latest.cs
+data_object_day_latest.cs
+data_object_week_latest.cs
+data_object_month_latest.cs
+data_stock_day_latest.cs
+data_stock_week_latest.cs
+data_stock_month_latest.cs
+sys_goodidea.cs
+stock_new.cs

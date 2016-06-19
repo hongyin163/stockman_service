@@ -1,0 +1,20 @@
+ 2014-11-23 08:09:58,752-已取消一个任务。
+ 2014-11-23 08:09:58,756-已取消一个任务。
+ 2014-11-23 08:09:58,765-已取消一个任务。
+ 2014-11-23 08:10:31,814-Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+ 2014-11-23 08:12:12,873-Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+ 2014-11-23 08:13:41,931-Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+ 2014-11-23 08:18:12,379-Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+ 2014-11-23 08:19:19,880-Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+ 2014-11-23 08:27:43,813-概念端类型“StockMan.EntityModel.related_object_data”中的成员“pro0”的类型“Edm.Double”与对象端类型“StockMan.EntityModel.related_object_data”中的成员“pro0”的类型“System.Decimal”不匹配。
+ 2014-11-23 08:27:56,565-概念端类型“StockMan.EntityModel.related_object_data”中的成员“pro0”的类型“Edm.Double”与对象端类型“StockMan.EntityModel.related_object_data”中的成员“pro0”的类型“System.Decimal”不匹配。
+ 2014-11-23 11:12:51,679-已取消一个任务。
+ 2014-11-23 11:12:51,680-已取消一个任务。
+ 2014-11-23 11:12:51,679-已取消一个任务。
+ 2014-11-23 12:16:37,608-未将对象引用设置到对象的实例。
+ 2014-11-23 12:16:37,610-未将对象引用设置到对象的实例。
+ 2014-11-23 12:17:38,060-未将对象引用设置到对象的实例。
+ 2014-11-23 12:17:38,066-未将对象引用设置到对象的实例。
+ 2014-11-23 12:20:30,883-未将对象引用设置到对象的实例。
+ 2014-11-23 20:46:02,540-基础提供程序在 Open 上失败。
+ 2014-11-23 20:52:55,669-Table 'stockmandb.reco_user_stock' doesn't exist

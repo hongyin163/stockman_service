@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StockMan.Model.TechLineBase">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAAAAgAAAAAAAAgABEAAAAAAACACAAAA=</HashCode>
+      <FileName>TechLineBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.IndexDefinition">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAAAAAAAAAAAAIAAAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IndexDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StockMan.Model.Field">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAEAACAAACAAAAAAAA=</HashCode>
+      <FileName>Field.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="StockMan.Model.IIndex">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIndex.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

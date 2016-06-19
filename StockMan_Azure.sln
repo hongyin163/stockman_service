@@ -1,0 +1,184 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Business", "StockMan.Business\StockMan.Business.csproj", "{27365C23-4C1F-4003-BEBD-A1134D02CA80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Model", "StockMan.Model\StockMan.Model.csproj", "{DA35E3DD-8EF4-49A2-BD3E-90632CE64BC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.DataAccess", "StockMan.DataAccess\StockMan.DataAccess.csproj", "{1729256C-D2D7-46F5-801E-FE6036ED414A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Facade", "StockMan.Facade\StockMan.Facade.csproj", "{B890F86D-4010-4899-9CE2-6C3672428B23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.ServerClient", "StockMan.ServerClient\StockMan.ServerClient.csproj", "{3A8D0390-D68F-4472-B242-8C5F58F02948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Phone", "StockMan.Phone\StockMan.Phone.csproj", "{45604D6E-8B16-46BB-9272-F820A7E6EF31}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "StockMan.DataBase", "StockMan.DataBase\StockMan.DataBase.sqlproj", "{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Reference", "StockMan.Reference\StockMan.Reference.csproj", "{33408110-C01A-41C0-80F4-5471B8B01B4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Jobs", "StockMan.Jobs\StockMan.Jobs.csproj", "{8AD6A268-06DC-4E14-9124-75C596FBD6BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Search", "StockMan.Search\StockMan.Search.csproj", "{9F16D4F9-3518-4D06-A897-9222F0A791A4}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "StockMan.CloudService", "StockMan.CloudService\StockMan.CloudService.ccproj", "{9F8C348D-0EF3-42A3-9A0F-9A32DB59C192}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Workers", "StockMan.Workers\StockMan.Workers.csproj", "{E51AA23D-58F0-4B2D-BCA9-8DFF0FBB87D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.WebService", "StockMan.WebService\StockMan.WebService.csproj", "{ABCE59FE-D7DE-4442-B7EF-9C17506DF1A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.WebHost", "StockMan.WebHost\StockMan.WebHost.csproj", "{050B92CC-8B2E-4153-A9D5-BBCF53F99D47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{DE98CC34-65CD-4802-B8BC-79B493B6DB90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AWS", "AWS", "{6C824787-834C-41A2-88FA-3529F0659297}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.Web", "StockMan.Web\StockMan.Web.csproj", "{304ECE55-EA44-4E47-AD10-EB313DD9EC92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMan.PhoneWeb", "StockMan.PhoneWeb\StockMan.PhoneWeb.csproj", "{26D37C54-FB1A-4538-9298-EF116A31D546}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 17
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs22
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = StockMan.Business\\StockMan.Business.csproj
+		SccProjectName1 = StockMan.Business
+		SccLocalPath1 = StockMan.Business
+		SccProjectUniqueName2 = StockMan.Model\\StockMan.Model.csproj
+		SccProjectName2 = StockMan.Model
+		SccLocalPath2 = StockMan.Model
+		SccProjectUniqueName3 = StockMan.DataAccess\\StockMan.DataAccess.csproj
+		SccProjectName3 = StockMan.DataAccess
+		SccLocalPath3 = StockMan.DataAccess
+		SccProjectUniqueName4 = StockMan.Facade\\StockMan.Facade.csproj
+		SccProjectName4 = StockMan.Facade
+		SccLocalPath4 = StockMan.Facade
+		SccProjectUniqueName5 = StockMan.ServerClient\\StockMan.ServerClient.csproj
+		SccProjectName5 = StockMan.ServerClient
+		SccLocalPath5 = StockMan.ServerClient
+		SccProjectUniqueName6 = StockMan.Phone\\StockMan.Phone.csproj
+		SccProjectName6 = StockMan.Phone
+		SccLocalPath6 = StockMan.Phone
+		SccProjectUniqueName7 = StockMan.DataBase\\StockMan.DataBase.sqlproj
+		SccProjectName7 = StockMan.DataBase
+		SccLocalPath7 = StockMan.DataBase
+		SccProjectUniqueName8 = StockMan.Reference\\StockMan.Reference.csproj
+		SccProjectName8 = StockMan.Reference
+		SccLocalPath8 = StockMan.Reference
+		SccProjectUniqueName9 = StockMan.Jobs\\StockMan.Jobs.csproj
+		SccProjectName9 = StockMan.Jobs
+		SccLocalPath9 = StockMan.Jobs
+		SccProjectUniqueName10 = StockMan.Search\\StockMan.Search.csproj
+		SccProjectName10 = StockMan.Search
+		SccLocalPath10 = StockMan.Search
+		SccProjectUniqueName11 = StockMan.CloudService\\StockMan.CloudService.ccproj
+		SccProjectTopLevelParentUniqueName11 = StockMan.sln
+		SccProjectName11 = StockMan.CloudService
+		SccLocalPath11 = StockMan.CloudService
+		SccProjectUniqueName12 = StockMan.Workers\\StockMan.Workers.csproj
+		SccProjectTopLevelParentUniqueName12 = StockMan.sln
+		SccProjectName12 = StockMan.Workers
+		SccLocalPath12 = StockMan.Workers
+		SccProjectUniqueName13 = StockMan.WebService\\StockMan.WebService.csproj
+		SccProjectTopLevelParentUniqueName13 = StockMan.sln
+		SccProjectName13 = StockMan.WebService
+		SccLocalPath13 = StockMan.WebService
+		SccProjectUniqueName14 = StockMan.WebHost\\StockMan.WebHost.csproj
+		SccProjectTopLevelParentUniqueName14 = StockMan.sln
+		SccProjectName14 = StockMan.WebHost
+		SccLocalPath14 = StockMan.WebHost
+		SccProjectUniqueName15 = StockMan.Web\\StockMan.Web.csproj
+		SccProjectTopLevelParentUniqueName15 = StockMan.sln
+		SccProjectName15 = StockMan.Web
+		SccLocalPath15 = StockMan.Web
+		SccProjectUniqueName16 = StockMan.PhoneWeb\\StockMan.PhoneWeb.csproj
+		SccProjectTopLevelParentUniqueName16 = StockMan.sln
+		SccProjectName16 = StockMan.PhoneWeb
+		SccLocalPath16 = StockMan.PhoneWeb
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27365C23-4C1F-4003-BEBD-A1134D02CA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27365C23-4C1F-4003-BEBD-A1134D02CA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27365C23-4C1F-4003-BEBD-A1134D02CA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27365C23-4C1F-4003-BEBD-A1134D02CA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA35E3DD-8EF4-49A2-BD3E-90632CE64BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA35E3DD-8EF4-49A2-BD3E-90632CE64BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA35E3DD-8EF4-49A2-BD3E-90632CE64BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA35E3DD-8EF4-49A2-BD3E-90632CE64BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1729256C-D2D7-46F5-801E-FE6036ED414A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1729256C-D2D7-46F5-801E-FE6036ED414A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1729256C-D2D7-46F5-801E-FE6036ED414A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1729256C-D2D7-46F5-801E-FE6036ED414A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B890F86D-4010-4899-9CE2-6C3672428B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B890F86D-4010-4899-9CE2-6C3672428B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B890F86D-4010-4899-9CE2-6C3672428B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B890F86D-4010-4899-9CE2-6C3672428B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8D0390-D68F-4472-B242-8C5F58F02948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8D0390-D68F-4472-B242-8C5F58F02948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8D0390-D68F-4472-B242-8C5F58F02948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8D0390-D68F-4472-B242-8C5F58F02948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45604D6E-8B16-46BB-9272-F820A7E6EF31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45604D6E-8B16-46BB-9272-F820A7E6EF31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45604D6E-8B16-46BB-9272-F820A7E6EF31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45604D6E-8B16-46BB-9272-F820A7E6EF31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62BAB54B-C376-4052-B2E5-E4F6EFB70A79}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{33408110-C01A-41C0-80F4-5471B8B01B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33408110-C01A-41C0-80F4-5471B8B01B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33408110-C01A-41C0-80F4-5471B8B01B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33408110-C01A-41C0-80F4-5471B8B01B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD6A268-06DC-4E14-9124-75C596FBD6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD6A268-06DC-4E14-9124-75C596FBD6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD6A268-06DC-4E14-9124-75C596FBD6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD6A268-06DC-4E14-9124-75C596FBD6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F16D4F9-3518-4D06-A897-9222F0A791A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F16D4F9-3518-4D06-A897-9222F0A791A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F16D4F9-3518-4D06-A897-9222F0A791A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F16D4F9-3518-4D06-A897-9222F0A791A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F8C348D-0EF3-42A3-9A0F-9A32DB59C192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8C348D-0EF3-42A3-9A0F-9A32DB59C192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8C348D-0EF3-42A3-9A0F-9A32DB59C192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8C348D-0EF3-42A3-9A0F-9A32DB59C192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51AA23D-58F0-4B2D-BCA9-8DFF0FBB87D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51AA23D-58F0-4B2D-BCA9-8DFF0FBB87D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51AA23D-58F0-4B2D-BCA9-8DFF0FBB87D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51AA23D-58F0-4B2D-BCA9-8DFF0FBB87D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCE59FE-D7DE-4442-B7EF-9C17506DF1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCE59FE-D7DE-4442-B7EF-9C17506DF1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCE59FE-D7DE-4442-B7EF-9C17506DF1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCE59FE-D7DE-4442-B7EF-9C17506DF1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{050B92CC-8B2E-4153-A9D5-BBCF53F99D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050B92CC-8B2E-4153-A9D5-BBCF53F99D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050B92CC-8B2E-4153-A9D5-BBCF53F99D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050B92CC-8B2E-4153-A9D5-BBCF53F99D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304ECE55-EA44-4E47-AD10-EB313DD9EC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D37C54-FB1A-4538-9298-EF116A31D546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D37C54-FB1A-4538-9298-EF116A31D546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D37C54-FB1A-4538-9298-EF116A31D546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D37C54-FB1A-4538-9298-EF116A31D546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F8C348D-0EF3-42A3-9A0F-9A32DB59C192} = {DE98CC34-65CD-4802-B8BC-79B493B6DB90}
+		{050B92CC-8B2E-4153-A9D5-BBCF53F99D47} = {DE98CC34-65CD-4802-B8BC-79B493B6DB90}
+		{ABCE59FE-D7DE-4442-B7EF-9C17506DF1A8} = {DE98CC34-65CD-4802-B8BC-79B493B6DB90}
+		{E51AA23D-58F0-4B2D-BCA9-8DFF0FBB87D6} = {DE98CC34-65CD-4802-B8BC-79B493B6DB90}
+		{304ECE55-EA44-4E47-AD10-EB313DD9EC92} = {6C824787-834C-41A2-88FA-3529F0659297}
+		{26D37C54-FB1A-4538-9298-EF116A31D546} = {6C824787-834C-41A2-88FA-3529F0659297}
+	EndGlobalSection
+EndGlobal
