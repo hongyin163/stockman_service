@@ -16,6 +16,7 @@ namespace StockMan.Message.Client
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Control Center Start up");
 
             using (NetMQ.NetMQContext context = NetMQContext.Create())
             using (var requester = context.CreateSocket(NetMQ.zmq.ZmqSocketType.Req))

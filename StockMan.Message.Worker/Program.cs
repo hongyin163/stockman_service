@@ -14,6 +14,7 @@ namespace StockMan.Message.Worker
         {
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
 
+
             Worker worker = new Worker();
             worker.Start();
 
