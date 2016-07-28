@@ -23,7 +23,9 @@
           <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="assembly" Type="varchar" MaxLength="45" />
           <Property Name="type" Type="varchar" MaxLength="45" />
-          <Property Name="status" Type="int" />
+          <Property Name="time" Type="varchar" MaxLength="45" />
+          <Property Name="enable" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="messageModelStoreContainer">
           <EntitySet Name="mq_message" EntityType="Self.mq_message" Schema="message" store:Type="Tables" />
@@ -55,7 +57,9 @@
           <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="assembly" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="Int32" />
+          <Property Name="time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="enable" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -79,6 +83,8 @@
             <EntityTypeMapping TypeName="messageModel.mq_task">
               <MappingFragment StoreEntitySet="mq_task">
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="time" ColumnName="time" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="assembly" ColumnName="assembly" />
                 <ScalarProperty Name="code" ColumnName="code" />

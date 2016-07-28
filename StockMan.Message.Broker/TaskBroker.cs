@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using NetMQ;
 using NetMQ.Devices;
-
+using NetMQ.Sockets;
 namespace StockMan.Message.Broker
 {
     public class TaskBroker : IDisposable
     {
-        private NetMQContext context;
+        //private NetMQContext context;
         private NetMQSocket frontend;
         private NetMQSocket backend;
         NetMQ.Proxy proxy;
@@ -20,19 +20,64 @@ namespace StockMan.Message.Broker
         {
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
 
+            
 
-            context = NetMQContext.Create();
-            frontend = context.CreateRouterSocket();
-            backend = context.CreateDealerSocket();
+            //context = NetMQContext.Create();
+            frontend = new RouterSocket();// context.CreateRouterSocket();
+            backend = new DealerSocket();// context.CreateDealerSocket();
             var frontAdress = ConfigurationManager.AppSettings["task_frontendBindAddress"];
             var bakdendAdress = ConfigurationManager.AppSettings["task_backendBindAddress"];
             frontend.Bind(frontAdress);
             backend.Bind(bakdendAdress);
+
+            var contrlIn = new PushSocket();// context.CreatePushSocket();
+            contrlIn.Bind(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
+            //var controlOut=
             //frontend.ReceiveReady += frontend_ReceiveReady;
             //backend.SendReady += backend_SendReady;
             proxy = new Proxy(frontend, backend, null);
+
+        
             this.Log().Info("初始化ZeroMq完成");
+
+            //Monitor();
+           
+          
         }
+
+        private void ContrlIn_EventReceived(object sender, NetMQ.Monitoring.NetMQMonitorEventArgs e)
+        {
+            this.Log().Info("EventReceived");
+        }
+
+        private void ContrlIn_Accepted(object sender, NetMQ.Monitoring.NetMQMonitorSocketEventArgs e)
+        {
+            this.Log().Info("Accepted");
+        }
+
+        private void ContrlIn_Connected(object sender, NetMQ.Monitoring.NetMQMonitorSocketEventArgs e)
+        {
+            this.Log().Info("Connected");
+        }
+
+        public void Monitor()
+        {
+            var context = NetMQContext.Create();
+            var contrlSub = context.CreateSubscriberSocket();
+            contrlSub.Connect(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
+            //while (true)
+            //{
+            //    string msg = contrlSub.ReceiveFrameString();
+            //    this.Log().Info(msg);
+            //}
+            //var frontAdress = ConfigurationManager.AppSettings["task_frontendBindAddress"];
+            //var contrlIn = context.CreateMonitorSocket(frontAdress);
+            //contrlIn.Connected += ContrlIn_Connected;
+            //contrlIn.Accepted += ContrlIn_Accepted;
+            //contrlIn.EventReceived += ContrlIn_EventReceived;
+            //contrlIn.Start();
+        }
+
         private void backend_SendReady(object sender, NetMQSocketEventArgs e)
         {
             this.Log().Info("发送消息" + e.Socket.ReceiveString());
@@ -63,7 +108,7 @@ namespace StockMan.Message.Broker
                 backend.Close();
                 backend.Dispose();
             }
-            if (context != null) context.Dispose();
+            //if (context != null) context.Dispose();
 
         }
     }

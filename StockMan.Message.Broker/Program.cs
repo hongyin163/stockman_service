@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NetMQ;
 using System.Configuration;
 using NetMQ.Devices;
+using System.Threading;
+
 namespace StockMan.Message.Broker
 {
     class Program
@@ -28,8 +30,20 @@ namespace StockMan.Message.Broker
                 server.Initialize();
                 server.Start();
             });
+
+            //Task t3 = new TaskFactory().StartNew(() =>
+            //{
+            //    Thread.Sleep(3000);
+            //    var contrlSub = new NetMQ.Sockets.PullSocket();
+            //    contrlSub.Connect(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
+            //    while (true)
+            //    {
+            //        Console.WriteLine(contrlSub.ReceiveFrameString());
+            //    }
+            //});
             t1.Wait();
             t2.Wait();
+            //t3.Wait();
             //NetMQContext context = NetMQContext.Create();
             //NetMQSocket frontend = context.CreateRouterSocket();
             //NetMQSocket backend = context.CreateDealerSocket();
@@ -48,6 +62,9 @@ namespace StockMan.Message.Broker
             //_poller.Start();
         }
 
-
+        private static void ContrlSub_ReceiveReady(object sender, NetMQSocketEventArgs e)
+        {
+            Console.WriteLine("接受");
+        }
     }
 }

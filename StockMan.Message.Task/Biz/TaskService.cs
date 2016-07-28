@@ -171,7 +171,7 @@ namespace StockMan.Message.Task.Biz
         {
             using (DataAccess.messageEntities entity = new messageEntities())
             {
-                return entity.mq_task.Where(p => p.status == 1).ToList();
+                return entity.mq_task.Where(p => p.enable == 1).ToList();
             }           
         }
     }

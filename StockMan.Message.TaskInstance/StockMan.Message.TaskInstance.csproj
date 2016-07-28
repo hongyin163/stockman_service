@@ -91,14 +91,15 @@
       <Name>StockMan.Service.Rds</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\FourTask  /y
 xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\SecondTask /y
 xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\ThreeTask /y
 xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\OneTask /y
-
-
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

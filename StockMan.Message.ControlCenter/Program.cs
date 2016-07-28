@@ -10,6 +10,7 @@ using StockMan.Message.Model;
 using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
 using StockMan.Message.Task.Biz;
+using NetMQ.Sockets;
 namespace StockMan.Message.Client
 {
     class Program
@@ -18,8 +19,8 @@ namespace StockMan.Message.Client
         {
             Console.WriteLine("Control Center Start up");
 
-            using (NetMQ.NetMQContext context = NetMQContext.Create())
-            using (var requester = context.CreateSocket(NetMQ.zmq.ZmqSocketType.Req))
+            //using (NetMQ.NetMQContext context = NetMQContext.Create())
+            using (var requester =new RequestSocket())
             {
                 requester.Connect("tcp://127.0.0.1:5561");
 
@@ -29,12 +30,13 @@ namespace StockMan.Message.Client
                     IList<NetMQMessage> msgs = buildMessage(cmd);
                     foreach (var msg in msgs)
                     {
-                        requester.SendMessage(msg);
-                        string result = requester.ReceiveString();
+                        requester.SendMultipartMessage(msg);
+                        string result = requester.ReceiveFrameString();
                         Console.WriteLine(result);
                     }
                 }
             }
+
 
 
         }
@@ -149,23 +151,23 @@ namespace StockMan.Message.Client
             return msg;
         }
 
-        private static void push()
-        {
-            using (NetMQ.NetMQContext context = NetMQContext.Create())
-            using (var requester = context.CreateSocket(NetMQ.zmq.ZmqSocketType.Pub))
-            {
-                requester.Bind("tcp://127.0.0.1:5561");
+        //private static void push()
+        //{
+        //    using (NetMQ.NetMQContext context = NetMQContext.Create())
+        //    using (var requester = context.CreateSocket(NetMQ.zmq.ZmqSocketType.Pub))
+        //    {
+        //        requester.Bind("tcp://127.0.0.1:5561");
 
-                for (int n = 0; n < 100; ++n)
-                {
-                    requester.Send("Hello" + n);
+        //        for (int n = 0; n < 100; ++n)
+        //        {
+        //            requester.Send("Hello" + n);
 
-                    //var reply = requester.ReceiveString();
-                    Console.WriteLine("Hello");
-                    //Thread.Sleep(100);
-                    //Console.WriteLine("Hello {0}!", reply);
-                }
-            }
-        }
+        //            //var reply = requester.ReceiveString();
+        //            Console.WriteLine("Hello");
+        //            //Thread.Sleep(100);
+        //            //Console.WriteLine("Hello {0}!", reply);
+        //        }
+        //    }
+        //}
     }
 }

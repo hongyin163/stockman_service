@@ -22,53 +22,99 @@ namespace StockMan.Message.Client
         private TaskService taskService = new TaskService();
         private MessageService messageService = new MessageService();
         private Thread jobThread = null;
+        private Thread moniterThread = null;
         private MessageClient client = null;
-        private Thread senderThead = null;
+        private bool running = true;
         private Mutex mPause = new Mutex(false, null);
+        Dictionary<string, TaskSender> taskSenders = new Dictionary<string, TaskSender>();
         public ClientThread()
         {
             //this.client = new MessageClient();
             this.jobThread = new Thread(Run);
             //this.senderThead = new Thread(RunSender);
+            this.moniterThread = new Thread(Moniter);
         }
 
         public void Start()
         {
             this.jobThread.Start();
         }
+        public void Moniter()
+        {
+            while (true)
+            {
+                foreach (var taskType in taskSenders.Keys)
+                {
+                    if (!taskSenders[taskType].IsBusy())
+                    {
+                        this.Log().Info(string.Format("任务服务:{0}空闲，卸载", taskType));
+                        Loader.Instance.UnLoad(taskType);
+                    }
+                    this.Log().Info(taskSenders[taskType].GetStatus());
+                }
 
-        ISchedulerFactory sf = null;
-        IScheduler sched = null;
+                Thread.Sleep(1000 * 60);
+            }
+        }
+        //ISchedulerFactory sf = null;
+        //IScheduler sched = null;
         public void Run()
         {
-          
-            sf = new StdSchedulerFactory();
-            sched = sf.GetScheduler();
-            TaskService taskService = new TaskService();
-            var list = taskService.GetTaskList();
-            int i = 1;
-            foreach (var task in list)
+           
+            //获取Trigger，如果出发，加载，执行
+            //任务状态，时间设置，什么执行，设置一个时间点，
+            //时间点设置表达式：day:1-5,time:15:20   1-5,15:20
+            //w:6-7,t:1:00
+            while (this.running)
             {
-                IJobDetail job = JobBuilder
-                     .Create<SenderJob>()
-                     .WithIdentity("job_" + task.code, "group_1")
-                     .RequestRecovery() // ask scheduler to re-execute this job if it was in progress when the scheduler went down...
-                     .Build();
-
-                // tell the job to delay some small amount... to simulate work...
-
-                job.JobDataMap.Put("assembly", task.assembly);
-                job.JobDataMap.Put("type", task.type);
-                job.JobDataMap.Put("taskCode", task.code);
-                ITrigger trigger = TriggerBuilder.Create()
-                    .WithIdentity("trigger_" + task.code, "group_1")
-                    .StartAt(DateBuilder.FutureDate(1000*i++, IntervalUnit.Millisecond)) // space fire times a small bit
-                    .Build();
-
-                sched.ScheduleJob(job, trigger);
-
+                var list = taskService.GetTaskList();
+                foreach (var task in list)
+                {
+                    if (MatchTrigger(task.time))
+                    {
+                        if (task.status == (int)StockMan.Message.Model.TaskStatus.stop)
+                        {
+                            //触发，
+                            RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.code);
+                            var taskSender = rl.GetTaskSender();
+                            taskSender.Load(task.assembly, task.type);
+                            taskSender.Start();
+                            this.taskSenders.Add(task.code, taskSender);
+                        }
+                    }
+                }
+                Thread.Sleep(60 * 1000);
             }
-            sched.Start();
+
+            //sf = new StdSchedulerFactory();
+            //sched = sf.GetScheduler();
+            //TaskService taskService = new TaskService();
+            //var list = taskService.GetTaskList();
+            //int i = 1;
+            //foreach (var task in list)
+            //{
+            //    IJobDetail job = JobBuilder
+            //         .Create<SenderJob>()
+            //         .WithIdentity("job_" + task.code, "group_1")
+            //         .RequestRecovery() // ask scheduler to re-execute this job if it was in progress when the scheduler went down...
+            //         .Build();
+
+            //    // tell the job to delay some small amount... to simulate work...
+
+            //    job.JobDataMap.Put("assembly", task.assembly);
+            //    job.JobDataMap.Put("type", task.type);
+            //    job.JobDataMap.Put("taskCode", task.code);
+            //    ITrigger trigger = TriggerBuilder.Create()
+            //        .WithIdentity("trigger_" + task.code, "group_1")
+            //        .StartAt(DateBuilder.FutureDate(1000*i++, IntervalUnit.Millisecond)) // space fire times a small bit
+            //        .Build();
+
+            //    sched.ScheduleJob(job, trigger);
+
+            //}
+            //sched.Start();
+
+
             //var sender = new TaskSender();
             //sender.Load("StockMan.Message.TaskInstance", "StockMan.Message.TaskInstance.ThreeTask");
             //sender.Start();
@@ -80,6 +126,152 @@ namespace StockMan.Message.Client
             //taskSender.Load(assembly, type);
             //taskSender.Start();
         }
+
+        private bool MatchTrigger(string time)
+        {
+            DateTime now = DateTime.Now;
+            //执行时间|时间间隔多个时间间隔用|分割开 ，时间间隔单分钟
+
+            //w:1-5,t:9:30-11:30|13:00-15:00 15
+            string[] timeArry = time.Split(',');
+            bool pass = true;
+            foreach (var item in timeArry)
+            {
+                int sindex = item.IndexOf(':');
+                string type = item.Substring(0, sindex).Trim();
+                string val = item.Substring(sindex + 1).Trim();
+                if (type == "w")
+                {
+                    //区间
+                    if (MatchWeek(val))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        pass = false;
+                        break;
+                    }
+
+                }
+                else if (type == "t")
+                {
+                    if (MatchTime(val))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        pass = false;
+                        break;
+                    }
+                }
+            }
+            return pass;
+        }
+
+        private bool MatchTime(string val)
+        {
+            //9:30-11:30|13:00-15:00 15
+            string[] ts = val.Split(' ');
+            string timeSection = ts[0];
+            string timeInterval = ts.Length > 1 ? ts[1] : "";
+            //时间点 时间区间 
+            //多少时间区间
+            if (timeSection.IndexOf('|') > 0)
+            {
+                //多个时间区间
+                string[] timeSecArry = timeSection.Split('|');
+                foreach (var sec in timeSecArry)
+                {
+                    if (MatchTimeSection(sec, timeInterval))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            else if (timeSection.IndexOf('-') > 0)
+            {
+                //单个时间区间
+                if (MatchTimeSection(timeSection, timeInterval))
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                //时间点
+                var now = DateTime.Now;
+                var startTime = string.Format(now.Year + "-" + now.Month + "-" + now.Day + " {0}", timeSection);
+                DateTime startT = DateTime.Parse(startTime);
+                if (now.Hour == startT.Hour && now.Minute == startT.Minute)
+                {
+                    return true;
+                }
+                return false;
+            }
+
+        }
+
+        private bool MatchTimeSection(string timeSection, string timeInterval)
+        {
+            var start = timeSection.Split('-')[0];
+            var end = timeSection.Split('-')[1];
+            var now = DateTime.Now;
+            var startTime = string.Format(now.Year + "-" + now.Month + "-" + now.Day + " ", start);
+            var endTime = string.Format(now.Year + "-" + now.Month + "-" + now.Day + " ", end);
+            DateTime startT = DateTime.Parse(startTime);
+            DateTime endT = DateTime.Parse(endTime);
+
+            if (now.CompareTo(startT) >= 0 && now.CompareTo(endT) <= 0)
+            {
+                if (string.IsNullOrEmpty(timeInterval))
+                    return true;
+
+                int interval = int.Parse(timeInterval);
+                TimeSpan ts = now - startT;
+                var minutes = ts.TotalMinutes;
+                if (minutes % interval == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool MatchWeek(string val)
+        {
+            int day = (int)DateTime.Now.DayOfWeek;
+            if (day == 0) day = 7;
+            DateTime now = DateTime.Now;
+            if (val.IndexOf('-') > 0)
+            {
+                int start = int.Parse(val.Split('-')[0]);
+                int end = int.Parse(val.Split('-')[1]);
+                if (day >= start && day <= end)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (int.Parse(val) == day)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         internal void Pause()
         {
             this.Log().Info("暂停");
@@ -158,7 +350,7 @@ namespace StockMan.Message.Client
                     else
                     {
                         this.Log().Info("消息处理全部结束！");
-                  
+
                         break;
                     }
                 }
@@ -184,16 +376,16 @@ namespace StockMan.Message.Client
 
         private IList<TaskMessage> getMessage()
         {
-            var taskList=taskService.GetTaskList();
+            var taskList = taskService.GetTaskList();
             List<mq_message> list = new List<mq_message>(100);
 
             foreach (var task in taskList)
             {
-                var tlist=  messageService.GetUnHandleMessage(task.code);
+                var tlist = messageService.GetUnHandleMessage(task.code);
                 if (tlist.Count > 0)
                 {
                     list.AddRange(tlist);
-                }               
+                }
             }
             return list.Select(p => new TaskMessage
             {

@@ -43,24 +43,27 @@ namespace StockMan.Message.Task.Control
 
             string name = AppDomain.CurrentDomain.FriendlyName;
             string endpoint = ConfigurationManager.AppSettings["pubAdress"];
-            using (context = NetMQContext.Create())
-            using (responder = context.CreateSubscriberSocket())
+            //using (context = NetMQContext.Create())
+            using (responder =new NetMQ.Sockets.SubscriberSocket())
             {
                 responder.Connect(endpoint);
                 responder.Subscribe(this.target);
                 while (true)
                 {
-                    NetMQMessage msgList = responder.ReceiveMessage();
-                    msgList.Pop();
-                    byte[] data = msgList.First.ToByteArray();
-                    MemoryStream ms = new MemoryStream(data);
-                    BinaryFormatter bf = new BinaryFormatter();
-                    CmdMessage cmd = (CmdMessage)bf.Deserialize(ms);
-                    ms.Close();
-                    if (this.onReceive != null)
+                    NetMQMessage msgList = responder.ReceiveMultipartMessage();
+                    if (msgList.Count() > 1)
                     {
-                        this.onReceive(cmd);
-                    }
+                        var body = msgList[1];
+                        byte[] data = body.ToByteArray();
+                        MemoryStream ms = new MemoryStream(data);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        CmdMessage cmd = (CmdMessage)bf.Deserialize(ms);
+                        ms.Close();
+                        if (this.onReceive != null)
+                        {
+                            this.onReceive(cmd);
+                        }
+                    }                 
                 }
 
             }

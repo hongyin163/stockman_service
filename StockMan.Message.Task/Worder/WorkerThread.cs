@@ -18,16 +18,7 @@ namespace StockMan.Message.Task.Worder
         TaskService taskService = new TaskService();
         MessageService messageService = new MessageService();
         Dictionary<string, TaskExcuter> taskExcuters = new Dictionary<string, TaskExcuter>();
-        private Loader assembleloader = null;
-        protected Loader Assembleloader
-        {
-            get
-            {
-                if (assembleloader == null)
-                    assembleloader = new Loader();
-                return assembleloader;
-            }
-        }
+
         MessageListener worklistener = null;
         private Thread thread = null;
         private Thread moniterTread = null;
@@ -60,7 +51,7 @@ namespace StockMan.Message.Task.Worder
                     if (!taskExcuters[taskType].IsBusy())
                     {
                         this.Log().Info(string.Format("任务服务:{0}空闲，卸载", taskType));
-                        Assembleloader.UnLoad(taskType);
+                         Loader.Instance.UnLoad(taskType);
                     }
                     this.Log().Info(taskExcuters[taskType].GetStatus());
                 }
@@ -89,7 +80,7 @@ namespace StockMan.Message.Task.Worder
                     }
                     else
                     {
-                        Assembleloader.UnLoad(taskType);
+                         Loader.Instance.UnLoad(taskType);
                         this.Log().Info(string.Format("卸载完成:{0}", taskType));
                         break;
                     }
@@ -103,7 +94,7 @@ namespace StockMan.Message.Task.Worder
 
             //foreach (var task in list)
             //{
-            //    RemoteLoader rl = Assembleloader.GetRemoteLoader(task.assembly, task.type);
+            //    RemoteLoader rl =  Loader.Instance.GetRemoteLoader(task.assembly, task.type);
             //    var excuter = rl.GetTaskExcuteer();
             //    excuter.Load(task.assembly, task.type);
             //    excuter.Start();
@@ -160,7 +151,7 @@ namespace StockMan.Message.Task.Worder
             {
                 mq_task task = taskService.Find(taskCode);
 
-                RemoteLoader rl = Assembleloader.GetRemoteLoader(task.code);
+                RemoteLoader rl =  Loader.Instance.GetRemoteLoader(task.code);
 
                 var excuter = rl.GetTaskExcuteer();
                 excuter.Load(task.assembly, task.type);

@@ -18,7 +18,7 @@ namespace StockMan.Message.Task.Worder
         public event Action<TaskMessage> onReceive;
         public event Action<String> onError;
         PullSocket responder = null;
-        NetMQ.NetMQContext context = null;
+        //NetMQ.NetMQContext context = null;
         private bool running = true;
         private bool pause = false;
         private Mutex mPause = new Mutex(false, null);
@@ -27,8 +27,8 @@ namespace StockMan.Message.Task.Worder
         {
             string name = AppDomain.CurrentDomain.FriendlyName;
             endpoint = ConfigurationManager.AppSettings["broker"];
-            using (context = NetMQContext.Create())
-            using (responder = context.CreatePullSocket())
+            //using (context = NetMQContext.Create())
+            using (responder =new PullSocket())
             {
                 responder.Connect(endpoint);
                 while (this.running)
@@ -38,7 +38,7 @@ namespace StockMan.Message.Task.Worder
                     {
                         //NetMQMessage msgList = responder.ReceiveMessage();
                         //msgList.Pop();
-                        byte[] data = responder.Receive();
+                        byte[] data = responder.ReceiveFrameBytes();
                         if (data.Length <= 5)
                             continue;
 
@@ -108,8 +108,8 @@ namespace StockMan.Message.Task.Worder
             {
                 responder.Dispose();
             }
-            if (context != null)
-                context.Dispose();
+            //if (context != null)
+            //    context.Dispose();
             GC.Collect();
 
         }

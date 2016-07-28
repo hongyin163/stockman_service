@@ -63,41 +63,9 @@ namespace StockMan.Message.Task.Client
             taskSender.Load(assembly, type);
             taskSender.Start();
 
-            sendMessage();
+            //sendMessage();
         }
 
-        private void sendMessage()
-        {
-            int retryTotal = 20;
-            int retryCount = 0;
-            while (true)
-            {
-                var list = this.taskSender.GetMessage();
-                if (list.Count > 0)
-                {
-                    foreach (var msg in list)
-                    {
-                        this.client.Send(msg);
-                    }
-
-                    retryCount = 0;
-                }
-                else
-                {
-                    this.Log().Info("消息处理完成，等待:" + retryCount * 500);
-                    Thread.Sleep(retryCount++ * 500);
-
-                    if (retryCount <= retryTotal)
-                        continue;
-                    else
-                    {
-                        this.Log().Info("消息处理全部结束！");
-
-                        break;
-                    }
-                }
-                Thread.Sleep(1500);
-            }
-        }
+       
     }
 }

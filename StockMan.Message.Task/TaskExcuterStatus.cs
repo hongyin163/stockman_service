@@ -11,4 +11,5 @@ namespace StockMan.Message.Task
         Running = 1,
         Stop = 2
     }
+
 }

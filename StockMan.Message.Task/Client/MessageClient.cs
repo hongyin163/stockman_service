@@ -14,7 +14,7 @@ namespace StockMan.Message.Task
 {
     public class MessageClient : IDisposable
     {
-        private NetMQ.NetMQContext context = null;
+        //private NetMQ.NetMQContext context = null;
         private NetMQ.NetMQSocket requester = null;
         public MessageClient()
         {
@@ -28,8 +28,8 @@ namespace StockMan.Message.Task
                 requester.Close();
                 requester.Dispose();
             }
-            if (context != null)
-                context.Dispose();
+            //if (context != null)
+            //    context.Dispose();
         }
 
         public void Send(TaskMessage message)
@@ -40,13 +40,13 @@ namespace StockMan.Message.Task
             //NetMQMessage msg = new NetMQMessage();
             //msg.Push();
             byte[] data = SerializeHelper.BinarySerialize(message);
-            requester.Send(data);
+            requester.SendFrame(data);
         }
 
         private void init()
         {
-            context = NetMQContext.Create();
-            requester = context.CreateSocket(NetMQ.zmq.ZmqSocketType.Push);
+            //context = NetMQContext.Create();
+            requester = new NetMQ.Sockets.PushSocket();// context.CreateSocket(NetMQ.zmq.ZmqSocketType.Push);
             requester.Connect(System.Configuration.ConfigurationManager.AppSettings["broker"]);
         }
     }

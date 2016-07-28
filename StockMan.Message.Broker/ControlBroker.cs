@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using NetMQ.Sockets;
 namespace StockMan.Message.Broker
 {
     public class ControlBroker
@@ -21,9 +21,9 @@ namespace StockMan.Message.Broker
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
 
 
-            context = NetMQContext.Create();
-            frontend = context.CreateResponseSocket();
-            backend = context.CreatePublisherSocket();
+            //context = NetMQContext.Create();
+            frontend = new ResponseSocket();// context.CreateResponseSocket();
+            backend = new PublisherSocket();// context.CreatePublisherSocket();
             var frontAdress = ConfigurationManager.AppSettings["ctrl_frontendBindAddress"];
             var bakdendAdress = ConfigurationManager.AppSettings["ctrl_backendBindAddress"];
             frontend.Bind(frontAdress);
@@ -33,20 +33,20 @@ namespace StockMan.Message.Broker
         }
         private void backend_SendReady(object sender, NetMQSocketEventArgs e)
         {
-            this.Log().Info("发送消息" + e.Socket.ReceiveString());
+            this.Log().Info("发送消息" + e.Socket.ReceiveFrameString());
         }
 
         private void frontend_ReceiveReady(object sender, NetMQSocketEventArgs e)
         {
-            this.Log().Info("接收消息" + e.Socket.ReceiveString());
+            this.Log().Info("接收消息" + e.Socket.ReceiveFrameString());
         }
         public void Start()
         {
             while (true)
             {
-                var msg = frontend.ReceiveMessage();
-                backend.SendMessage(msg);
-                frontend.Send("Success");
+                var msg = frontend.ReceiveMultipartMessage();
+                backend.SendMultipartMessage(msg);
+                frontend.SendFrame("Success");
             }
         }
 
