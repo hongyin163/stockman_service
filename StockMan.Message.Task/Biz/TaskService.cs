@@ -165,14 +165,26 @@ namespace StockMan.Message.Task.Biz
             }
         }
     }
-    public class TaskService:ServiceBase<mq_task>
+    public class TaskService : ServiceBase<mq_task>
     {
         public IList<mq_task> GetTaskList()
         {
             using (DataAccess.messageEntities entity = new messageEntities())
             {
                 return entity.mq_task.Where(p => p.enable == 1).ToList();
-            }           
+            }
+        }
+        public void Update(string taskCode, int status)
+        {
+            using (DataAccess.messageEntities entity = new messageEntities())
+            {
+                var task= entity.mq_task.FirstOrDefault(p => p.enable == 1 && p.code == taskCode);
+                if (task != null)
+                {
+                    task.status = status;
+                    entity.SaveChanges();
+                }
+            }
         }
     }
 }

@@ -36,40 +36,52 @@ namespace StockMan.Message.Task.Worder
                     mPause.WaitOne();
                     try
                     {
-                        //NetMQMessage msgList = responder.ReceiveMessage();
+                        NetMQMessage msgList = responder.ReceiveMultipartMessage();
                         //msgList.Pop();
-                        byte[] data = responder.ReceiveFrameBytes();
-                        if (data.Length <= 5)
-                            continue;
-
-                        TaskMessage msg = (TaskMessage)SerializeHelper.BinaryDeserialize(data);
-
-                        if (this.onReceive != null)
-                            this.onReceive(msg);
-
-                        //foreach (var msg in msgList)
+                        //byte[] data = responder.ReceiveFrameBytes();
+                        //if (data.Length <= 5)
                         //{
-
-                        //    string result = msg.ConvertToString();
-                        //    if (string.IsNullOrEmpty(result))
-                        //    {
-                        //        if (onError != null)
-                        //            this.onError("消息为空");
-                        //        continue;
-                        //    }
-
-                        //    try
-                        //    {
-                        //        var strMsg = JsonConvert.DeserializeObject<TaskMessage>(result);
-                        //        if (this.onReceive != null)
-                        //            this.onReceive(strMsg);
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        if (onError != null)
-                        //            this.onError(String.Format("消息:{0},反序列化异常:{1}", result, ex.Message));
-                        //    }
+                        //    Console.WriteLine("消息小于5个字节");
+                        //    continue;
                         //}
+
+
+                        //TaskMessage msg = (TaskMessage)SerializeHelper.BinaryDeserialize(data);
+
+                        //if (this.onReceive != null)
+                        //    this.onReceive(msg);
+                        msgList.Pop();
+
+                        foreach (var msg in msgList)
+                        {
+
+                            string result = msg.ConvertToString();
+                            //if (string.IsNullOrEmpty(result))
+                            //{
+                            //    if (onError != null)
+                            //        this.onError("消息为空");
+                            //    continue;
+                            //}
+
+                            int size = msg.MessageSize;
+                            if (size <= 5)
+                            {
+                                //if (onError != null)
+                                //    this.onError("消息格式错误："+ result);
+                                continue;
+                            }
+                            try
+                            {
+                                var strMsg = JsonConvert.DeserializeObject<TaskMessage>(result);
+                                if (this.onReceive != null)
+                                    this.onReceive(strMsg);
+                            }
+                            catch (Exception ex)
+                            {
+                                if (onError != null)
+                                    this.onError(String.Format("消息:{0},反序列化异常:{1}", result, ex.Message));
+                            }
+                        }
                     }
                     catch (NetMQ.TerminatingException te)
                     {

@@ -11,7 +11,6 @@ namespace StockMan.Message.Broker
 {
     public class ControlBroker
     {
-        private NetMQContext context;
         private NetMQSocket frontend;
         private NetMQSocket backend;
         NetMQ.Proxy proxy;
@@ -62,7 +61,6 @@ namespace StockMan.Message.Broker
                 backend.Close();
                 backend.Dispose();
             }
-            if (context != null) context.Dispose();
 
         }
     }

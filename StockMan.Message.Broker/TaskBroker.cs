@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetMQ;
-using NetMQ.Devices;
 using NetMQ.Sockets;
 namespace StockMan.Message.Broker
 {
@@ -30,8 +29,7 @@ namespace StockMan.Message.Broker
             frontend.Bind(frontAdress);
             backend.Bind(bakdendAdress);
 
-            var contrlIn = new PushSocket();// context.CreatePushSocket();
-            contrlIn.Bind(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
+            //frontend.ReceiveReady += frontend_ReceiveReady;
             //var controlOut=
             //frontend.ReceiveReady += frontend_ReceiveReady;
             //backend.SendReady += backend_SendReady;
@@ -44,6 +42,7 @@ namespace StockMan.Message.Broker
            
           
         }
+
 
         private void ContrlIn_EventReceived(object sender, NetMQ.Monitoring.NetMQMonitorEventArgs e)
         {
@@ -62,9 +61,9 @@ namespace StockMan.Message.Broker
 
         public void Monitor()
         {
-            var context = NetMQContext.Create();
-            var contrlSub = context.CreateSubscriberSocket();
-            contrlSub.Connect(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
+            //var context = NetMQContext.Create();
+            //var contrlSub = context.CreateSubscriberSocket();
+            //contrlSub.Connect(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
             //while (true)
             //{
             //    string msg = contrlSub.ReceiveFrameString();
@@ -80,12 +79,12 @@ namespace StockMan.Message.Broker
 
         private void backend_SendReady(object sender, NetMQSocketEventArgs e)
         {
-            this.Log().Info("发送消息" + e.Socket.ReceiveString());
+            this.Log().Info("后端发送正常" + String.Join(",", e.Socket.ReceiveMultipartStrings()));
         }
 
         private void frontend_ReceiveReady(object sender, NetMQSocketEventArgs e)
         {
-            this.Log().Info("接收消息" + e.Socket.ReceiveString());
+            this.Log().Info("前端接收正常");
         }
         public void Start()
         {

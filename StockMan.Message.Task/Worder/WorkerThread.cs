@@ -46,16 +46,23 @@ namespace StockMan.Message.Task.Worder
         {
             while (true)
             {
+                IList<string> delList = new List<string>();
                 foreach (var taskType in taskExcuters.Keys)
                 {
+                    this.Log().Info(taskExcuters[taskType].GetStatus());
                     if (!taskExcuters[taskType].IsBusy())
                     {
-                        this.Log().Info(string.Format("任务服务:{0}空闲，卸载", taskType));
-                         Loader.Instance.UnLoad(taskType);
+                        this.Log().Info(string.Format("任务服务:{0}空闲，卸载开始", taskType));
+                        Loader.Instance.UnLoad(taskType);
+                        delList.Add(taskType);
+                        this.Log().Info(string.Format("任务服务:{0}空闲，卸载成功", taskType));
                     }
-                    this.Log().Info(taskExcuters[taskType].GetStatus());
-                }
 
+                }
+                foreach (var  code in delList)
+                {
+                    taskExcuters.Remove(code);
+                }
                 Thread.Sleep(1000 * 60);
             }
         }
@@ -80,7 +87,7 @@ namespace StockMan.Message.Task.Worder
                     }
                     else
                     {
-                         Loader.Instance.UnLoad(taskType);
+                        Loader.Instance.UnLoad(taskType);
                         this.Log().Info(string.Format("卸载完成:{0}", taskType));
                         break;
                     }
@@ -151,7 +158,7 @@ namespace StockMan.Message.Task.Worder
             {
                 mq_task task = taskService.Find(taskCode);
 
-                RemoteLoader rl =  Loader.Instance.GetRemoteLoader(task.code);
+                RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.code);
 
                 var excuter = rl.GetTaskExcuteer();
                 excuter.Load(task.assembly, task.type);
@@ -178,6 +185,7 @@ namespace StockMan.Message.Task.Worder
             var cmd = cmdMsg.command;
             if (cmd == "start")
             {
+                this.Log().Info("任务开始");
                 this.Start();
             }
             else if (cmd == "reload")

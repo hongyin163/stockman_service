@@ -18,7 +18,7 @@ namespace StockMan.Message.Task.Control
         public event Action<CmdMessage> onReceive;
         public event Action<String> onError;
         NetMQ.Sockets.SubscriberSocket responder = null;
-        NetMQ.NetMQContext context = null;
+        //NetMQ.NetMQContext context = null;
         private string target = string.Empty;
         public ControlListener(string target)
         {
@@ -73,8 +73,8 @@ namespace StockMan.Message.Task.Control
         {
             if (responder != null)
                 responder.Close();
-            if (context != null)
-                context.Dispose();
+            //if (context != null)
+            //    context.Dispose();
 
         }
 

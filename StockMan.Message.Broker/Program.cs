@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NetMQ;
 using System.Configuration;
-using NetMQ.Devices;
 using System.Threading;
 
 namespace StockMan.Message.Broker
@@ -15,7 +14,17 @@ namespace StockMan.Message.Broker
         static void Main(string[] args)
         {
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
+            //Task t3 = new TaskFactory().StartNew(() =>
+            //{
+            //    using (var contrlSub = new NetMQ.Sockets.PullSocket("@" + ConfigurationManager.AppSettings["mon_controlInBindAddress"]))
+            //    {
+            //        while (true)
+            //        {
+            //            Console.WriteLine(contrlSub.ReceiveFrameString());
+            //        }
+            //    }
 
+            //});
 
             Task t1 = new TaskFactory().StartNew(() =>
             {
@@ -31,16 +40,7 @@ namespace StockMan.Message.Broker
                 server.Start();
             });
 
-            //Task t3 = new TaskFactory().StartNew(() =>
-            //{
-            //    Thread.Sleep(3000);
-            //    var contrlSub = new NetMQ.Sockets.PullSocket();
-            //    contrlSub.Connect(ConfigurationManager.AppSettings["mon_controlInBindAddress"]);
-            //    while (true)
-            //    {
-            //        Console.WriteLine(contrlSub.ReceiveFrameString());
-            //    }
-            //});
+
             t1.Wait();
             t2.Wait();
             //t3.Wait();

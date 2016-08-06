@@ -61,7 +61,7 @@ namespace StockMan.Message.TaskInstance
                     description = "测试" + i,
                     values = "{data:1}"
                 });
-                if (i > 2)
+                if (i > 30)
                     break;
                 ;
             }
@@ -119,7 +119,7 @@ namespace StockMan.Message.TaskInstance
                     description = "测试" + i,
                     values = "{data:1}"
                 });
-                if (i > 100)
+                if (i > 30)
                     break;
                 ;
             }
@@ -177,7 +177,7 @@ namespace StockMan.Message.TaskInstance
                     description = "测试" + i,
                     values = "{data:1}"
                 });
-                if (i > 2)
+                if (i > 30)
                     break;
                 ;
             }
@@ -236,7 +236,7 @@ namespace StockMan.Message.TaskInstance
                     description = "测试" + i,
                     values = "{data:1}"
                 });
-                if (i > 2)
+                if (i > 30)
                     break;
                 ;
             }
@@ -293,7 +293,7 @@ namespace StockMan.Message.TaskInstance
                     description = "测试" + i,
                     values = "{data:1}"
                 });
-                if (i > 100)
+                if (i > 30)
                     break;
             }
         }

@@ -19,7 +19,7 @@ namespace StockMan.Message.Task
         private bool running = true;
         private DateTime lastExcuteTime = DateTime.Now;
         public TimeSpan freeTime = TimeSpan.FromMinutes(0);
-
+        private int waitMinutes = 1;
         public TaskExcuterStatus Status
         {
             get;
@@ -42,7 +42,7 @@ namespace StockMan.Message.Task
 
         public void Load(string assembleName, string typeName)
         {
-            var path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.PrivateBinPath,assembleName + ".dll");
+            var path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.PrivateBinPath, assembleName + ".dll");
 
             if (!File.Exists(path))
                 throw new Exception(string.Format("程序集文件不存在:{0},{1}", assembleName, typeName));
@@ -73,6 +73,7 @@ namespace StockMan.Message.Task
         }
         public void Stop()
         {
+            this.Log().Info("任务停止:" + this.taskServie.GetCode());
             this.running = false;
         }
         public void Clear()
@@ -94,6 +95,10 @@ namespace StockMan.Message.Task
                         this.Status = TaskExcuterStatus.Wait;
                         Thread.Sleep(500);
                         freeTime = DateTime.Now - lastExcuteTime;
+                        if (freeTime > TimeSpan.FromMinutes(waitMinutes))
+                        {
+                            this.Stop();
+                        }
                         continue;
                     }
                     msg = this.MessageQueue.Dequeue();
@@ -116,16 +121,16 @@ namespace StockMan.Message.Task
                     this.Log().Error(string.Format("消息处理失败：code:{0},description:{1},Exception:{2}", msg.code, msg.description, ex.Message));
                 }
             }
-
+            this.Log().Info("任务线程停止:" + this.taskServie.GetCode());
             this.Status = TaskExcuterStatus.Stop;
         }
 
         public bool IsBusy()
         {
-            if (this.MessageQueue.Count > 0)
+            if (this.MessageQueue.Count > 0 && this.running)
                 return true;
 
-            if (freeTime > TimeSpan.FromMinutes(15))
+            if (this.Status == TaskExcuterStatus.Stop)
                 return false;
 
             return true;
@@ -134,7 +139,7 @@ namespace StockMan.Message.Task
         public string GetStatus()
         {
             string msg = "是否运行{0},消息剩余:{1},状态:{2}";
-            return string.Format(msg, this.running, this.MessageQueue.Count,this.Status.ToString());
+            return string.Format(msg, this.running, this.MessageQueue.Count, this.Status.ToString());
         }
 
         private void updateMessageStatus(TaskMessage msg, MessageStatus status)

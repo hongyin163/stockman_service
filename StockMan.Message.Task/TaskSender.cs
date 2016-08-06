@@ -16,7 +16,7 @@ namespace StockMan.Message.Task
     /// <summary>
     /// 负责管理Task
     /// </summary>
-    public class TaskSender : MarshalByRefObject, IMessageSender
+    public class TaskSender : MarshalByRefObject, IMessageSender,IDisposable
     {
         private Thread workThread = null;
         private TaskService taskService = new TaskService();
@@ -34,13 +34,15 @@ namespace StockMan.Message.Task
         }
         public event Action<string> onStop;
         private ITask taskInstance;
+        public TaskExcuterStatus Status;
         public TaskSender()
         {
-            this.client = new MessageClient();
+            //this.client = new MessageClient();
         }
         public void Start()
         {
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
+            Status = TaskExcuterStatus.Running;
             //开线程
             workThread = new Thread(Run);
             workThread.Start();
@@ -49,6 +51,8 @@ namespace StockMan.Message.Task
         private void Run()
         {
             this.Log().Info("构造消息开始");
+    
+            this.Status = TaskExcuterStatus.Running;
             //while (true)
             //{
             //    IList<TaskMessage> msgList = this.taskServie.GetMessage();
@@ -64,6 +68,8 @@ namespace StockMan.Message.Task
 
             //处理为完成的消息
             //handleMessage();
+
+            this.Status = TaskExcuterStatus.Stop;
 
         }
 
@@ -94,15 +100,14 @@ namespace StockMan.Message.Task
             //this.save(message);
 
             //发送
-            this.sendMessage(message);
+            //this.sendMessage(message);
 
             //更新状态
             //this.updateMessageStatus(message, MessageStatus.Wait);
-            //lock (this.MessageQueue)
-            //{
-            //    this.MessageQueue.Enqueue(message);
-            //}
-            Thread.Sleep(300);
+            lock (this.MessageQueue)
+            {
+                this.MessageQueue.Enqueue(message);
+            }
             this.Log().Info("消息入列:" + message.code);
         }
 
@@ -127,14 +132,27 @@ namespace StockMan.Message.Task
 
         public bool IsBusy()
         {
-            return true;
+            return this.Status==TaskExcuterStatus.Running;
         }
 
         public string GetStatus()
         {
-            //string msg = "是否运行{0},消息剩余:{1},状态:{2}";
+            string msg = "状态:{0}";
             //return string.Format(msg, this.running, this.MessageQueue.Count, this.Status.ToString());
-            return "";
+            return string.Format(msg, this.Status.ToString());
+        }
+
+        public void Dispose()
+        {
+            //if (this.client != null) this.client.Dispose();
+
+            if (this.workThread != null)
+            {
+                try {
+                    this.workThread.Abort();
+                }
+                catch { }               
+            }
         }
     }
 }

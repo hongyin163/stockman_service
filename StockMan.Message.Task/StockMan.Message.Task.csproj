@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncIO, Version=0.1.20.0, Culture=neutral, PublicKeyToken=44a94435bd6f33f8, processorArchitecture=MSIL">
-      <HintPath>..\packages\AsyncIO.0.1.20.0\lib\net40\AsyncIO.dll</HintPath>
+    <Reference Include="AsyncIO, Version=0.1.25.0, Culture=neutral, PublicKeyToken=44a94435bd6f33f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\AsyncIO.0.1.26.0\lib\net40\AsyncIO.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -41,8 +41,8 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="NetMQ, Version=3.3.3.4, Culture=neutral, PublicKeyToken=a6decef4ddc58b3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetMQ.3.3.3.4\lib\net40\NetMQ.dll</HintPath>
+    <Reference Include="NetMQ, Version=4.0.0.0, Culture=neutral, PublicKeyToken=a6decef4ddc58b3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetMQ.4.0.0-rc5\lib\net40\NetMQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -57,6 +57,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,16 +75,22 @@
     <Compile Include="Biz\SerializeHelper.cs" />
     <Compile Include="Biz\TaskService.cs" />
     <Compile Include="Client\ClientThread.cs" />
+    <Compile Include="Client\MainThread.cs" />
     <Compile Include="Client\SenderWorder.cs" />
+    <Compile Include="Client\TaskManager.cs" />
+    <Compile Include="Client\SenderTask.cs" />
     <Compile Include="Control\ControlListener.cs" />
     <Compile Include="Control\ControlThread.cs" />
     <Compile Include="Interface\IMessageSender.cs" />
+    <Compile Include="Interface\IRunable.cs" />
     <Compile Include="Interface\ITask.cs" />
     <Compile Include="Interface\IReceiveCommand.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="LogExtensions.cs" />
     <Compile Include="Client\MessageClient.cs" />
     <Compile Include="TaskExcuterStatus.cs" />
+    <Compile Include="TaskThread.cs" />
+    <Compile Include="TimeTrigger.cs" />
     <Compile Include="Worder\MessageListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskExcuter.cs" />

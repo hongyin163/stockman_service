@@ -29,6 +29,7 @@ namespace StockMan.Message.Task
             {
                 AppDomain.Unload(appDomainDic[name]);
                 appDomainDic.Remove(name);
+                return appDomainDic[name];
             }
 
             AppDomainSetup setup = new AppDomainSetup();

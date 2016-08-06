@@ -22,6 +22,7 @@ namespace StockMan.Message.Client
         private TaskService taskService = new TaskService();
         private MessageService messageService = new MessageService();
         private Thread jobThread = null;
+        private Thread senderThead = null;
         private Thread moniterThread = null;
         private MessageClient client = null;
         private bool running = true;
@@ -29,44 +30,57 @@ namespace StockMan.Message.Client
         Dictionary<string, TaskSender> taskSenders = new Dictionary<string, TaskSender>();
         public ClientThread()
         {
-            //this.client = new MessageClient();
+            this.client = new MessageClient();
             this.jobThread = new Thread(Run);
-            //this.senderThead = new Thread(RunSender);
+            this.senderThead = new Thread(RunSender);
             this.moniterThread = new Thread(Moniter);
         }
 
         public void Start()
         {
             this.jobThread.Start();
+            this.senderThead.Start();
+            this.moniterThread.Start();
         }
         public void Moniter()
         {
             while (true)
             {
+                mPause.WaitOne();
+                List<string> delList = new List<string>();
                 foreach (var taskType in taskSenders.Keys)
                 {
+                    this.Log().Info(taskSenders[taskType].GetStatus());
                     if (!taskSenders[taskType].IsBusy())
                     {
                         this.Log().Info(string.Format("任务服务:{0}空闲，卸载", taskType));
+                        taskSenders[taskType].Dispose();
                         Loader.Instance.UnLoad(taskType);
+                        delList.Add(taskType);
                     }
-                    this.Log().Info(taskSenders[taskType].GetStatus());
                 }
 
-                Thread.Sleep(1000 * 60);
+                foreach (var code in delList)
+                {
+                    taskSenders.Remove(code);
+                }
+                mPause.ReleaseMutex();
+                Thread.Sleep(1000 * 10);
             }
         }
         //ISchedulerFactory sf = null;
         //IScheduler sched = null;
         public void Run()
         {
-           
+
             //获取Trigger，如果出发，加载，执行
             //任务状态，时间设置，什么执行，设置一个时间点，
             //时间点设置表达式：day:1-5,time:15:20   1-5,15:20
             //w:6-7,t:1:00
+            int i = 0;
             while (this.running)
             {
+                mPause.WaitOne();
                 var list = taskService.GetTaskList();
                 foreach (var task in list)
                 {
@@ -75,15 +89,21 @@ namespace StockMan.Message.Client
                         if (task.status == (int)StockMan.Message.Model.TaskStatus.stop)
                         {
                             //触发，
-                            RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.code);
-                            var taskSender = rl.GetTaskSender();
-                            taskSender.Load(task.assembly, task.type);
-                            taskSender.Start();
-                            this.taskSenders.Add(task.code, taskSender);
+                            if (!this.taskSenders.ContainsKey(task.code))
+                            {
+                                this.Log().Info("新建应用程序域:" + task.code);
+                                RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.code);
+                                var taskSender = rl.GetTaskSender();
+                                taskSender.Load(task.assembly, task.type);
+                                this.taskSenders.Add(task.code, taskSender);
+                            }
+                            this.Log().Info("开始执行发送任务:" + task.code);
+                            this.taskSenders[task.code].Start();
                         }
                     }
                 }
-                Thread.Sleep(60 * 1000);
+                mPause.ReleaseMutex();
+                Thread.Sleep(1000 * 3);
             }
 
             //sf = new StdSchedulerFactory();
@@ -131,7 +151,11 @@ namespace StockMan.Message.Client
         {
             DateTime now = DateTime.Now;
             //执行时间|时间间隔多个时间间隔用|分割开 ，时间间隔单分钟
-
+            //.立即执行
+            if (time == ".")
+            {
+                return true;
+            }
             //w:1-5,t:9:30-11:30|13:00-15:00 15
             string[] timeArry = time.Split(',');
             bool pass = true;
@@ -284,6 +308,7 @@ namespace StockMan.Message.Client
         }
         public void Receive(Model.CmdMessage cmdMsg)
         {
+            Console.WriteLine(cmdMsg.command);
             var cmd = cmdMsg.command;
             if (cmd == "start")
             {
@@ -328,8 +353,25 @@ namespace StockMan.Message.Client
                 this.Resume();
             }
         }
-
         public void RunSender()
+        {
+            while (true)
+            {
+                mPause.WaitOne();
+                foreach (var code in taskSenders.Keys)
+                {
+                    var msgList = taskSenders[code].GetMessage();
+                    foreach (var msg in msgList)
+                    {
+                        Console.WriteLine("发送消息：" + msg.code);
+                        this.sendMessage(msg);
+                    }
+                }
+                mPause.ReleaseMutex();
+            }
+        }
+
+        public void RunSenderx()
         {
             this.Log().Info("处理未完成消息开始");
             //没有可用消息时重试的次数，如果超过次数仍没有消息，结束任务

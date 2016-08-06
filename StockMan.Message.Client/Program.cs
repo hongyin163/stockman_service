@@ -9,6 +9,8 @@ using StockMan.Message.Task.Biz;
 using Quartz;
 using Quartz.Impl;
 using StockMan.Message.Task.Control;
+using StockMan.Message.Task.Client;
+
 namespace StockMan.Message.Client
 {
     class Program
@@ -17,7 +19,7 @@ namespace StockMan.Message.Client
         {
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
 
-            var main = new ClientThread();
+            var main = new MainThread();
             //main.Start();
 
             ControlThread thread = new ControlThread("main", main);
