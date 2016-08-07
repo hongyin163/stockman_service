@@ -337,18 +337,12 @@ namespace StockMan.Message.Client
                 this.Log().Info("恢复");
                 this.Resume();
             }
-            else if (cmd == "upload")
-            {
-                var assembly = cmdMsg.Get("assembly");
-                var type = cmdMsg.Get("type");
-                Loader.Instance.CreateTaskAssembly("T0001", cmdMsg.attachment);
-            }
             else if (cmd == "init")
             {
                 this.Pause();
 
-                var code = cmdMsg.Get("task_code");
-                Loader.Instance.CreateTaskAssembly(code, cmdMsg.attachment);
+                var assembly = cmdMsg.Get("task_assembly");
+                Loader.Instance.CreateTaskAssembly(assembly, cmdMsg.attachment);
 
                 this.Resume();
             }

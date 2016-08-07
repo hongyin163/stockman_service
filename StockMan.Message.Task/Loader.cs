@@ -59,11 +59,11 @@ namespace StockMan.Message.Task
             return (RemoteLoader)appDomain.CreateInstanceAndUnwrap("StockMan.Message.Task", "StockMan.Message.Task.RemoteLoader");
         }
 
-        public void CreateTaskAssembly(string taskCode, Dictionary<string, byte[]> files)
+        public void CreateTaskAssembly(string assemblyName, Dictionary<string, byte[]> files)
         {
             this.Log().Info("接收任务程序集");
             var path = AppDomain.CurrentDomain.BaseDirectory + "tasks";
-            var binPath = Path.Combine(path, taskCode);
+            var binPath = Path.Combine(path, assemblyName);
 
             if (!Directory.Exists(binPath))
             {
@@ -73,6 +73,12 @@ namespace StockMan.Message.Task
             {
                 if (files[name] == null)
                     continue;
+                var dir = Path.GetDirectoryName(name);
+                dir = Path.Combine(binPath, dir);
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
                 using (FileStream fs = new FileStream(Path.Combine(binPath, name), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 1024))
                 {
                     fs.Write(files[name], 0, files[name].Length);

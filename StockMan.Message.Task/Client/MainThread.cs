@@ -11,48 +11,51 @@ namespace StockMan.Message.Task.Client
 {
     public class MainThread : IReceiveCommand
     {
-        private bool running = true;
+        private bool running = false;
+
         public void Start()
+        {
+            if (!this.running)
+            {
+                this.running = true;
+
+                Thread taskThread = new Thread(Run);
+                taskThread.Start();               
+            }
+        }
+
+        private void Run()
         {
             while (this.running)
             {
                 TaskManager.Instance.Run();
-                this.Log().Info(string.Format("{0}:任务检查运行中……",DateTime.Now.ToString("yy:MM:dd hh:mm:ss")));
-                Thread.Sleep(1000*60);
+                this.Log().Info(string.Format("{0}:任务检查运行中……", DateTime.Now.ToString("yy:MM:dd hh:mm:ss")));
+                Thread.Sleep(1000 * 60);
             }
+            this.Log().Info("任务线程结束");
         }
+
         public void Receive(Model.CmdMessage cmdMsg)
         {
-            Console.WriteLine(cmdMsg.command);
             var cmd = cmdMsg.command;
             if (cmd == "start")
             {
-                this.running = true;
+                this.Log().Info("任务开始");
                 this.Start();
             }
-            else if (cmd == "pause")
+            else if (cmd == "stop")
             {
-                this.Log().Info("暂停");
+                this.Log().Info("任务停止");
                 this.running = false;
-            }
-            else if (cmd == "resume")
-            {
-                this.Log().Info("恢复");
-                
-                this.Start();
-            }
-            else if (cmd == "upload")
-            {
-                var assembly = cmdMsg.Get("assembly");
-                var type = cmdMsg.Get("type");
-                Loader.Instance.CreateTaskAssembly("T0001", cmdMsg.attachment);
             }
             else if (cmd == "init")
             {
+                this.Log().Info("初始化程序集");
+
                 this.running = false;
 
-                var code = cmdMsg.Get("task_code");
-                Loader.Instance.CreateTaskAssembly(code, cmdMsg.attachment);
+                var assembly = cmdMsg.Get("task_assembly");
+                Loader.Instance.CreateTaskAssembly(assembly, cmdMsg.attachment);
 
             }
         }

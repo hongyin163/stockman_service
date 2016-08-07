@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data   xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>data_object_update</name>
+      <group>data_object</group>
+      <description>大盘数据更新</description>
+      <job-type>StockMan.Jobs.Object.ObjectDataUpdateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>data_object_update</name>
+        <description>大盘日周月线</description>
+        <job-name>data_object_update</job-name>
+        <job-group>data_object</job-group>
+        <cron-expression>0 0/30 10,11,13,14 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>data_stock_update</name>
+      <group>data_stock</group>
+      <description>个股数据更新</description>
+      <job-type>StockMan.Jobs.Stock.StockPriceUpdateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>data_stock_update</name>
+        <description>个股日周月线</description>
+        <job-name>data_stock_update</job-name>
+        <job-group>data_stock</job-group>
+        <cron-expression>0 10/30 10,11,13,14 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <schedule>
+    <job>
+      <name>data_category_update</name>
+      <group>data_category</group>
+      <description>行业数据更新</description>
+      <job-type>StockMan.Jobs.Category.CateIndexUpdateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>data_category_update</name>
+        <description>行业日周月线</description>
+        <job-name>data_category_update</job-name>
+        <job-group>data_category</job-group>
+        <cron-expression>0 30/30 10,11,13,14 ? * MON-FRI</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  <!--<schedule>
+    <job>
+      <name>tech_stock_init</name>
+      <group>tech_stock</group>
+      <description>股票技术数据初始化</description>
+      <job-type>StockMan.Jobs.Tech.Stock.TechStockInit,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>stock_day</name>
+        <description>股票日线</description>
+        <job-name>tech_stock_init</job-name>
+        <job-group>tech_stock</job-group>
+        <job-data-map>
+          <entry>
+            <key>cycle</key>
+            <value>day</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 56 15 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>stock_week</name>
+        <description>股票周线</description>
+        <job-name>tech_stock_init</job-name>
+        <job-group>tech_stock</job-group>
+        <job-data-map>
+          <entry>
+            <key>cycle</key>
+            <value>week</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 52 22 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>stock_month</name>
+        <description>股票月线</description>
+        <job-name>tech_stock_init</job-name>
+        <job-group>tech_stock</job-group>
+        <job-data-map>
+          <entry>
+            <key>cycle</key>
+            <value>month</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 53 22 * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>-->
+  <!--
+  <schedule>
+    <job>
+      <name>tech_state_update</name>
+      <group>tech_state</group>
+      <description>股票技术状态更新</description>
+      <job-type>StockMan.Jobs.State.StockStateJob,StockMan.Jobs</job-type>
+    </job>
+    <trigger>
+      <cron>
+        <name>stock_state_day</name>
+        <description>股票日线状态</description>
+        <job-name>tech_state_update</job-name>
+        <job-group>tech_state</job-group>
+        <job-data-map>
+          <entry>
+            <key>cycle</key>
+            <value>day</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 6 16 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>stock_state_week</name>
+        <description>股票周线状态</description>
+        <job-name>tech_state_update</job-name>
+        <job-group>tech_state</job-group>
+        <job-data-map>
+          <entry>
+            <key>cycle</key>
+            <value>week</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 7 16 * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <trigger>
+      <cron>
+        <name>stock_state_month</name>
+        <description>股票月线状态</description>
+        <job-name>tech_state_update</job-name>
+        <job-group>tech_state</job-group>
+        <job-data-map>
+          <entry>
+            <key>cycle</key>
+            <value>month</value>
+          </entry>
+        </job-data-map>
+        <cron-expression>0 8 16 * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>-->
+</job-scheduling-data>

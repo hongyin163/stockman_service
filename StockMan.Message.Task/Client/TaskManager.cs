@@ -44,10 +44,12 @@ namespace StockMan.Message.Task.Client
         {
             return Load(task.code, task.assembly, task.type);
         }
+        private string binPath = "";
         private ITask Load(string taskCode, string assembleName, string typeName)
         {
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             var basePath = AppDomain.CurrentDomain.BaseDirectory + "tasks";
-            var binPath = Path.Combine(basePath, taskCode);
+            this.binPath = Path.Combine(basePath, taskCode);
             var path = Path.Combine(binPath, assembleName + ".dll");
 
             if (!File.Exists(path))
@@ -57,6 +59,8 @@ namespace StockMan.Message.Task.Client
 
             Assembly assebly = Assembly.Load(asseblyBytes);
             ITask taskIns = assebly.CreateInstance(typeName) as ITask;
+
+            //AppDomain.CurrentDomain.AssemblyResolve -= CurrentDomain_AssemblyResolve;
             if (taskIns != null)
             {
                 return taskIns;
@@ -65,7 +69,21 @@ namespace StockMan.Message.Task.Client
             {
                 throw new Exception(string.Format("任务执行器创建失败:程序集{0}：类型：{1}", assembleName, typeName));
             }
+
         }
+
+        private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            var strTempAssmbPath = Path.Combine(this.binPath, args.Name.Substring(0, args.Name.IndexOf(",")) + ".dll");
+
+            if (File.Exists(strTempAssmbPath))
+            {
+                return Assembly.LoadFrom(strTempAssmbPath);
+            }
+            return null;
+
+        }
+
         private ITask GetNextTask()
         {
             var list = taskService.GetTaskList();

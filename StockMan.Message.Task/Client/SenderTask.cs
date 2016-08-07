@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StockMan.Message.Model;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace StockMan.Message.Task.Client
 {
@@ -17,7 +18,7 @@ namespace StockMan.Message.Task.Client
         public event Action<string> onComplete;
         public SenderTask(ITask task)
         {
-           
+
             this.task = task;
         }
 
@@ -44,11 +45,19 @@ namespace StockMan.Message.Task.Client
             }
         }
 
-        public void Send(TaskMessage message)
+
+        public void Send(string message)
         {
             Thread.Sleep(100);
-            this.client.Send(message);
-            log4net.LogManager.GetLogger(this.GetType()).Info("发送消息：" + message.values);
+            TaskMessage msg = new TaskMessage
+            {
+                code = this.task.GetCode()+"_"+ message.GetHashCode().ToString(),
+                task_code = this.task.GetCode(),
+                description = "",
+                values = message
+            };
+            this.client.Send(msg);
+            log4net.LogManager.GetLogger(this.GetType()).Info("发送消息：" + msg.values);
         }
     }
 }

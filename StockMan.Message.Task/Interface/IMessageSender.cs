@@ -9,6 +9,6 @@ namespace StockMan.Message.Task.Interface
 {
     public interface IMessageSender
     {
-        void Send(TaskMessage message);
+        void Send(string message);
     }
 }

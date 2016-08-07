@@ -9,21 +9,19 @@ using thread = System.Threading.Tasks;
 
 namespace StockMan.Message.Task
 {
-    public interface ITask 
-        
+    public interface ITask
     {
-        string GetCode();
         /// <summary>
-        /// 开线程轮训该方法，返回消息，存储到数据库
+        /// code
         /// </summary>
         /// <returns></returns>
-        IList<TaskMessage> GetMessage();
+        string GetCode();
 
         void Send(IMessageSender sender);
         /// <summary>
         /// 接收消息
         /// </summary>
         /// <param name="message"></param>
-        void Excute(TaskMessage message);
+        void Excute(string message);
     }
 }

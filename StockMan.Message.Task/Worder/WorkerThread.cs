@@ -22,25 +22,40 @@ namespace StockMan.Message.Task.Worder
         MessageListener worklistener = null;
         private Thread thread = null;
         private Thread moniterTread = null;
+        private bool running = false;
         public WorkerThread()
         {
             LoggingExtensions.Logging.Log.InitializeWith<LoggingExtensions.log4net.Log4NetLog>();
-            this.thread = new Thread(Run);
+
+            taskExcuters = new Dictionary<string, TaskExcuter>();
+
             this.moniterTread = new Thread(Moniter);
+            this.moniterTread.Start();
+
         }
 
         public void Start()
         {
-            this.thread.Start();
-            this.moniterTread.Start();
+            if (!this.running)
+            {
+                this.thread = new Thread(Run);
+                this.thread.Start();
+
+                this.running = true;
+            }
         }
         public void Run()
         {
             if (worklistener != null) { worklistener.Dispose(); }
-            worklistener = new MessageListener();
-            worklistener.onReceive += this.HandleMessage;
-            worklistener.onError += listener_onError;
-            worklistener.connect();
+
+            using (worklistener = new MessageListener())
+            {
+                worklistener.onReceive += this.HandleMessage;
+                worklistener.onError += listener_onError;
+                worklistener.connect();
+            }
+            this.running = false;
+            this.Log().Info("消息监听线程终止");
         }
         public void Moniter()
         {
@@ -59,18 +74,22 @@ namespace StockMan.Message.Task.Worder
                     }
 
                 }
-                foreach (var  code in delList)
+                foreach (var code in delList)
                 {
                     taskExcuters.Remove(code);
                 }
+                this.Log().Info(string.Format("{0}：监控服务监控中……,状态：{1}",DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"),this.running? "运行中":"已停止"));
                 Thread.Sleep(1000 * 60);
             }
         }
-        internal void Pause()
+        internal void Stop()
         {
-            this.Log().Info("暂停");
+            this.Log().Info("关闭");
+
             if (this.worklistener != null)
-                this.worklistener.Pause();
+                this.worklistener.Close();
+
+            this.Log().Info("关闭结束");
         }
         public void UnLoadExcuter()
         {
@@ -110,14 +129,6 @@ namespace StockMan.Message.Task.Worder
             if (taskExcuters != null)
                 taskExcuters.Clear();
         }
-
-        internal void Resume()
-        {
-            this.Log().Info("恢复");
-            if (this.worklistener != null)
-                this.worklistener.Resume();
-        }
-
         public void HandleMessage(TaskMessage msg)
         {
             if (!this.taskExcuters.ContainsKey(msg.task_code))
@@ -188,52 +199,20 @@ namespace StockMan.Message.Task.Worder
                 this.Log().Info("任务开始");
                 this.Start();
             }
-            else if (cmd == "reload")
+            else if (cmd == "stop")
             {
-                this.Pause();
-                //this.worklistener.Close();
-                //this.workThread.Interrupt();
-                this.Log().Info("重新初始化服务列表");
-                this.InitTaskList();
-
-                this.Resume();
-            }
-            else if (cmd == "pause")
-            {
-                this.Pause();
-            }
-            else if (cmd == "resume")
-            {
-                this.Resume();
-            }
-            else if (cmd == "clear")
-            {
-                this.Clear();
-            }
-            else if (cmd == "upload")
-            {
-                this.Pause();
-                this.Clear();
-
-                var assembly = cmdMsg.Get("assembly");
-                var type = cmdMsg.Get("type");
-                Loader.Instance.CreateTaskAssembly("T0001", cmdMsg.attachment);
-
-                UnLoadExcuter();
-
-                this.Resume();
+                this.Stop();
             }
             else if (cmd == "init")
             {
-                this.Pause();
+                this.Stop();
                 this.Clear();
-
-                var code = cmdMsg.Get("task_code");
-                Loader.Instance.CreateTaskAssembly(code, cmdMsg.attachment);
 
                 UnLoadExcuter();
 
-                this.Resume();
+                var assembly = cmdMsg.Get("task_assembly");
+                Loader.Instance.CreateTaskAssembly(assembly, cmdMsg.attachment);            
+                
             }
         }
 
@@ -245,6 +224,7 @@ namespace StockMan.Message.Task.Worder
                 this.Log().Info("清除缓存消息：" + value.GetStatus());
                 value.Clear();
             }
+            this.Log().Info("清除缓存消息j结束");
         }
     }
 }

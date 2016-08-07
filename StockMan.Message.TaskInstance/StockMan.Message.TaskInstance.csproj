@@ -37,9 +37,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,8 +58,11 @@
   <ItemGroup>
     <Compile Include="LogExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TechTask.cs" />
+    <Compile Include="UpdateTechTask.cs" />
     <Compile Include="FirstTask.cs" />
+    <Compile Include="UpdateObjectPriceTask.cs" />
+    <Compile Include="UpdateStockPriceTask.cs" />
+    <Compile Include="UserAnalysisTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StockMan.EntityModel\StockMan.EntityModel.csproj">
@@ -92,15 +95,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\FourTask  /y
-xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\SecondTask /y
-xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\ThreeTask /y
-xcopy $(TargetDir)$(TargetFileName) $(SolutionDir)StockMan.Message.ControlCenter\tasks\OneTask /y
-</PostBuildEvent>
+    <PostBuildEvent>xcopy $(TargetDir)* $(SolutionDir)StockMan.Message.ControlCenter\tasks\StockMan.Message.TaskInstance /s  /y /i</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

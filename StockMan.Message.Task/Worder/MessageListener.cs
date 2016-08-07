@@ -21,53 +21,30 @@ namespace StockMan.Message.Task.Worder
         //NetMQ.NetMQContext context = null;
         private bool running = true;
         private bool pause = false;
-        private Mutex mPause = new Mutex(false, null);
+        //private Mutex mPause = new Mutex(false, null);
         private string endpoint;
         public void connect()
         {
             string name = AppDomain.CurrentDomain.FriendlyName;
             endpoint = ConfigurationManager.AppSettings["broker"];
-            //using (context = NetMQContext.Create())
             using (responder =new PullSocket())
             {
                 responder.Connect(endpoint);
                 while (this.running)
                 {
-                    mPause.WaitOne();
                     try
                     {
                         NetMQMessage msgList = responder.ReceiveMultipartMessage();
-                        //msgList.Pop();
-                        //byte[] data = responder.ReceiveFrameBytes();
-                        //if (data.Length <= 5)
-                        //{
-                        //    Console.WriteLine("消息小于5个字节");
-                        //    continue;
-                        //}
 
-
-                        //TaskMessage msg = (TaskMessage)SerializeHelper.BinaryDeserialize(data);
-
-                        //if (this.onReceive != null)
-                        //    this.onReceive(msg);
                         msgList.Pop();
 
                         foreach (var msg in msgList)
                         {
-
                             string result = msg.ConvertToString();
-                            //if (string.IsNullOrEmpty(result))
-                            //{
-                            //    if (onError != null)
-                            //        this.onError("消息为空");
-                            //    continue;
-                            //}
 
                             int size = msg.MessageSize;
                             if (size <= 5)
                             {
-                                //if (onError != null)
-                                //    this.onError("消息格式错误："+ result);
                                 continue;
                             }
                             try
@@ -89,8 +66,12 @@ namespace StockMan.Message.Task.Worder
                             this.onError(String.Format("连接终止异常:" + te.Message));
                         break;
                     }
-
-                    mPause.ReleaseMutex();
+                    catch(Exception ex)
+                    {
+                        if (onError != null)
+                            this.onError(String.Format("异常:" + ex.Message));
+                        break;
+                    }
                 }
             }
         }
@@ -99,37 +80,33 @@ namespace StockMan.Message.Task.Worder
         {
             this.running = false;
 
-            //if (responder != null)
-            //{
-            //    responder.Disconnect(endpoint);              
-            //}
+            if (responder != null)
+            {
+                try
+                {
+                    responder.Disconnect(endpoint);
+                }
+                catch(Exception ex)
+                {
+
+                }
+                finally
+                {
+                    responder.Dispose();
+                }
+               
+            }
 
         }
-        public void Pause()
-        {
-            mPause.WaitOne();
-            //Thread.
-            //var task = System.Threading.Tasks.Task.Factory.StartNew(() => { });
-            //task.Start();
 
-
-        }
         public void Dispose()
         {
             if (responder != null)
             {
                 responder.Dispose();
             }
-            //if (context != null)
-            //    context.Dispose();
             GC.Collect();
 
-        }
-
-        internal void Resume()
-        {
-            mPause.ReleaseMutex();
-            //Thread.CurrentThread.Resume();
         }
     }
 }

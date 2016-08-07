@@ -55,7 +55,6 @@
     <Content Include="MySql.Data.Entity.EF5.dll" />
     <Content Include="MySql.Fabric.Plugin.dll" />
     <Content Include="MySql.Web.dll" />
-    <Content Include="Newtonsoft.Json.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

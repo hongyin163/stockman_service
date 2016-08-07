@@ -110,7 +110,7 @@ namespace StockMan.Message.Task
                     freeTime = new TimeSpan(0);
                     this.Log().Info(string.Format("开始处理消息：code:{0},description:{1}", msg.code, msg.description));
                     //updateMessageStatus(msg, MessageStatus.Running);
-                    this.taskServie.Excute(msg);
+                    this.taskServie.Excute(msg.values);
                     //updateMessageStatus(msg, MessageStatus.Success);
                     this.Log().Info(string.Format("消息处理成功：code:{0},description:{1}", msg.code, msg.description));
 

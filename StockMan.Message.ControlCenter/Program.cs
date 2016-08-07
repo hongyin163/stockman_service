@@ -20,7 +20,7 @@ namespace StockMan.Message.Client
             Console.WriteLine("Control Center Start up");
 
             //using (NetMQ.NetMQContext context = NetMQContext.Create())
-            using (var requester =new RequestSocket())
+            using (var requester = new RequestSocket())
             {
                 requester.Connect("tcp://127.0.0.1:5561");
 
@@ -92,7 +92,8 @@ namespace StockMan.Message.Client
                 case "init":
                     TaskService service = new TaskService();
                     var taskList = service.GetTaskList();
-                    foreach (var task in taskList)
+                    var assmeblys = taskList.Select(p => p.assembly).Distinct();
+                    foreach (var assembly in assmeblys)
                     {
                         CmdMessage cmd0 = new CmdMessage()
                         {
@@ -105,22 +106,21 @@ namespace StockMan.Message.Client
                             var p = cmds[i].Split(' ');
                             cmd0.Put(p[0], p[1]);
                         }
-                        cmd0.Put("task_code", task.code);
-
-                        var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "tasks", task.code);
-
-                        string[] files = Directory.GetFiles(path);
-                        foreach (var file in files)
+                        //cmd0.Put("task_code", task.code);
+                        //cmd0.Put("task_type", task.type);
+                        cmd0.Put("task_assembly", assembly);
+                        var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tasks", assembly);
+                        if (Directory.Exists(path))
                         {
-                            if (File.Exists(file))
+                            var dics = GetFiles(path);
+                            foreach (var file in dics.Keys)
                             {
-                                byte[] fileData = File.ReadAllBytes(file);
-                                cmd0.PutAttachment(Path.GetFileName(file), fileData);
+                                cmd0.PutAttachment(file.Replace(path + "\\", ""), dics[file]);
                             }
-                        }
 
-                        NetMQMessage msg0 = GetMessage(cmd0);
-                        msgList.Add(msg0);
+                            NetMQMessage msg0 = GetMessage(cmd0);
+                            msgList.Add(msg0);
+                        }
                     }
 
                     return msgList;
@@ -134,6 +134,34 @@ namespace StockMan.Message.Client
                     msgList.Add(msg);
                     return msgList;
             }
+        }
+        public static Dictionary<string, byte[]> GetFiles(string path)
+        {
+            Dictionary<string, byte[]> dics = new Dictionary<string, byte[]>();
+            string[] files = Directory.GetFiles(path);
+            foreach (var file in files)
+            {
+                if (File.Exists(file))
+                {
+                    byte[] fileData = File.ReadAllBytes(file);
+                    dics.Add(file, fileData);
+                }
+            }
+            string[] subDirectory = Directory.GetDirectories(path);
+
+            if (subDirectory.Length <= 0)
+                return dics;
+
+            foreach (var dir in subDirectory)
+            {
+                var result = GetFiles(dir);
+                foreach (var f in result.Keys)
+                {
+                    dics.Add(f, result[f]);
+                }
+            }
+
+            return dics;
         }
 
         private static NetMQMessage GetMessage(CmdMessage cmd)

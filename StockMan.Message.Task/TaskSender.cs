@@ -154,5 +154,10 @@ namespace StockMan.Message.Task
                 catch { }               
             }
         }
+
+        public void Send(string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,8 +24,9 @@ namespace StockMan.Index
             using (engine )
             {
                 //log.Info("开始计算：" );
-                engine.Execute(File.ReadAllText(@"Script\json2.js"));
-                engine.Execute(File.ReadAllText(@"Script\util.js"));
+                var privatePath = string.IsNullOrEmpty(AppDomain.CurrentDomain.RelativeSearchPath) ? AppDomain.CurrentDomain.BaseDirectory : AppDomain.CurrentDomain.RelativeSearchPath;
+                engine.Execute(File.ReadAllText(Path.Combine(privatePath, @"Script\json2.js")));
+                engine.Execute(File.ReadAllText(Path.Combine(privatePath, @"Script\util.js")));
 
                 engine.Execute("var context=" + jscript);
 
@@ -171,8 +172,10 @@ namespace StockMan.Index
             }
             using (engine)
             {
-                engine.Execute(File.ReadAllText(@"Script\json2.js"));
-                engine.Execute(File.ReadAllText(@"Script\util.js"));
+                var privatePath = string.IsNullOrEmpty(AppDomain.CurrentDomain.RelativeSearchPath) ? AppDomain.CurrentDomain.BaseDirectory : AppDomain.CurrentDomain.RelativeSearchPath;
+
+                engine.Execute(File.ReadAllText(Path.Combine(privatePath, @"Script\json2.js")));
+                engine.Execute(File.ReadAllText(Path.Combine(privatePath, @"Script\util.js")));
 
                 engine.Execute("var context=" + jscript);
 
@@ -232,8 +235,10 @@ namespace StockMan.Index
             }
             using (engine)
             {
-                engine.Execute(File.ReadAllText(@"Script\json2.js"));
-                engine.Execute(File.ReadAllText(@"Script\util.js"));
+                var privatePath = string.IsNullOrEmpty(AppDomain.CurrentDomain.RelativeSearchPath) ? AppDomain.CurrentDomain.BaseDirectory : AppDomain.CurrentDomain.RelativeSearchPath;
+
+                engine.Execute(File.ReadAllText(Path.Combine(privatePath, @"Script\json2.js")));
+                engine.Execute(File.ReadAllText(Path.Combine(privatePath, @"Script\util.js")));
 
                 engine.Execute("var context=" + jscript);
 
