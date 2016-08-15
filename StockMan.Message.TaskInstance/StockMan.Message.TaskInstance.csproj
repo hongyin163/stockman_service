@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +59,9 @@
   <ItemGroup>
     <Compile Include="LogExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecoCateStockTask.cs" />
+    <Compile Include="RecoStockForUserTask.cs" />
+    <Compile Include="UpdateCatePriceTask.cs" />
     <Compile Include="UpdateTechTask.cs" />
     <Compile Include="FirstTask.cs" />
     <Compile Include="UpdateObjectPriceTask.cs" />
@@ -84,6 +88,10 @@
     <ProjectReference Include="..\StockMan.Message.Task\StockMan.Message.Task.csproj">
       <Project>{761b69df-b437-48fe-b306-45b353ef765d}</Project>
       <Name>StockMan.Message.Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockMan.MySqlAccess\StockMan.MySqlAccess.csproj">
+      <Project>{c9082b1e-6a59-4533-99fe-58d6c909d095}</Project>
+      <Name>StockMan.MySqlAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\StockMan.Service.Interface\StockMan.Service.Interface.csproj">
       <Project>{83b4749b-360f-4984-b9a9-161b65b98d33}</Project>

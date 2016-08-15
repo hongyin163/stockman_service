@@ -171,20 +171,20 @@ namespace StockMan.Service.Rds
                     if (check && entity.Set<TM>().Count(s => s.code == code) > 0)
                     {
                         entity.Entry(new TM()
-                            {
-                                code = code,
-                                date = p.date,//new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(p.date.Substring(6))),
-                                price = p.price,
-                                yestclose = p.yestclose,
-                                high = p.high,
-                                low = p.low,
-                                open = p.open,
-                                percent = p.percent,
-                                object_code = p.code,
-                                updown = p.updown,
-                                volume = p.volume,
-                                turnover = p.turnover
-                            }).State = EntityState.Modified;
+                        {
+                            code = code,
+                            date = p.date,//new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(p.date.Substring(6))),
+                            price = p.price,
+                            yestclose = p.yestclose,
+                            high = p.high,
+                            low = p.low,
+                            open = p.open,
+                            percent = p.percent,
+                            object_code = p.code,
+                            updown = p.updown,
+                            volume = p.volume,
+                            turnover = p.turnover
+                        }).State = EntityState.Modified;
                     }
                     else
                     {
@@ -333,20 +333,20 @@ namespace StockMan.Service.Rds
                     {
 
                         entity.Set<TM>().Add(new TM()
-                       {
-                           code = code,
-                           date = p.date,// new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(p.date.Substring(6))),
-                           price = p.price,
-                           yestclose = p.yestclose,
-                           high = p.high,
-                           low = p.low,
-                           open = p.open,
-                           percent = p.percent,
-                           object_code = p.code,
-                           updown = p.updown,
-                           turnover = p.turnover,
-                           volume = p.volume
-                       });
+                        {
+                            code = code,
+                            date = p.date,// new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(p.date.Substring(6))),
+                            price = p.price,
+                            yestclose = p.yestclose,
+                            high = p.high,
+                            low = p.low,
+                            open = p.open,
+                            percent = p.percent,
+                            object_code = p.code,
+                            updown = p.updown,
+                            turnover = p.turnover,
+                            volume = p.volume
+                        });
                     }
 
 
@@ -649,7 +649,7 @@ namespace StockMan.Service.Rds
                     DateTime endDate0 = new DateTime(nextMonthData.Year, nextMonthData.Month, 1);
                     DateTime startDate0 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                     return getDataByRange(code, tableName, endDate0, startDate0);
-                //break;
+                    //break;
             }
 
 
@@ -723,7 +723,7 @@ namespace StockMan.Service.Rds
                             {
                                 fstr += "," + reader[i];
                             }
-                            
+
                         }
                         fstr = "[" + fstr + "]";
 
@@ -735,6 +735,31 @@ namespace StockMan.Service.Rds
                     dataStr = "[" + dataStr + "]";
                     entity.Database.Connection.Close();
                     return dataStr;
+                }
+            }
+        }
+
+        public DateTime GetLatestDate(ObjectType objType, string code)
+        {
+            using (var entity = new StockManDBEntities())
+            {
+                string tableName = string.Format("data_{0}_{1}_latest", objType.ToString(), TechCycle.day);
+                string where = string.Empty;
+
+                string sql = string.Format(@"SELECT date FROM {0} where object_code='{1}' {2} order by date desc limit 1", tableName, code, where);
+
+                entity.Database.Connection.Open();
+                using (entity.Database.Connection)
+                {
+                    System.Data.IDbCommand commond = entity.Database.Connection.CreateCommand();
+                    commond.CommandText = sql;
+                    object val = commond.ExecuteScalar();
+
+                    entity.Database.Connection.Close();
+
+                    if (string.IsNullOrEmpty(val + ""))
+                        return DateTime.Now;
+                    return DateTime.Parse(val + "");
                 }
             }
         }

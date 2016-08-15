@@ -26,6 +26,8 @@ namespace StockMan.Message.TaskInstance
             try
             {
                 ComputeStockState(sender);
+                ComputeCategoryState(sender);
+                ComputeMarketState(sender);
             }
             catch (Exception ex)
             {
@@ -41,44 +43,94 @@ namespace StockMan.Message.TaskInstance
 
             IList<TaskMessage> msgList = new List<TaskMessage>();
             TechCycle[] cycleList = new TechCycle[] { TechCycle.day, TechCycle.week, TechCycle.month };
-            //foreach (var category in cateList)
+            foreach (var category in cateList)
+            {
+                IList<stock> stockList = stockService.GetStockByCategory(category.code);
+
+                foreach (var stock in stockList)
+                {
+                    this.Log().Info("计算股票：" + stock.name);
+
+                    foreach (var cycle in cycleList)
+                    {
+                        var task1 = new IndexTask
+                        {
+                            type = ObjectType.Stock,
+                            code = stock.code,
+                            cycle = cycle
+                        };
+                        sender.Send(JsonConvert.SerializeObject(task1));
+                        Thread.Sleep(100);
+                    }
+                }
+            }
+
+            //string[] list = new string[] { "0600265" };
+            //foreach (var code in list)
             //{
-            //    IList<stock> stockList = stockService.GetStockByCategory(category.code);
-
-            //    foreach (var stock in stockList)
+            //    foreach (var cycle in cycleList)
             //    {
-            //        this.Log().Info("计算股票：" + stock.name);
-
-            //        foreach (var cycle in cycleList)
+            //        var task1 = new IndexTask
             //        {
-            //            var task1 = new IndexTask
-            //            {
-            //                type = ObjectType.Stock,
-            //                code = stock.code,
-            //                cycle = cycle
-            //            };
-            //            sender.Send(JsonConvert.SerializeObject(task1));
-            //        }
+            //            type = ObjectType.Stock,
+            //            code = code,
+            //            cycle = cycle
+            //        };
+            //        sender.Send(JsonConvert.SerializeObject(task1));
             //    }
             //}
 
-            string[] list = new string[] { "0600265" };
-            foreach (var code in list)
+            return msgList;
+        }
+
+        private void ComputeCategoryState(Task.Interface.IMessageSender sender)
+        {
+            IList<stockcategory> cateList = cateService.FindAll();
+            TechCycle[] cycleList = new TechCycle[] { TechCycle.day, TechCycle.week, TechCycle.month };
+            this.Log().Info("开始计算行业形态");
+            foreach (var category in cateList)
             {
+                this.Log().Info("计算行业：" + category.name);
+
                 foreach (var cycle in cycleList)
                 {
                     var task1 = new IndexTask
                     {
-                        type = ObjectType.Stock,
-                        code = code,
+                        type = ObjectType.Category,
+                        code = category.code,
                         cycle = cycle
                     };
                     sender.Send(JsonConvert.SerializeObject(task1));
+                    Thread.Sleep(100);
                 }
             }
 
-            return msgList;
         }
+
+        private void ComputeMarketState(Task.Interface.IMessageSender sender)
+        {
+            var objList = objService.FindAll();
+            TechCycle[] cycleList = new TechCycle[] { TechCycle.day, TechCycle.week, TechCycle.month };
+
+            this.Log().Info("开始计算大盘形态");
+            foreach (var obj in objList)
+            {
+                this.Log().Info("计算大盘：" + obj.name);
+
+                foreach (var cycle in cycleList)
+                {
+                    var task1 = new IndexTask
+                    {
+                        type = ObjectType.Object,
+                        code = obj.code,
+                        cycle = cycle
+                    };
+                    sender.Send(JsonConvert.SerializeObject(task1));
+                    Thread.Sleep(100);
+                }
+            }
+        }
+
 
         public void Excute(string message)
         {

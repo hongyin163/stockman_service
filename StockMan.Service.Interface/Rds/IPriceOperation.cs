@@ -16,5 +16,6 @@ namespace StockMan.Service.Interface.Rds
         string GetData<TM>(string code,DateTime start,DateTime end) where TM : ObjectDataBase, new();
         PriceInfo GetCurrentData(ObjectType objType, TechCycle cycle, string code);  
         string GetHistoryData(ObjectType objType, TechCycle cycle, string code);
+        DateTime GetLatestDate(ObjectType objType, string code);
     }
 }

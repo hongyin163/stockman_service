@@ -111,10 +111,9 @@ namespace StockMan.Jobs.Recommend
 
 
             //每个行业，每个技术，最多推荐5只股票。
-
-            cateList.Each(p =>
+            foreach (var p in cateList)
             {
-                indexList.Each(i =>
+                foreach (var i in indexList)
                 {
                     this.Log().Info("推荐行业：" + p.name + ",技术" + i.name);
                     //and (c.day=1 or ( c.last_day=-1 and c.day=0))
@@ -147,8 +146,8 @@ namespace StockMan.Jobs.Recommend
                         });
                         entity.SaveChanges();
                     }
-                });
-            });
+                }
+            }
         }
 
         private void ClearRecormend()

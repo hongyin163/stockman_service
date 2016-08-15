@@ -48,5 +48,22 @@ namespace StockMan.Service.Rds
                 return entity.users.Count();
             }
         }
+
+
+        public IList<users> GetUserWithDataList(int pageSize, int pageIndex)
+        {
+            int skip = pageIndex * pageSize;
+            using (StockManDBEntities entity = new StockManDBEntities())
+            {
+                return entity.users
+                    .Include("stock_user_map")
+                    .Include("object_user_map")
+                    .Include("index_user_map")
+                    .OrderBy(p=>p.id)
+                    .Skip(skip)
+                    .Take(pageSize)
+                    .ToList();
+            }
+        }
     }
 }

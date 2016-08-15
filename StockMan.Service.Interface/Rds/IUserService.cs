@@ -13,5 +13,6 @@ namespace StockMan.Service.Interface.Rds
         void SaveUserConfig(sys_userconfig config);
 
         long GetUserCount();
+        IList<users> GetUserWithDataList(int pageSize,int pageIndex);
     }
 }

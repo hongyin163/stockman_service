@@ -39,6 +39,7 @@ namespace StockMan.Jobs.Recommend
                 //获取推荐的个股
                 this.Log().Info("推荐个股");
                 var stockList = GetRecomentStock(u);
+
                 //生成推荐的消息
                 string recoReuslt = string.Empty;
                 if (stockList.Count > 0)

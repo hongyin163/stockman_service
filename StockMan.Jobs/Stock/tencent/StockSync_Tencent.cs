@@ -430,6 +430,85 @@ namespace StockMan.Jobs.Stock.tencent
             }
             return prifix + stock.code.Substring(1);
         }
+        private string GetStockCode(string code)
+        {
+            string prifix = string.Empty;
+            if (code.Substring(0, 1) == "0")
+            {
+                prifix = "sh";
+            }
+            else if (code.Substring(0, 1) == "1")
+            {
+                prifix = "sz";
+            }
+            return prifix + code.Substring(1);
+        }
+        public IList<data.PriceInfo> GetPriceByDay(string code)
+        {
+            //http://data.gtimg.cn/flashdata/hushen/daily/14/sh600050.js
+            string url = "http://data.gtimg.cn/flashdata/hushen/daily/{0}/{1}.js";
+
+
+            //daily_data_04="\n\
+            //040102 3.93 4.12 4.17 3.91 1885527\n\
+            //040105 4.13 4.53 4.53 4.13 3699816\n\
+            //040106 4.59 4.88 4.98 4.56 4880455\n\
+            //040107 4.88 4.78 4.97 4.73 3515511\n\
+            //040108 4.75 4.94 5.05 4.72 2859660\n\
+            //040109 4.92 4.87 5.11 4.84 2846707\n\
+            //040112 4.89 5.02 5.04 4.78 2001276\n\
+            //040113 5.04 4.89 5.08 4.82 1837009\n\
+            //040114 4.88 4.74 4.90 4.72 1938512\n\
+            //040115 4.74 4.74 4.82 4.72 1131030\n\
+            //040116 4.76 4.74 4.79 4.61 1320374\n\
+            //040129 4.78 4.86 4.95 4.78 1330404\n\
+            //040130 4.89 4.87 5.03 4.84 1758014\n\
+            //040202 5.36 5.17 5.36 5.03 4633113\n\
+            //040203 5.18 5.15 5.19 5.07 1248059\n\
+
+            string codes = GetStockCode(code);
+            List<data.PriceInfo> stockList = new List<data.PriceInfo>();
+            IList<string> urls = new List<string>();
+            for (int i = 2010; i <= DateTime.Now.Year; i++)
+            {
+                string target = string.Format(url, (i.ToString()).Substring(2), codes);
+
+                var tempList = GetStockPriceFromServer(code, target);
+                if (tempList.Count <= 0)
+                    continue;
+                stockList.AddRange(tempList);
+                Thread.Sleep(100);
+            }
+            return stockList;
+        }
+
+        public IList<data.PriceInfo> GetPriceByWeek(string code)
+        {
+            //http://data.gtimg.cn/flashdata/hushen/weekly/sh600050.js
+            string url = "http://data.gtimg.cn/flashdata/hushen/weekly/{0}.js";
+            string codes = GetStockCode(code);
+            List<data.StockInfo> stockList = new List<data.StockInfo>();
+
+            string target = string.Format(url, codes);
+
+            var tempList = GetStockPriceFromServer(code, target);
+
+            return tempList;
+        }
+
+        public IList<data.PriceInfo> GetPriceByMonth(string code)
+        {
+            //http://data.gtimg.cn/flashdata/hushen/monthly/sh600050.js
+            string url = "http://data.gtimg.cn/flashdata/hushen/monthly/{0}.js";
+            string codes = GetStockCode(code);
+            List<data.StockInfo> stockList = new List<data.StockInfo>();
+
+            string target = string.Format(url, codes);
+
+            var tempList = GetStockPriceFromServer(code, target);
+
+            return tempList;
+        }
     }
 
 

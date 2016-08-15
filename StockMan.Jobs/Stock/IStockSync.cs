@@ -7,7 +7,7 @@ using data = StockMan.EntityModel;
 
 namespace StockMan.Jobs.Stock
 {
-    interface IStockSync
+    public interface IStockSync
     {
         data.stock_category_group initCategoryGroup();
 
@@ -16,9 +16,27 @@ namespace StockMan.Jobs.Stock
         IList<data.stock> GetStocks(data.stockcategory category);
 
         IList<data.StockInfo> GetPrice(IList<data.stock> stock);
-
+        /// <summary>
+        /// 废弃
+        /// </summary>
+        /// <param name="stock"></param>
+        /// <returns></returns>
         IList<data.PriceInfo> GetPriceByDay(data.stock stock);
+        /// <summary>
+        /// 废弃
+        /// </summary>
+        /// <param name="stock"></param>
+        /// <returns></returns>
         IList<data.PriceInfo> GetPriceByWeek(data.stock stock);
+        /// <summary>
+        /// 废弃
+        /// </summary>
+        /// <param name="stock"></param>
+        /// <returns></returns>
         IList<data.PriceInfo> GetPriceByMonth(data.stock stock);
+
+        IList<data.PriceInfo> GetPriceByDay(string code);
+        IList<data.PriceInfo> GetPriceByWeek(string code);
+        IList<data.PriceInfo> GetPriceByMonth(string code);
     }
 }
