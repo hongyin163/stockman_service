@@ -55,6 +55,8 @@
     <Compile Include="Rds\IStockCategoryService.cs" />
     <Compile Include="Rds\IStockService.cs" />
     <Compile Include="Rds\ITagService.cs" />
+    <Compile Include="Rds\IUserAmountService.cs" />
+    <Compile Include="Rds\IUserTradeService.cs" />
     <Compile Include="Rds\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>

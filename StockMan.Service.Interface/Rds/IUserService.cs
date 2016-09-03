@@ -14,5 +14,6 @@ namespace StockMan.Service.Interface.Rds
 
         long GetUserCount();
         IList<users> GetUserWithDataList(int pageSize,int pageIndex);
+        users GetUserWithDataList(string id);
     }
 }

@@ -641,20 +641,6 @@
           <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="group_code" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="sys_comments">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="int" Nullable="false" />
-          <Property Name="parent_code" Type="int" />
-          <Property Name="index" Type="int" />
-          <Property Name="object_code" Type="varchar" MaxLength="45" />
-          <Property Name="content" Type="varchar" MaxLength="45" />
-          <Property Name="up" Type="int" />
-          <Property Name="down" Type="int" />
-          <Property Name="user_id" Type="varchar" MaxLength="45" />
-          <Property Name="createtime" Type="datetime" Precision="0" />
-        </EntityType>
         <EntityType Name="sys_goodidea">
           <Key>
             <PropertyRef Name="code" />
@@ -704,6 +690,14 @@
           <Property Name="createtime" Type="datetime" Precision="0" />
           <Property Name="context" Type="longtext" />
         </EntityType>
+        <EntityType Name="user_amount">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="user_investintention">
           <Key>
             <PropertyRef Name="code" />
@@ -735,6 +729,26 @@
           <Property Name="state" Type="int" />
           <Property Name="type" Type="int" />
           <Property Name="notice_state" Type="int" />
+        </EntityType>
+        <EntityType Name="user_position">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="position" Type="int" />
+          <Property Name="stock_code" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="user_trade">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="count" Type="int" />
+          <Property Name="direact" Type="int" />
+          <Property Name="stock_code" Type="varchar" MaxLength="45" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="userdataversion">
           <Key>
@@ -800,14 +814,16 @@
           <EntitySet Name="stock_user_map" EntityType="Self.stock_user_map" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="stockcategory" EntityType="Self.stockcategory" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="stockcategory_user_map" EntityType="Self.stockcategory_user_map" Schema="stockmandb" store:Type="Tables" />
-          <EntitySet Name="sys_comments" EntityType="Self.sys_comments" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="sys_goodidea" EntityType="Self.sys_goodidea" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="sys_investdata" EntityType="Self.sys_investdata" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="sys_userconfig" EntityType="Self.sys_userconfig" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="tag" EntityType="Self.tag" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="tech_context" EntityType="Self.tech_context" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="user_amount" EntityType="Self.user_amount" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="user_investintention" EntityType="Self.user_investintention" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="user_message" EntityType="Self.user_message" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="user_position" EntityType="Self.user_position" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="user_trade" EntityType="Self.user_trade" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="userdataversion" EntityType="Self.userdataversion" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="stockmandb" store:Type="Tables" />
         </EntityContainer>
@@ -907,8 +923,10 @@
           <EntitySet Name="object_tag_map" EntityType="StockMan.EntityModel.object_tag_map" />
           <EntitySet Name="tag" EntityType="StockMan.EntityModel.tag" />
           <EntitySet Name="reco_stock_category_tag" EntityType="StockMan.EntityModel.reco_stock_category_tag" />
-          <EntitySet Name="sys_comments" EntityType="StockMan.EntityModel.sys_comments" />
           <EntitySet Name="reco_stock_category_state" EntityType="StockMan.EntityModel.reco_stock_category_state" />
+          <EntitySet Name="user_amount" EntityType="StockMan.EntityModel.user_amount" />
+          <EntitySet Name="user_position" EntityType="StockMan.EntityModel.user_position" />
+          <EntitySet Name="user_trade" EntityType="StockMan.EntityModel.user_trade" />
         </EntityContainer>
         <EntityType Name="customobject">
           <Key>
@@ -1777,20 +1795,6 @@
           <Property Name="index_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="index_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="sys_comments">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="Int32" Nullable="false" />
-          <Property Name="parent_code" Type="Int32" />
-          <Property Name="index" Type="Int32" />
-          <Property Name="object_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="content" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="up" Type="Int32" />
-          <Property Name="down" Type="Int32" />
-          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="createtime" Type="DateTime" />
-        </EntityType>
         <EntityType Name="reco_stock_category_state">
           <Key>
             <PropertyRef Name="code" />
@@ -1817,6 +1821,34 @@
           <Property Name="price" Type="Decimal" />
           <Property Name="yestclose" Type="Decimal" />
           <Property Name="cycle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_amount">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" />
+          <Property Name="mv" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="user_position">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="position" Type="Int32" />
+          <Property Name="stock_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_trade">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="direact" Type="Int32" />
+          <Property Name="stock_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2576,21 +2608,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sys_comments">
-            <EntityTypeMapping TypeName="StockMan.EntityModel.sys_comments">
-              <MappingFragment StoreEntitySet="sys_comments">
-                <ScalarProperty Name="createtime" ColumnName="createtime" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="down" ColumnName="down" />
-                <ScalarProperty Name="up" ColumnName="up" />
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="object_code" ColumnName="object_code" />
-                <ScalarProperty Name="index" ColumnName="index" />
-                <ScalarProperty Name="parent_code" ColumnName="parent_code" />
-                <ScalarProperty Name="code" ColumnName="code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="reco_stock_category_state">
             <EntityTypeMapping TypeName="StockMan.EntityModel.reco_stock_category_state">
               <MappingFragment StoreEntitySet="reco_stock_category_state">
@@ -2615,6 +2632,37 @@
                 <ScalarProperty Name="index_code" ColumnName="index_code" />
                 <ScalarProperty Name="tag_code" ColumnName="tag_code" />
                 <ScalarProperty Name="cate_code" ColumnName="cate_code" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_amount">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_amount">
+              <MappingFragment StoreEntitySet="user_amount">
+                <ScalarProperty Name="mv" ColumnName="mv" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_position">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_position">
+              <MappingFragment StoreEntitySet="user_position">
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_trade">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_trade">
+              <MappingFragment StoreEntitySet="user_trade">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="direact" ColumnName="direact" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="code" ColumnName="code" />
               </MappingFragment>
             </EntityTypeMapping>

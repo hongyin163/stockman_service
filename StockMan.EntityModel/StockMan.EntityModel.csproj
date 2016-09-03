@@ -100,8 +100,11 @@
     <Compile Include="Entity\tech_context.cs" />
     <Compile Include="Entity\userdataversion.cs" />
     <Compile Include="Entity\users.cs" />
+    <Compile Include="Entity\user_amount.cs" />
     <Compile Include="Entity\user_investintention.cs" />
     <Compile Include="Entity\user_message.cs" />
+    <Compile Include="Entity\user_position.cs" />
+    <Compile Include="Entity\user_trade.cs" />
     <Compile Include="Enum\DataCode.cs">
       <SubType>Code</SubType>
     </Compile>

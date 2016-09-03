@@ -70,6 +70,7 @@
     <Compile Include="StockService.cs" />
     <Compile Include="TagService.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="UserTradeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StockMan.Common\StockMan.Common.csproj">

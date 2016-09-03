@@ -51,6 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="user_amount.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="user_position.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
+    <Content Include="user_trade.cs">
+      <DependentUpon>StockManModel.tt</DependentUpon>
+    </Content>
     <Content Include="sys_comments.cs">
       <DependentUpon>StockManModel.tt</DependentUpon>
     </Content>

@@ -14,6 +14,7 @@ namespace StockMan.Message.TaskInstance
 {
     public class RecoStockForUserTask : Message.Task.ITask
     {
+        private const string CODE = "T0006";
         IUserService userService = new UserService();
         public void Excute(string message)
         {
@@ -83,7 +84,7 @@ namespace StockMan.Message.TaskInstance
 
         public string GetCode()
         {
-            return "T0006";
+            return CODE;
         }
 
         public void Send(IMessageSender sender)

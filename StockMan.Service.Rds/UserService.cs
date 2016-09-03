@@ -65,5 +65,18 @@ namespace StockMan.Service.Rds
                     .ToList();
             }
         }
+
+        public users GetUserWithDataList(string id)
+        {
+            using (StockManDBEntities entity = new StockManDBEntities())
+            {
+                return entity.users
+                    .Include("stock_user_map")
+                    .Include("object_user_map")
+                    .Include("index_user_map")
+                    .FirstOrDefault(p => p.id == id);
+                
+            }
+        }
     }
 }

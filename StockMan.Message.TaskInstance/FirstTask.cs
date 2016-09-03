@@ -13,6 +13,7 @@ namespace StockMan.Message.TaskInstance
 
     public class OneTask : Message.Task.ITask
     {
+        private const string CODE = "T0000";
         public void Excute(string message)
         {
             throw new NotImplementedException();
@@ -20,7 +21,7 @@ namespace StockMan.Message.TaskInstance
 
         public string GetCode()
         {
-            throw new NotImplementedException();
+            return CODE;
         }
 
         public void Send(IMessageSender sender)
