@@ -201,7 +201,6 @@
     </None>
     <None Include="packages.config" />
     <None Include="Server\vssver2.scc" />
-    <None Include="StockMan.Jobs_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StockMan.Common\StockMan.Common.csproj">

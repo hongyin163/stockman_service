@@ -6,7 +6,7 @@ using StockMan.EntityModel;
 
 namespace StockMan.Service.Interface.Rds
 {
-    public interface IUserTradeService : IEntityService<user_trade>,IDisposable
+    public interface IUserAmountService : IEntityService<user_trade>,IDisposable
     {
 
     }
