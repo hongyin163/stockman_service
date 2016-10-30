@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="MyExtition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TradeException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

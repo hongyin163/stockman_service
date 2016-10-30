@@ -24,8 +24,8 @@
           <Property Name="assembly" Type="varchar" MaxLength="45" />
           <Property Name="type" Type="varchar" MaxLength="45" />
           <Property Name="time" Type="varchar" MaxLength="45" />
-          <Property Name="enable" Type="int" Nullable="false" />
-          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="enable" Type="int" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <EntityContainer Name="messageModelStoreContainer">
           <EntitySet Name="mq_message" EntityType="Self.mq_message" Schema="message" store:Type="Tables" />

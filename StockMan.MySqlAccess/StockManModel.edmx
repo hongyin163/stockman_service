@@ -694,9 +694,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="mv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="id" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="mv" Type="decimal" Precision="10" Scale="0" />
         </EntityType>
         <EntityType Name="user_investintention">
           <Key>
@@ -735,7 +735,7 @@
             <PropertyRef Name="code" />
           </Key>
           <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" />
           <Property Name="position" Type="int" />
           <Property Name="stock_code" Type="varchar" MaxLength="45" />
         </EntityType>
@@ -744,11 +744,12 @@
             <PropertyRef Name="code" />
           </Key>
           <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="user_id" Type="varchar" MaxLength="45" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" />
           <Property Name="count" Type="int" />
           <Property Name="direact" Type="int" />
           <Property Name="stock_code" Type="varchar" MaxLength="45" />
-          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="date" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="userdataversion">
           <Key>
@@ -925,8 +926,8 @@
           <EntitySet Name="reco_stock_category_tag" EntityType="StockMan.EntityModel.reco_stock_category_tag" />
           <EntitySet Name="reco_stock_category_state" EntityType="StockMan.EntityModel.reco_stock_category_state" />
           <EntitySet Name="user_amount" EntityType="StockMan.EntityModel.user_amount" />
-          <EntitySet Name="user_position" EntityType="StockMan.EntityModel.user_position" />
           <EntitySet Name="user_trade" EntityType="StockMan.EntityModel.user_trade" />
+          <EntitySet Name="user_position" EntityType="StockMan.EntityModel.user_position" />
         </EntityContainer>
         <EntityType Name="customobject">
           <Key>
@@ -1830,15 +1831,6 @@
           <Property Name="amount" Type="Decimal" />
           <Property Name="mv" Type="Decimal" />
         </EntityType>
-        <EntityType Name="user_position">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="user_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="position" Type="Int32" />
-          <Property Name="stock_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="user_trade">
           <Key>
             <PropertyRef Name="code" />
@@ -1849,6 +1841,16 @@
           <Property Name="direact" Type="Int32" />
           <Property Name="stock_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="price" Type="Decimal" />
+          <Property Name="date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="user_position">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="position" Type="Int32" />
+          <Property Name="stock_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2645,23 +2647,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="user_position">
-            <EntityTypeMapping TypeName="StockMan.EntityModel.user_position">
-              <MappingFragment StoreEntitySet="user_position">
+          <EntitySetMapping Name="user_trade">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_trade">
+              <MappingFragment StoreEntitySet="user_trade">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="stock_code" ColumnName="stock_code" />
-                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="direact" ColumnName="direact" />
+                <ScalarProperty Name="count" ColumnName="count" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="code" ColumnName="code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="user_trade">
-            <EntityTypeMapping TypeName="StockMan.EntityModel.user_trade">
-              <MappingFragment StoreEntitySet="user_trade">
-                <ScalarProperty Name="price" ColumnName="price" />
+          <EntitySetMapping Name="user_position">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_position">
+              <MappingFragment StoreEntitySet="user_position">
                 <ScalarProperty Name="stock_code" ColumnName="stock_code" />
-                <ScalarProperty Name="direact" ColumnName="direact" />
-                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="position" ColumnName="position" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="code" ColumnName="code" />
               </MappingFragment>

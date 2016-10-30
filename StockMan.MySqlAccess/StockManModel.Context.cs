@@ -76,7 +76,7 @@ namespace StockMan.MySqlAccess
         public DbSet<reco_stock_category_tag> reco_stock_category_tag { get; set; }
         public DbSet<reco_stock_category_state> reco_stock_category_state { get; set; }
         public DbSet<user_amount> user_amount { get; set; }
-        public DbSet<user_position> user_position { get; set; }
         public DbSet<user_trade> user_trade { get; set; }
+        public DbSet<user_position> user_position { get; set; }
     }
 }

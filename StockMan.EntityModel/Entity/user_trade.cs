@@ -20,5 +20,6 @@ namespace StockMan.EntityModel
         public Nullable<int> direact { get; set; }
         public string stock_code { get; set; }
         public Nullable<decimal> price { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     }
 }

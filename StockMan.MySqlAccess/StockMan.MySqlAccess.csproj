@@ -60,9 +60,6 @@
     <Content Include="user_trade.cs">
       <DependentUpon>StockManModel.tt</DependentUpon>
     </Content>
-    <Content Include="sys_comments.cs">
-      <DependentUpon>StockManModel.tt</DependentUpon>
-    </Content>
     <Content Include="object_tag_map.cs">
       <DependentUpon>StockManModel.tt</DependentUpon>
     </Content>
