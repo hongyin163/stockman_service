@@ -39,8 +39,8 @@ namespace StockMan.Web.RestService.Filters
             if (String.IsNullOrEmpty(authorization.Parameter))
             {
                 // Authentication was attempted but failed. Set ErrorResult to indicate an error.
-                //context.ErrorResult = new AuthenticationFailureResult("Missing credentials", request);
-                context.ErrorResult = new BadRequestResult(request);
+                context.ErrorResult = new AuthenticationFailureResult("Missing credentials", request);
+                //context.ErrorResult = new BadRequestResult(request);
                 return;
             }
 
@@ -49,8 +49,8 @@ namespace StockMan.Web.RestService.Filters
             if (userNameAndPasword == null)
             {
                 // Authentication was attempted but failed. Set ErrorResult to indicate an error.
-                //context.ErrorResult = new AuthenticationFailureResult("Invalid credentials", request);
-                context.ErrorResult = new BadRequestResult(request);
+                context.ErrorResult = new AuthenticationFailureResult("Invalid credentials", request);
+                //context.ErrorResult = new BadRequestResult(request);
                 return;
             }
 
@@ -62,8 +62,8 @@ namespace StockMan.Web.RestService.Filters
             if (principal == null)
             {
                 // Authentication was attempted but failed. Set ErrorResult to indicate an error.
-                //context.ErrorResult = new AuthenticationFailureResult("Invalid username or password", request);
-                context.ErrorResult = new BadRequestResult(request);
+                context.ErrorResult = new AuthenticationFailureResult("Invalid username or password", request);
+                //context.ErrorResult = new BadRequestResult(request);
             }
             else
             {

@@ -30,7 +30,7 @@ namespace StockMan.Message.TaskInstance
         IStockSync sync = new StockSync_Tencent();
         public void Excute(string message)
         {
-            this.Log().Info("处理消息");
+            //this.Log().Info("处理消息");
             var log = this.Log();
             var msg = JsonConvert.DeserializeObject<PriceUpdate>(message);
 

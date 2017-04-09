@@ -45,7 +45,7 @@ namespace StockMan.Message.Task
             var path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.PrivateBinPath, assembleName + ".dll");
 
             if (!File.Exists(path))
-                throw new Exception(string.Format("程序集文件不存在:{0},{1}", assembleName, typeName));
+                throw new Exception(string.Format("程序集文件不存在:{0}", path));
 
             var asseblyBytes = File.ReadAllBytes(path);
 

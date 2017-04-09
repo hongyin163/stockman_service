@@ -15,7 +15,6 @@ using StockMan.Facade.Models;
 using System.Web;
 using System.Web.Http.Results;
 using StockMan.Web.RestService.Filters;
-using System.Web.Http;
 using System.Web.Http.OData;
 namespace StockMan.Web.RestService.Controllers
 {

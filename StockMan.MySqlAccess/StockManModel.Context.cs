@@ -78,5 +78,6 @@ namespace StockMan.MySqlAccess
         public DbSet<user_amount> user_amount { get; set; }
         public DbSet<user_trade> user_trade { get; set; }
         public DbSet<user_position> user_position { get; set; }
+        public DbSet<user_strategy> user_strategy { get; set; }
     }
 }

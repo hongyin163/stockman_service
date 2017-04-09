@@ -67,6 +67,7 @@
         <EntityTypeShape EntityType="StockMan.EntityModel.user_amount" Width="1.5" PointX="20.375" PointY="3.75" />
         <EntityTypeShape EntityType="StockMan.EntityModel.user_trade" Width="1.5" PointX="3.375" PointY="19.75" />
         <EntityTypeShape EntityType="StockMan.EntityModel.user_position" Width="1.5" PointX="20.375" PointY="21.75" />
+        <EntityTypeShape EntityType="StockMan.EntityModel.user_strategy" Width="1.5" PointX="22.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

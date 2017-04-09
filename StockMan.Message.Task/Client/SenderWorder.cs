@@ -58,7 +58,7 @@ namespace StockMan.Message.Task.Client
         public void Start()
         {
 
-            RemoteLoader rl = Assembleloader.GetRemoteLoader(taskCode);
+            RemoteLoader rl = Assembleloader.GetRemoteLoader(this.assembly,taskCode);
             taskSender = rl.GetTaskSender();
             taskSender.Load(assembly, type);
             taskSender.Start();

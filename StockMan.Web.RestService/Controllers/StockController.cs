@@ -134,6 +134,40 @@ namespace StockMan.Web.RestService.Controllers
                 return Ok<IEnumerable<Stock>>(result);
             }
         }
+        [HttpPost]
+        public IHttpActionResult FindPrice(Params p1)
+        {
+            var id = p1.id;
+            var results = CacheHelper.Get(id.Split(',').Select(s => "1_" + s).ToArray());
+            if (results != null && results.Length > 0)
+            {
+                return new StringToJsonResult(string.Format("[{0}]", string.Join(",", results)), this.Request);
+            }
+            else
+            {
+                var list = service.GetStocksByIds(id);
+                var result = list.Select(p => new Stock
+                {
+                    name = p.name,
+                    code = p.code,
+                    price = p.price,
+                    yestclose = p.yestclose,
+                    symbol = p.symbol,
+                    volume = p.volume,
+                    turnover = p.turnover,
+                    high = p.high,
+                    updown = p.updown,
+                    low = p.low,
+                    turnoverrate = p.turnoverrate,
+                    pe = p.pe,
+                    pb = p.pb,
+                    fv = p.fv,
+                    mv = p.mv,
+                    percent = p.percent
+                });
+                return Ok<IEnumerable<Stock>>(result);
+            }
+        }
         // GET api/Stock/5
         public Stock GetStock(string id)
         {
@@ -266,9 +300,10 @@ namespace StockMan.Web.RestService.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IHttpActionResult GetMyStocks(string id)
+        public IHttpActionResult GetMyStocks()
         {
-            var list = service.GetMyStock(id);
+            var user_id = this.User.Identity.Name;
+            var list = service.GetMyStock(user_id);
 
             //IList<string> codeList = list.Select(p => p.).ToList();
 
@@ -281,11 +316,11 @@ namespace StockMan.Web.RestService.Controllers
                             sort = t.sort,
                             inhand = t.inhand ?? true
                         };
-            decimal version = versionService.GetUserDataVersion(id, dm.DataVersionCode.my_stock.ToString());
+            decimal version = versionService.GetUserDataVersion(user_id, dm.DataVersionCode.my_stock.ToString());
 
             var myStock = new MyStock()
             {
-                user_id = id,
+                user_id = user_id,
                 stocks = query.ToList(),
                 version = version
             };

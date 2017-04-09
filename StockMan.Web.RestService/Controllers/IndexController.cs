@@ -205,8 +205,9 @@ namespace StockMan.Web.RestService.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IHttpActionResult GetMyIndexs(string id)
+        public IHttpActionResult GetMyIndexs()
         {
+            var id = this.User.Identity.Name;
             var list = service.GetMyIndexs(id);
 
             //IList<string> codeList = list.Select(p => p.).ToList();
@@ -242,8 +243,9 @@ namespace StockMan.Web.RestService.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IList<MyRule> GetMyRules(string id)
+        public IList<MyRule> GetMyRules()
         {
+            var id = this.User.Identity.Name;
             var list = ruleService.GetMyRule(id);
             IList<MyRule> ruleList = list.Select(rule => new MyRule
             {
@@ -362,10 +364,30 @@ namespace StockMan.Web.RestService.Controllers
             return Ok(new Message() { success = true });
         }
 
-
+        [HttpGet]
         public IList<ObjectState> GetState(string id)
         {
             IList<string> codeList = id.Split(',').ToList();
+            var list = service.GetObjectStates(codeList);
+            return list.Select(p => new ObjectState
+            {
+                code = p.code,
+                category_code = p.category_code,
+                object_code = p.object_code,
+                index_code = p.index_code,
+                date = p.date,
+                day = p.day,
+                week = p.week,
+                month = p.month,
+                last_day = p.last_day,
+                last_week = p.last_week,
+                last_month = p.last_month
+            }).ToList();
+        }
+        [HttpPost]
+        public IList<ObjectState> FindState([FromBody]Params p1)
+        {
+            IList<string> codeList = p1.id.Split(',').ToList();
             var list = service.GetObjectStates(codeList);
             return list.Select(p => new ObjectState
             {
@@ -402,6 +424,12 @@ namespace StockMan.Web.RestService.Controllers
             });
             return Ok<IEnumerable<IndexDefinition>>(result);
         }
+
+    }
+
+    public class Params
+    {
+        public string id { get; set; }
 
     }
 }

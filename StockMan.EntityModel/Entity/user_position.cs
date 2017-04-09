@@ -18,5 +18,6 @@ namespace StockMan.EntityModel
         public string user_id { get; set; }
         public Nullable<int> position { get; set; }
         public string stock_code { get; set; }
+        public Nullable<decimal> cost { get; set; }
     }
 }

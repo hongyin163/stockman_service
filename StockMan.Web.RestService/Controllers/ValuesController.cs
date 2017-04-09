@@ -1,4 +1,6 @@
 ﻿using StockMan.MySqlAccess;
+using StockMan.Service.Cache;
+using StockMan.Web.RestService.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,11 @@ namespace StockMan.Web.RestService.Controllers
 {
     public class ValuesController : ApiController
     {
+        [HttpGet]
+        public IHttpActionResult UserName()
+        {
+            return Ok(this.User.Identity.Name);
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -19,7 +26,7 @@ namespace StockMan.Web.RestService.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public string Get(string id)
         {
             StockManDBEntities entity = new StockManDBEntities();
             var stock = entity.stock.Find(id);
@@ -39,6 +46,11 @@ namespace StockMan.Web.RestService.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+        [HttpGet]
+        public IHttpActionResult GetCacheData(string id)
+        {
+            return Ok(CacheHelper.Get(id));
         }
     }
 }

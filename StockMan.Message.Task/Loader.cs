@@ -36,7 +36,7 @@ namespace StockMan.Message.Task
             setup.ApplicationBase = AppDomain.CurrentDomain.BaseDirectory;
             setup.PrivateBinPath = path;
             setup.ApplicationName = name;
-            setup.ConfigurationFile = path + "App.config";
+            setup.ConfigurationFile = Path.Combine(path, "App.config");
             var appDomain = AppDomain.CreateDomain(name, null, setup);
             appDomainDic.Add(name, appDomain);
 
@@ -52,9 +52,9 @@ namespace StockMan.Message.Task
             }
         }
 
-        public RemoteLoader GetRemoteLoader(string taskCode)
+        public RemoteLoader GetRemoteLoader(string assemblyName, string taskCode)
         {
-            var path = string.Format("{0}\\{1}\\", AppDomain.CurrentDomain.BaseDirectory + "tasks", taskCode);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tasks", assemblyName);
             AppDomain appDomain = this.CreateAppDomain(taskCode, path);
             return (RemoteLoader)appDomain.CreateInstanceAndUnwrap("StockMan.Message.Task", "StockMan.Message.Task.RemoteLoader");
         }

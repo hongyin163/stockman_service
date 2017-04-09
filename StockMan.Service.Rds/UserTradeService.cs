@@ -7,7 +7,7 @@ using StockMan.EntityModel;
 using StockMan.Service.Interface.Rds;
 using StockMan.MySqlAccess;
 using StockMan.Common;
-
+using Newtonsoft.Json;
 namespace StockMan.Service.Rds
 {
     public class UserTradeService : ServiceBase<user_trade>, IUserTradeService
@@ -47,7 +47,8 @@ namespace StockMan.Service.Rds
                     {
                         um.amount = um.amount - amount;
                         entity.SaveChanges();
-                    }else
+                    }
+                    else
                     {
                         throw new TradeException("余额不足");
                     }
@@ -62,6 +63,17 @@ namespace StockMan.Service.Rds
             }
         }
 
+        public IList<user_trade> GetUserTrade(string user_id)
+        {
+            using (StockManDBEntities entity = new StockManDBEntities())
+            {
+                return entity.user_trade
+                    .Where(p => p.user_id == user_id)
+                    .OrderByDescending(p => p.date)
+                    .Take(5)
+                    .ToList();
+            }
+        }
         public void AddPosition(string user_id, string stock_code, int position)
         {
             using (StockManDBEntities entity = new StockManDBEntities())
@@ -106,7 +118,7 @@ namespace StockMan.Service.Rds
         {
             using (StockManDBEntities entity = new StockManDBEntities())
             {
-                var code = user_id + "_" + stock_code + "_" + "";
+                var code = user_id + "_" + stock_code + "_" + (int)tradeDirection + "_" + DateTime.Now.ToString("yyyyMMddhhmmss");
                 entity.user_trade.Add(new user_trade
                 {
                     code = code,
@@ -114,7 +126,8 @@ namespace StockMan.Service.Rds
                     stock_code = stock_code,
                     count = count,
                     direact = (int)tradeDirection,
-                    price = price
+                    price = price,
+                    date = DateTime.Now
                 });
                 entity.SaveChanges();
             }
@@ -172,6 +185,52 @@ namespace StockMan.Service.Rds
                 else
                 {
                     throw new TradeException("没有持仓");
+                }
+            }
+        }
+
+        public void SetStrategy(string user_id, IList<string> strategry)
+        {
+            using (StockManDBEntities entity = new StockManDBEntities())
+            {
+                if (strategry==null)
+                {
+                    strategry = new List<string>();
+                }
+
+                var us = entity.user_strategy.FirstOrDefault(p => p.user_id == user_id);
+                if (us == null)
+                {
+                    entity.user_strategy.Add(new user_strategy
+                    {
+                        user_id = user_id,
+                        strategy =JsonConvert.SerializeObject(strategry)
+                    });
+                }
+                else
+                {
+                    us.strategy = JsonConvert.SerializeObject(strategry);
+                }
+                entity.SaveChanges();
+            }
+        }
+        public IList<string> GetStragegy(string user_id)
+        {
+            using (StockManDBEntities entity = new StockManDBEntities())
+            {
+
+                var data = entity.user_strategy.Where(p => p.user_id == user_id).FirstOrDefault();
+                if (data == null)
+                {
+                    return new List<string>();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(data.strategy))
+                    {
+                        return new List<string>();
+                    }
+                    return JsonConvert.DeserializeObject<IList<string>>(data.strategy);
                 }
             }
         }

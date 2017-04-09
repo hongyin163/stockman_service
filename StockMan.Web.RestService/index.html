@@ -2,8 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+
+    <script src="Resource/js/jquery.min.js"></script>
+    <script>    
+        $(function () {
+            $('#test').click(function () {
+                //fetch("api/index/FindState", {
+                //    method: "POST",
+                //    headers: {
+                //        "Content-Type": "application/x-www-form-urlencoded"
+                //    },
+                //    body: "id=aaaaa"
+                //}).then(function (res) {
+                //    debugger;
+                //});
+                //return;
+                $.ajax({
+                    url: 'api/index/FindState',
+                    type: 'post',
+                    data:'id=aaa',
+                    cache: false,
+                    contentType: 'application/x-www-form-urlencoded',
+                    dataType: 'json',
+                    success: function (data) {
+                        debugger;
+                        successfn(data)
+                    },
+                    complete: function () {
+                        if (completefn) {
+                            completefn();
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus) {
+                        debugger;
+                        if (errorfn) {
+                            errorfn(XMLHttpRequest, textStatus);
+                        } else {
+                            popMsg.mid({ msg: "抱歉，系统不稳定，请稍后重试", type: "fail", timer: 1500 })
+                        }
+                    }
+                });
+            })
+        })
+    </script>
 </head>
 <body>
-
+    <div>
+       <button id="test" >提交</button>
+    </div>                              
 </body>
 </html>

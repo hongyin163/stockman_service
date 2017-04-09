@@ -49,11 +49,11 @@ namespace StockMan.Message.Task.Client
         {
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             var basePath = AppDomain.CurrentDomain.BaseDirectory + "tasks";
-            this.binPath = Path.Combine(basePath, taskCode);
+            this.binPath = Path.Combine(basePath, assembleName);
             var path = Path.Combine(binPath, assembleName + ".dll");
-
+            
             if (!File.Exists(path))
-                throw new Exception(string.Format("程序集文件不存在:{0},{1}", assembleName, typeName));
+                throw new Exception(string.Format("程序集文件不存在:{0}", path));
 
             var asseblyBytes = File.ReadAllBytes(path);
 
@@ -74,14 +74,21 @@ namespace StockMan.Message.Task.Client
 
         private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            var strTempAssmbPath = Path.Combine(this.binPath, args.Name.Substring(0, args.Name.IndexOf(",")) + ".dll");
+            var strTempAssmbPath = Path.Combine(this.binPath, args.Name.Substring(0, args.Name.IndexOf(",")));
+            var exePath = strTempAssmbPath + ".exe";
+            var dllPath= strTempAssmbPath + ".dll";
 
-            if (File.Exists(strTempAssmbPath))
+            if (File.Exists(dllPath))
             {
-                return Assembly.LoadFrom(strTempAssmbPath);
+                return Assembly.LoadFrom(dllPath);
             }
-            return null;
 
+            if (File.Exists(exePath))
+            {
+                return Assembly.LoadFrom(exePath);
+            }
+
+            return null;
         }
 
         private ITask GetNextTask()
@@ -111,7 +118,9 @@ namespace StockMan.Message.Task.Client
 
             var senderTask= new SenderTask(task);
             senderTask.onComplete += senderTask_onComplete;
+
             this.TaskList.Add(task.GetCode(), senderTask);
+
             TaskThread.Post(senderTask);
 
             try

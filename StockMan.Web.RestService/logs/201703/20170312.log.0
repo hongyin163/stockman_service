@@ -1,0 +1,58 @@
+ 2017-03-12 13:19:37,853-操作已超时。
+   在 StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) 位置 c:\TeamCity\buildAgent\work\58bc9a6df18a3782\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:行号 733
+   在 StockMan.Service.Cache.CacheHelper..cctor() 位置 D:\coder\stockman_service\StockMan.Service.Cache\CacheHelper.cs:行号 15
+ 2017-03-12 13:21:14,147-操作已超时。
+   在 StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) 位置 c:\TeamCity\buildAgent\work\58bc9a6df18a3782\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:行号 733
+   在 StockMan.Service.Cache.CacheHelper..cctor() 位置 D:\coder\stockman_service\StockMan.Service.Cache\CacheHelper.cs:行号 15
+ 2017-03-12 13:23:51,955-操作已超时。
+   在 StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) 位置 c:\TeamCity\buildAgent\work\58bc9a6df18a3782\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:行号 733
+   在 StockMan.Service.Cache.CacheHelper..cctor() 位置 D:\coder\stockman_service\StockMan.Service.Cache\CacheHelper.cs:行号 15
+ 2017-03-12 13:33:02,393-操作已超时。
+   在 StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) 位置 c:\TeamCity\buildAgent\work\58bc9a6df18a3782\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:行号 733
+   在 StockMan.Service.Cache.CacheHelper.Client() 位置 D:\coder\stockman_service\StockMan.Service.Cache\CacheHelper.cs:行号 20
+   在 StockMan.Service.Cache.CacheHelper.Get(String[] keys) 位置 D:\coder\stockman_service\StockMan.Service.Cache\CacheHelper.cs:行号 58
+   在 StockMan.Web.RestService.Controllers.TradeController.GetMyPosition(String id) 位置 D:\coder\stockman_service\StockMan.Web.RestService\Controllers\TradeController.cs:行号 38
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+ 2017-03-12 14:10:40,213-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:11:17,499-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:11:48,431-获取价格缓存异常：It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. UnableToResolvePhysicalConnection on PING
+ 2017-03-12 14:11:59,233-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:12:02,946-获取价格缓存异常：It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. UnableToResolvePhysicalConnection on PING
+ 2017-03-12 14:12:04,960-获取价格缓存异常：It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. UnableToResolvePhysicalConnection on PING
+ 2017-03-12 14:12:08,952-获取价格缓存异常：It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. UnableToResolvePhysicalConnection on PING
+ 2017-03-12 14:12:10,986-获取价格缓存异常：It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. UnableToResolvePhysicalConnection on PING
+ 2017-03-12 14:12:38,799-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:12:53,090-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:13:08,666-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:13:44,692-获取价格缓存异常：操作已超时。
+ 2017-03-12 14:15:00,566-获取价格缓存异常：操作已超时。
+ 2017-03-12 15:02:22,997-获取价格缓存异常：未将对象引用设置到对象的实例。
+ 2017-03-12 15:49:26,247-已取消一个任务。
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()

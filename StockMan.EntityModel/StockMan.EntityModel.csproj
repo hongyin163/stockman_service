@@ -104,6 +104,7 @@
     <Compile Include="Entity\user_investintention.cs" />
     <Compile Include="Entity\user_message.cs" />
     <Compile Include="Entity\user_position.cs" />
+    <Compile Include="Entity\user_strategy.cs" />
     <Compile Include="Entity\user_trade.cs" />
     <Compile Include="Enum\DataCode.cs">
       <SubType>Code</SubType>

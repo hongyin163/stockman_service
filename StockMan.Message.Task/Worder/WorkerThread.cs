@@ -169,7 +169,7 @@ namespace StockMan.Message.Task.Worder
             {
                 mq_task task = taskService.Find(taskCode);
 
-                RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.code);
+                RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.assembly,task.code);
 
                 var excuter = rl.GetTaskExcuteer();
                 excuter.Load(task.assembly, task.type);

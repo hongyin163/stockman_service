@@ -17,8 +17,9 @@ namespace StockMan.Service.Rds
                 {
                     entity.Database.ExecuteSqlCommand(string.Format("DELETE FROM '{0}'", tableName));
                 }
-                catch (Exception ex)
+                catch 
                 {
+                    throw;
                 }
             }
         }

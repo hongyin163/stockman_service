@@ -25,6 +25,7 @@ namespace StockMan.Message.Task.Control
         }
         public void Start()
         {
+            this.Log().Info("Client Start");
             this.thread.Start();
         }
 

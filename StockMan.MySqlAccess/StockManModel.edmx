@@ -738,6 +738,15 @@
           <Property Name="user_id" Type="varchar" MaxLength="50" />
           <Property Name="position" Type="int" />
           <Property Name="stock_code" Type="varchar" MaxLength="45" />
+          <Property Name="cost" Type="decimal" Precision="11" Scale="3" />
+        </EntityType>
+        <EntityType Name="user_strategy">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="50" />
+          <Property Name="strategy" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="user_trade">
           <Key>
@@ -824,6 +833,7 @@
           <EntitySet Name="user_investintention" EntityType="Self.user_investintention" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="user_message" EntityType="Self.user_message" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="user_position" EntityType="Self.user_position" Schema="stockmandb" store:Type="Tables" />
+          <EntitySet Name="user_strategy" EntityType="Self.user_strategy" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="user_trade" EntityType="Self.user_trade" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="userdataversion" EntityType="Self.userdataversion" Schema="stockmandb" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="stockmandb" store:Type="Tables" />
@@ -928,6 +938,7 @@
           <EntitySet Name="user_amount" EntityType="StockMan.EntityModel.user_amount" />
           <EntitySet Name="user_trade" EntityType="StockMan.EntityModel.user_trade" />
           <EntitySet Name="user_position" EntityType="StockMan.EntityModel.user_position" />
+          <EntitySet Name="user_strategy" EntityType="StockMan.EntityModel.user_strategy" />
         </EntityContainer>
         <EntityType Name="customobject">
           <Key>
@@ -1851,6 +1862,15 @@
           <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="position" Type="Int32" />
           <Property Name="stock_code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cost" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="user_strategy">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strategy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2663,8 +2683,18 @@
           <EntitySetMapping Name="user_position">
             <EntityTypeMapping TypeName="StockMan.EntityModel.user_position">
               <MappingFragment StoreEntitySet="user_position">
+                <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="stock_code" ColumnName="stock_code" />
                 <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_strategy">
+            <EntityTypeMapping TypeName="StockMan.EntityModel.user_strategy">
+              <MappingFragment StoreEntitySet="user_strategy">
+                <ScalarProperty Name="strategy" ColumnName="strategy" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="code" ColumnName="code" />
               </MappingFragment>

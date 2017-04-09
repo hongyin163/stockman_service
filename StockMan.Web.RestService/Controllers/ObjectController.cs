@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 using System.Net;
 namespace StockMan.Web.RestService.Controllers
 {
-    //[IdentityBasicAuthentication]
+    [IdentityBasicAuthentication]
     public class ObjectController : ApiController
     {
         IStockCategoryService categoryService = new StockCategoryService();
@@ -106,9 +106,10 @@ namespace StockMan.Web.RestService.Controllers
         /// </summary>
         /// <param name="id">用户id</param>
         /// <returns></returns>
-        public IHttpActionResult GetMyObjectList(string id)
+        public IHttpActionResult GetMyObjectList()
         {
-            var list = objectService.GetMyObject(id);
+            var user_id = this.User.Identity.Name;
+            var list = objectService.GetMyObject(user_id);
 
             IList<CustomObject> l = list.Select(p => new CustomObject
             {
@@ -123,7 +124,7 @@ namespace StockMan.Web.RestService.Controllers
 
             return Ok<MyObject>(new MyObject
             {
-                user_id = id,
+                user_id = user_id,
                 //group_code = p2,
                 objects = l
                 //,
@@ -674,25 +675,5 @@ namespace StockMan.Web.RestService.Controllers
     }
 
 
-    public class StringToJsonResult : IHttpActionResult
-    {
-        public string Content { get; set; }
-        public HttpRequestMessage Request { get; set; }
-        public StringToJsonResult(String content, HttpRequestMessage request)
-        {
-            this.Content = content;
-            this.Request = request;
-        }
 
-        System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> IHttpActionResult.ExecuteAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            var response = new HttpResponseMessage()
-            {
-                Content = new System.Net.Http.StringContent(this.Content, Encoding.UTF8, "application/json"),
-                RequestMessage = this.Request,
-                StatusCode = HttpStatusCode.OK
-            };
-            return Task.FromResult(response);
-        }
-    }
 }

@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace StockMan.Message.Task
 {
+    /// <summary>
+    /// 定时器
+    /// . 立即执行
+    /// w:1-5,t:9:30-11:30|13:00-15:00 15
+    /// </summary>
     public class TimeTrigger
     {
         private string timeexp = string.Empty;

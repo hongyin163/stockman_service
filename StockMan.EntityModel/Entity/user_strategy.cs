@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StockMan.Message.DataAccess
+namespace StockMan.EntityModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class mq_task
+    public partial class user_strategy : EntityBase
     {
-        public string code { get; set; }
-        public string assembly { get; set; }
-        public string type { get; set; }
-        public string time { get; set; }
-        public Nullable<int> enable { get; set; }
-        public Nullable<int> status { get; set; }
+        public long code { get; set; }
+        public string user_id { get; set; }
+        public string strategy { get; set; }
     }
 }

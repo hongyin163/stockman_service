@@ -92,7 +92,7 @@ namespace StockMan.Message.Client
                             if (!this.taskSenders.ContainsKey(task.code))
                             {
                                 this.Log().Info("新建应用程序域:" + task.code);
-                                RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.code);
+                                RemoteLoader rl = Loader.Instance.GetRemoteLoader(task.assembly,task.code);
                                 var taskSender = rl.GetTaskSender();
                                 taskSender.Load(task.assembly, task.type);
                                 this.taskSenders.Add(task.code, taskSender);

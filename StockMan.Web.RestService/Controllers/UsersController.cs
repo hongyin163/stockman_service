@@ -291,8 +291,9 @@ namespace StockMan.WebAPI.Controllers
         }
 
 
-        public IHttpActionResult GetUserConfig(string id)
+        public IHttpActionResult GetUserConfig()
         {
+            var id = this.User.Identity.Name;
             if (string.IsNullOrEmpty(id))
                 return BadRequest();
             var config = service.GetUserConfig(id);

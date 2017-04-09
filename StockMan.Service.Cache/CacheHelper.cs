@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using log4net;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -12,93 +13,159 @@ namespace StockMan.Service.Cache
     public static class CacheHelper
     {
         private static string RedisUri = ConfigurationManager.AppSettings["RedisHost"];
-        private static ConnectionMultiplexer _clientsManager = ConnectionMultiplexer.Connect(RedisUri);
+        private static ConnectionMultiplexer _clientsManager = null;
+        private static bool _available = true;
+
+        private static DateTime _timestamp = DateTime.Now;
+        private static ILog Log = LogManager.GetLogger("CacheHelper");
+
         private static ConnectionMultiplexer Client()
         {
-            if (_clientsManager == null)
+            try
             {
-                _clientsManager = ConnectionMultiplexer.Connect(RedisUri);
+                if (_clientsManager == null)
+                {
+                    _clientsManager = ConnectionMultiplexer.Connect(RedisUri);
+                }
+                return _clientsManager;
             }
-            return _clientsManager;
+            catch
+            {
+                throw new Exception("异常：缓存客户端创建异常");
+            }
         }
 
         public static void Set<T>(string key, T value)
         {
-            var client = Client().GetDatabase();
-            ;
-            client.StringSet(key, JsonConvert.SerializeObject(value));
+            try
+            {
+                var client = Client().GetDatabase();
+                client.StringSet(key, JsonConvert.SerializeObject(value));
+            }
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+            }
 
         }
         public static T Get<T>(string key)
         {
-            var client = Client().GetDatabase();
-
-            string str = client.StringGet(key);
-            if (!string.IsNullOrEmpty(str))
+            try
             {
-                return JsonConvert.DeserializeObject<T>(str);
+                var client = Client().GetDatabase();
+
+                string str = client.StringGet(key);
+                if (!string.IsNullOrEmpty(str))
+                {
+                    return JsonConvert.DeserializeObject<T>(str);
+                }
+                return default(T);
             }
-            return default(T);
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+                return default(T);
+            }
         }
 
         public static void Set(string key, string value)
         {
-            var client = Client().GetDatabase();
-            client.StringSet(key, value);
+            try
+            {
+                var client = Client().GetDatabase();
+                client.StringSet(key, value);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+            }
 
         }
         public static string Get(string key)
         {
-            var client = Client().GetDatabase();
-            return client.StringGet(key);
+            try
+            {
+                var client = Client().GetDatabase();
+                return client.StringGet(key);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+                return null;
+            }
+
         }
 
         public static string[] Get(string[] keys)
         {
-            var client = Client().GetDatabase();
-            RedisKey[] rkeys = keys.Select(k =>
+            try
             {
-                RedisKey rk = k;
-                return rk;
-            }).ToArray();
-
-            var values = client.StringGet(rkeys);
-            var results = values
-                .Where(p => !p.IsNullOrEmpty)
-                .Select(p =>
+                var client = Client().GetDatabase();
+                RedisKey[] rkeys = keys.Select(k =>
                 {
-                    string str = p;
-                    return str;
+                    RedisKey rk = k;
+                    return rk;
                 }).ToArray();
 
-            return results;
+                var values = client.StringGet(rkeys);
+                var results = values
+                    .Where(p => !p.IsNullOrEmpty)
+                    .Select(p =>
+                    {
+                        string str = p;
+                        return str;
+                    }).ToArray();
+
+                return results;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+                return null;
+            }
         }
         public static T[] Get<T>(string[] keys)
         {
-            var client = Client().GetDatabase();
-
-            RedisKey[] rkeys = keys.Select(k =>
+            try
             {
-                RedisKey rk = k;
-                return rk;
-            }).ToArray();
+                var client = Client().GetDatabase();
 
-            var values = client.StringGet(rkeys);
-            var results = values
-                .Where(p => !p.IsNullOrEmpty)
-                .Select(p =>
+                RedisKey[] rkeys = keys.Select(k =>
                 {
-                    return JsonConvert.DeserializeObject<T>(p);
-
+                    RedisKey rk = k;
+                    return rk;
                 }).ToArray();
 
-            return results;
+                var values = client.StringGet(rkeys);
+                var results = values
+                    .Where(p => !p.IsNullOrEmpty)
+                    .Select(p =>
+                    {
+                        return JsonConvert.DeserializeObject<T>(p);
+
+                    }).ToArray();
+
+                return results;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+                return null;
+            }
         }
 
         public static void Remove(string key)
         {
-            var client = Client().GetDatabase();
-            client.KeyDelete(key);
+            try
+            {
+                var client = Client().GetDatabase();
+                client.KeyDelete(key);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("异常：" + ex.Message + ",堆栈：" + ex.StackTrace);
+            }
+
         }
 
     }

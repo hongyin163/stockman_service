@@ -61,9 +61,12 @@
     <Compile Include="Models\IntentionItem.cs" />
     <Compile Include="Models\InvestIntention.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MyAmount.cs" />
     <Compile Include="Models\MyObject.cs" />
+    <Compile Include="Models\MyPosition.cs" />
     <Compile Include="Models\MyRule.cs" />
     <Compile Include="Models\MyStock.cs" />
+    <Compile Include="Models\MyStrategy.cs" />
     <Compile Include="Models\ObjectDataQuery.cs" />
     <Compile Include="Models\ObjectState.cs" />
     <Compile Include="Models\PriceInfo.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="Models\StockCategory.cs" />
     <Compile Include="Models\StockQueryCondition.cs" />
     <Compile Include="Models\StockQueryResult.cs" />
+    <Compile Include="Models\TradeRecord.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserConfig.cs" />
     <Compile Include="Models\UserConfigItem.cs" />

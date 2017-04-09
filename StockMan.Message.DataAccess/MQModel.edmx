@@ -22,7 +22,7 @@
           </Key>
           <Property Name="code" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="assembly" Type="varchar" MaxLength="45" />
-          <Property Name="type" Type="varchar" MaxLength="45" />
+          <Property Name="type" Type="varchar" MaxLength="300" />
           <Property Name="time" Type="varchar" MaxLength="45" />
           <Property Name="enable" Type="int" />
           <Property Name="status" Type="int" />
@@ -56,10 +56,10 @@
           </Key>
           <Property Name="code" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="assembly" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="enable" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="enable" Type="Int32" />
+          <Property Name="status" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>

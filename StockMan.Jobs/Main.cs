@@ -20,6 +20,8 @@ using StockMan.EntityModel;
 using StockMan.Jobs.Tech.Category;
 using StockMan.Jobs.Cache;
 using StockMan.Service.Interface.Rds;
+using StockMan.Service.Cache;
+
 namespace StockMan.Jobs
 {
     class Program
@@ -256,6 +258,13 @@ namespace StockMan.Jobs
                         job32.StockCode = stockCode;
                         job32.Execute(null);
 
+                        break;
+                    case "33":
+                        Console.WriteLine("输入缓存Key");
+                        var key = Console.ReadLine();
+                        var val=CacheHelper.Get(key);
+                        Console.WriteLine("缓存值:");
+                        Console.WriteLine(val);
                         break;
                     case "98":
                         Console.WriteLine("清空技术数据，技术上下文数据");
